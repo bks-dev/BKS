@@ -2,10 +2,10 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_WALLET_TEST_FIXTURE_H
-#define HTS_WALLET_TEST_FIXTURE_H
+#ifndef BKS_WALLET_TEST_FIXTURE_H
+#define BKS_WALLET_TEST_FIXTURE_H
 
-#include "test/test_HTS.h"
+#include "test/test_BKS.h"
 
 /** Testing setup and teardown for wallet.
  */

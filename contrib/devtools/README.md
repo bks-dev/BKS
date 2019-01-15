@@ -48,9 +48,9 @@ the commit it claims to have been updated to.
 
 To use, make sure that you have fetched the upstream repository branch in which the subtree is
 maintained:
-* for `src/secp256k1`: https://github.com/HTS-core/secp256k1.git (branch master)
-* for `src/leveldb`: https://github.com/HTS-core/leveldb.git (branch HTS-fork)
-* for `src/univalue`: https://github.com/HTS-core/univalue.git (branch master)
+* for `src/secp256k1`: https://github.com/BKS-core/secp256k1.git (branch master)
+* for `src/leveldb`: https://github.com/BKS-core/leveldb.git (branch BKS-fork)
+* for `src/univalue`: https://github.com/BKS-core/univalue.git (branch master)
 
 Usage: `git-subtree-check.sh DIR COMMIT`
 
@@ -66,7 +66,7 @@ For example:
   ./github-merge.py 3077
 
 (in any git repository) will help you merge pull request #3077 for the
-HTS/HTS repository.
+BKS/BKS repository.
 
 What it does:
 * Fetch master and the pull request.
@@ -84,16 +84,16 @@ couldn't mess with the sources.
 
 Setup
 ---------
-Configuring the github-merge tool for the HTS repository is done in the following way:
+Configuring the github-merge tool for the BKS repository is done in the following way:
 
-    git config githubmerge.repository HTS/HTS
+    git config githubmerge.repository BKS/BKS
     git config githubmerge.testcmd "make -j4 check" (adapt to whatever you want to use for testing)
     git config --global user.signingkey mykeyid (if you want to GPG sign)
 
 optimize-pngs.py
 ================
 
-A script to optimize png files in the HTS
+A script to optimize png files in the BKS
 repository (requires pngcrush).
 
 security-check.py and test-security-check.py
@@ -116,10 +116,10 @@ If only supported symbols are used the return value will be 0 and the output wil
 
 If there are 'unsupported' symbols, the return value will be 1 a list like this will be printed:
 
-    .../64/test_HTS: symbol memcpy from unsupported version GLIBC_2.14
-    .../64/test_HTS: symbol __fdelt_chk from unsupported version GLIBC_2.15
-    .../64/test_HTS: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
-    .../64/test_HTS: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
+    .../64/test_BKS: symbol memcpy from unsupported version GLIBC_2.14
+    .../64/test_BKS: symbol __fdelt_chk from unsupported version GLIBC_2.15
+    .../64/test_BKS: symbol std::out_of_range::~out_of_range() from unsupported version GLIBCXX_3.4.15
+    .../64/test_BKS: symbol _ZNSt8__detail15_List_nod from unsupported version GLIBCXX_3.4.15
 
 update-translations.py
 ======================

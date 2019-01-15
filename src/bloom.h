@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_BLOOM_H
-#define HTS_BLOOM_H
+#ifndef BKS_BLOOM_H
+#define BKS_BLOOM_H
 
 #include "serialize.h"
 
@@ -140,4 +140,4 @@ private:
     int nHashFuncs;
 };
 
-#endif // HTS_BLOOM_H
+#endif // BKS_BLOOM_H

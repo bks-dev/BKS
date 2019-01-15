@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_SENDCOINSENTRY_H
-#define HTS_QT_SENDCOINSENTRY_H
+#ifndef BKS_QT_SENDCOINSENTRY_H
+#define BKS_QT_SENDCOINSENTRY_H
 
 #include "walletmodel.h"
 
@@ -17,7 +17,7 @@ namespace Ui {
 }
 
 /**
- * A single entry in the dialog for sending HTSs.
+ * A single entry in the dialog for sending BKSs.
  * Stacked widget, with different UIs for payment requests
  * with a strong payee identity.
  */
@@ -75,4 +75,4 @@ private:
     bool updateLabel(const QString &address);
 };
 
-#endif // HTS_QT_SENDCOINSENTRY_H
+#endif // BKS_QT_SENDCOINSENTRY_H

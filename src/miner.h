@@ -1,11 +1,11 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2018 The HTS developers
+// Copyright (c) 2018 The BKS developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_MINER_H
-#define HTS_MINER_H
+#ifndef BKS_MINER_H
+#define BKS_MINER_H
 
 #include "primitives/block.h"
 #include "txmempool.h"
@@ -222,11 +222,11 @@ private:
 void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 int64_t UpdateTime(CBlockHeader* pblock, const Consensus::Params& consensusParams, const CBlockIndex* pindexPrev);
 
-// HTS - Mining/Staking thread
+// BKS - Mining/Staking thread
 bool SignBlock(CBlock *pblock, CWallet& wallet, int64_t nFees);
 /** Check mined proof-of-stake block */
 bool CheckStake(CBlock* pblock, CWallet& wallet, const CChainParams& chainparams);
-void HTSStaker(const CChainParams& chainparams);
+void BKSStaker(const CChainParams& chainparams);
 
 void SetStaking(bool mode);
 void SetCoinBaseOutputs(std::vector<std::string> v);
@@ -245,4 +245,4 @@ std::vector<std::string> GetForceTransactions();
 std::string GetCoinStakeStrDZeel();
 std::string GetCoinBaseStrDZeel();
 
-#endif // HTS_MINER_H
+#endif // BKS_MINER_H

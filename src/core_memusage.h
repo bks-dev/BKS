@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_CORE_MEMUSAGE_H
-#define HTS_CORE_MEMUSAGE_H
+#ifndef BKS_CORE_MEMUSAGE_H
+#define BKS_CORE_MEMUSAGE_H
 
 #include "primitives/transaction.h"
 #include "primitives/block.h"
@@ -79,4 +79,4 @@ static inline size_t RecursiveDynamicUsage(const CBlockLocator& locator) {
     return memusage::DynamicUsage(locator.vHave);
 }
 
-#endif // HTS_CORE_MEMUSAGE_H
+#endif // BKS_CORE_MEMUSAGE_H

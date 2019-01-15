@@ -267,7 +267,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Assinar mensagem...</translation>
@@ -361,8 +361,8 @@
         <translation>Reindexando blocos no disco...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Enviar moedas para um endereço HTS</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Enviar moedas para um endereço BKS</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -385,8 +385,8 @@
         <translation>&amp;Verificar mensagem...</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -413,12 +413,12 @@
         <translation>Criptografar as chaves privadas que pertencem à sua carteira</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>Assine mensagens com seus endereços HTS para provar que você é dono delas</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>Assine mensagens com seus endereços BKS para provar que você é dono delas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Verificar mensagens para se assegurar que elas foram assinadas pelo dono de Endereços HTS específicos</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Verificar mensagens para se assegurar que elas foram assinadas pelo dono de Endereços BKS específicos</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -433,8 +433,8 @@
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
-        <translation>Solicitações de pagamentos (gera códigos QR e HTS: URIs)</translation>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
+        <translation>Solicitações de pagamentos (gera códigos QR e BKS: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -445,16 +445,16 @@
         <translation>Mostrar a lista de endereços de recebimento usados ​​e rótulos</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>Abrir um HTS: URI ou cobrança</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>Abrir um BKS: URI ou cobrança</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>Opções de linha de &amp;comando</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to HTS network</source>
-        <translation><numerusform>%n conexão ativa na rede HTS</numerusform><numerusform>%n conexões ativas na rede HTS</numerusform></translation>
+        <source>%n active connection(s) to BKS network</source>
+        <translation><numerusform>%n conexão ativa na rede BKS</numerusform><numerusform>%n conexões ativas na rede BKS</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -529,8 +529,8 @@
         <translation>Atualizado</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible HTS command-line options</source>
-        <translation>Mostrar a mensagem de ajuda do %1 para obter uma lista com possíveis opções de linha de comando HTS</translation>
+        <source>Show the %1 help message to get a list with possible BKS command-line options</source>
+        <translation>Mostrar a mensagem de ajuda do %1 para obter uma lista com possíveis opções de linha de comando BKS</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -704,16 +704,16 @@
         <translation>Ga&amp;star mudança não confirmada</translation>
     </message>
     <message>
-        <source>Automatically open the HTS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir as portas do cliente HTS automaticamente no roteador. Isto só funcionará se seu roteador suportar UPnP e esta função estiver habilitada.</translation>
+        <source>Automatically open the BKS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir as portas do cliente BKS automaticamente no roteador. Isto só funcionará se seu roteador suportar UPnP e esta função estiver habilitada.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapear porta usando &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a SOCKS5 proxy.</source>
-        <translation>Conectar na rede HTS através de um proxy SOCKS5.</translation>
+        <source>Connect to the BKS network through a SOCKS5 proxy.</source>
+        <translation>Conectar na rede BKS através de um proxy SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -752,8 +752,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Conecte-se à rede HTS através de um proxy SOCKS5 separado para utilizar serviços ocultos Tor.</translation>
+        <source>Connect to the BKS network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Conecte-se à rede BKS através de um proxy SOCKS5 separado para utilizar serviços ocultos Tor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -801,7 +801,7 @@
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Escolha a unidade padrão de subdivisão para interface mostrar quando enviar HTSs.</translation>
+        <translation>Escolha a unidade padrão de subdivisão para interface mostrar quando enviar BKSs.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -884,8 +884,8 @@
         <translation>Quantidade</translation>
     </message>
     <message>
-        <source>Enter a HTS address (e.g. %1)</source>
-        <translation>Informe um endereço HTS (ex: %1)</translation>
+        <source>Enter a BKS address (e.g. %1)</source>
+        <translation>Informe um endereço BKS (ex: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1237,8 +1237,8 @@
         <translation>R&amp;eutilize um endereço de recebimento (não recomendado)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the HTS network.</source>
-        <translation>Uma mensagem opcional que será anexada na cobrança e será mostrada quando ela for aberta. Nota: A mensagem não será enviada com o pagamento pela rede HTS.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the BKS network.</source>
+        <translation>Uma mensagem opcional que será anexada na cobrança e será mostrada quando ela for aberta. Nota: A mensagem não será enviada com o pagamento pela rede BKS.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1382,7 +1382,7 @@
         <translation>pelo menos</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for HTS transactions than the network can process.</source>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for BKS transactions than the network can process.</source>
         <translation>Pagando apenas a taxa mínima é bom, desde que haja pouco volume de transações. Mas esteja ciente de que isso pode acabar em uma transação nunca confirmanda uma vez que há mais demanda por transações do que a rede pode processar.</translation>
     </message>
     <message>
@@ -1449,7 +1449,7 @@
         <translation>Este é um pagamento normal.</translation>
     </message>
     <message>
-        <source>The HTS address to send the payment to</source>
+        <source>The BKS address to send the payment to</source>
         <translation>Endereço que enviará o pagamento</translation>
     </message>
     <message>
@@ -1461,8 +1461,8 @@
         <translation>Remover esta entrada</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less HTSs than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>A taxa será deduzida da quantia que está sendo enviada. O destinatário receberá menos HTSs do que você colocou no campo de quantidade. Se vários destinatários estão selecionados, a taxa é dividida igualmente.</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less BKSs than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>A taxa será deduzida da quantia que está sendo enviada. O destinatário receberá menos BKSs do que você colocou no campo de quantidade. Se vários destinatários estão selecionados, a taxa é dividida igualmente.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
@@ -1485,8 +1485,8 @@
         <translation>Digite um rótulo para este endereço para adicioná-lo no catálogo</translation>
     </message>
     <message>
-        <source>A message that was attached to the HTS: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the HTS network.</source>
-        <translation>A mensagem que foi anexada ao HTS: URI na qual será gravada na transação para sua referência. Nota: Essa mensagem não será gravada publicamente na rede HTS.</translation>
+        <source>A message that was attached to the BKS: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the BKS network.</source>
+        <translation>A mensagem que foi anexada ao BKS: URI na qual será gravada na transação para sua referência. Nota: Essa mensagem não será gravada publicamente na rede BKS.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -1522,12 +1522,12 @@
         <translation>&amp;Assinar mensagem</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive HTSs sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Você pode assinar mensagens com seus endereços para provar que você pode receber HTSs enviados por alguém. Cuidado para não assinar nada vago ou aleatório, pois ataques phishing podem tentar te enganar para assinar coisas para eles como se fosse você. Somente assine termos bem detalhados que você concorde.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive BKSs sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Você pode assinar mensagens com seus endereços para provar que você pode receber BKSs enviados por alguém. Cuidado para não assinar nada vago ou aleatório, pois ataques phishing podem tentar te enganar para assinar coisas para eles como se fosse você. Somente assine termos bem detalhados que você concorde.</translation>
     </message>
     <message>
-        <source>The HTS address to sign the message with</source>
-        <translation>O enderesso HTS que assinará a mensagem</translation>
+        <source>The BKS address to sign the message with</source>
+        <translation>O enderesso BKS que assinará a mensagem</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1558,8 +1558,8 @@
         <translation>Copiar a assinatura para a área de transferência do sistema</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
-        <translation>Assinar mensagem para provar que você é dono deste endereço HTS</translation>
+        <source>Sign the message to prove you own this BKS address</source>
+        <translation>Assinar mensagem para provar que você é dono deste endereço BKS</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1582,12 +1582,12 @@
         <translation>Coloque o endereço do autor, a mensagem (certifique-se de copiar toda a mensagem, incluindo quebras de linha, espaços, tabulações, etc.) e a assinatura embaixo para verificar a mensagem. Cuidado para não ler mais da assinatura do que está assinado na mensagem, para evitar ser enganado pelo ataque man-in-the-middle. Note que isso somente prova a propriedade de um endereço, e não o remetende de qualquer transação.</translation>
     </message>
     <message>
-        <source>The HTS address the message was signed with</source>
-        <translation>O enderesso HTS que assionou a mesnagem</translation>
+        <source>The BKS address the message was signed with</source>
+        <translation>O enderesso BKS que assionou a mesnagem</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified HTS address</source>
-        <translation>Verificar mensagem para se assegurar que ela foi assinada pelo dono de um endereço HTS específico.</translation>
+        <source>Verify the message to ensure it was signed with the specified BKS address</source>
+        <translation>Verificar mensagem para se assegurar que ela foi assinada pelo dono de um endereço BKS específico.</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1688,7 +1688,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Opções:</translation>
@@ -1754,8 +1754,8 @@
         <translation>Aceitar conexões externas (padrão: 1 se opções -proxy ou -connect não estiverem presentes)</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS</translation>
+        <source>BKS Core</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>-fallbackfee is set very high! This is the transaction fee you may pay when fee estimates are not available.</source>

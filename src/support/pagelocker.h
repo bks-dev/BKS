@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_SUPPORT_PAGELOCKER_H
-#define HTS_SUPPORT_PAGELOCKER_H
+#ifndef BKS_SUPPORT_PAGELOCKER_H
+#define BKS_SUPPORT_PAGELOCKER_H
 
 #include "support/cleanse.h"
 
@@ -174,4 +174,4 @@ void UnlockObject(const T& t)
     LockedPageManager::Instance().UnlockRange((void*)(&t), sizeof(T));
 }
 
-#endif // HTS_SUPPORT_PAGELOCKER_H
+#endif // BKS_SUPPORT_PAGELOCKER_H

@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_UNDO_H
-#define HTS_UNDO_H
+#ifndef BKS_UNDO_H
+#define BKS_UNDO_H
 
 #include "compressor.h" 
 #include "primitives/transaction.h"
@@ -82,4 +82,4 @@ public:
     }
 };
 
-#endif // HTS_UNDO_H
+#endif // BKS_UNDO_H

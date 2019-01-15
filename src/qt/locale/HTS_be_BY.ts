@@ -199,7 +199,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Падпісаць паведамленне...</translation>
@@ -277,7 +277,7 @@
         <translation>Пераіндэксацыя блокаў на дыску...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
+        <source>Send coins to a BKS address</source>
         <translation>Даслаць манеты на Біткойн-адрас</translation>
     </message>
     <message>
@@ -301,7 +301,7 @@
         <translation>Праверыць паведамленне...</translation>
     </message>
     <message>
-        <source>HTS</source>
+        <source>BKS</source>
         <translation>Біткойн</translation>
     </message>
     <message>
@@ -329,11 +329,11 @@
         <translation>Зашыфраваць прыватныя ключы, якия належаць вашаму гаманцу</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
         <translation>Падпісаць паведамленне з дапамогай Біткойн-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
         <translation>Спраўдзіць паведамленне з дапамогай Біткойн-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
@@ -349,7 +349,7 @@
         <translation>Дапамога</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
         <translation>Запатрабаваць плацёж (генеруецца QR-код для біткойн URI)</translation>
     </message>
     <message>
@@ -361,7 +361,7 @@
         <translation>Паказаць спіс адрасоў і метак для прымання</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
+        <source>Open a BKS: URI or payment request</source>
         <translation>Адкрыць біткойн: URI ці запыт плацяжу</translation>
     </message>
     <message>
@@ -369,8 +369,8 @@
         <translation>Опцыі каманднага радка</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to HTS network</source>
-        <translation><numerusform>%n актыўнае злучэнне з сецівам HTS</numerusform><numerusform>%n актыўных злучэнняў з сецівам HTS</numerusform><numerusform>%n актыўных злучэнняў з сецівам HTS</numerusform><numerusform>%n актыўных злучэнняў з сецівам HTS</numerusform></translation>
+        <source>%n active connection(s) to BKS network</source>
+        <translation><numerusform>%n актыўнае злучэнне з сецівам BKS</numerusform><numerusform>%n актыўных злучэнняў з сецівам BKS</numerusform><numerusform>%n актыўных злучэнняў з сецівам BKS</numerusform><numerusform>%n актыўных злучэнняў з сецівам BKS</numerusform></translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -748,7 +748,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Опцыі:</translation>
@@ -766,8 +766,8 @@
         <translation>Запусціць у фоне як дэман і прымаць каманды</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Core</translation>
+        <source>BKS Core</source>
+        <translation>BKS Core</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>

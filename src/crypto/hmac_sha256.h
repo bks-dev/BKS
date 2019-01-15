@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_CRYPTO_HMAC_SHA256_H
-#define HTS_CRYPTO_HMAC_SHA256_H
+#ifndef BKS_CRYPTO_HMAC_SHA256_H
+#define BKS_CRYPTO_HMAC_SHA256_H
 
 #include "crypto/sha256.h"
 
@@ -29,4 +29,4 @@ public:
     void Finalize(unsigned char hash[OUTPUT_SIZE]);
 };
 
-#endif // HTS_CRYPTO_HMAC_SHA256_H
+#endif // BKS_CRYPTO_HMAC_SHA256_H

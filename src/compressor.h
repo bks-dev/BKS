@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_COMPRESSOR_H
-#define HTS_COMPRESSOR_H
+#ifndef BKS_COMPRESSOR_H
+#define BKS_COMPRESSOR_H
 
 #include "primitives/transaction.h"
 #include "script/script.h"
@@ -126,4 +126,4 @@ public:
     }
 };
 
-#endif // HTS_COMPRESSOR_H
+#endif // BKS_COMPRESSOR_H

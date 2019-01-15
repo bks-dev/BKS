@@ -47,7 +47,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Error</source>
         <translation>错误</translation>
@@ -162,7 +162,7 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Transaction amounts must be positive</source>
         <translation>转账额度须为正数</translation>

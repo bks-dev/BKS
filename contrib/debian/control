@@ -1,4 +1,4 @@
-Source: HTS
+Source: BKS
 Section: utils
 Priority: optional
 Maintainer: Jonas Smedegaard <dr@jones.dk>
@@ -23,45 +23,45 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://HTScore.org/
-Vcs-Git: git://github.com/HTS/HTS.git
-Vcs-Browser: https://github.com/HTS/HTS
+Homepage: https://BKScore.org/
+Vcs-Git: git://github.com/BKS/BKS.git
+Vcs-Browser: https://github.com/BKS/BKS
 
-Package: HTSd
+Package: BKSd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- HTS is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. HTS uses peer-to-peer
+ BKS is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. BKS uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. HTS Core
+ and issuing money are carried out collectively by the network. BKS Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides the daemon, HTSd, and the CLI tool
- HTS-cli to interact with the daemon.
+ This package provides the daemon, BKSd, and the CLI tool
+ BKS-cli to interact with the daemon.
 
-Package: HTS-qt
+Package: BKS-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- HTS is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. HTS uses peer-to-peer
+ BKS is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. BKS uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. HTS Core
+ and issuing money are carried out collectively by the network. BKS Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides HTS-Qt, a GUI for HTS based on Qt.
+ This package provides BKS-Qt, a GUI for BKS based on Qt.
 
-Package: HTS-tx
+Package: BKS-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- HTS is an experimental new digital currency that enables instant
- payments to anyone, anywhere in the world. HTS uses peer-to-peer
+ BKS is an experimental new digital currency that enables instant
+ payments to anyone, anywhere in the world. BKS uses peer-to-peer
  technology to operate with no central authority: managing transactions
- and issuing money are carried out collectively by the network. HTS Core
+ and issuing money are carried out collectively by the network. BKS Core
  is the name of the open source software which enables the use of this currency.
  .
- This package provides HTS-tx, a command-line transaction creation
- tool which can be used without a HTS daemon.  Some means of
+ This package provides BKS-tx, a command-line transaction creation
+ tool which can be used without a BKS daemon.  Some means of
  exchanging minimal transaction data with peers is still required.

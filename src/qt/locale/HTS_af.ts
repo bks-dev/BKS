@@ -95,7 +95,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Netwerk-sinkronisasie...</translation>
@@ -153,8 +153,8 @@
         <translation>Besig met herindeksering van blokke op hardeskyf...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Stuur munte na 'n HTS adres</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Stuur munte na 'n BKS adres</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -165,8 +165,8 @@
         <translation>Verander die wagwoord wat ek vir kodifikasie van my beursie gebruik</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -189,20 +189,20 @@
         <translation>Kodifiseer die private sleutes wat aan jou beursie gekoppel is.</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>Onderteken boodskappe met u HTS adresse om u eienaarskap te bewys</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>Onderteken boodskappe met u BKS adresse om u eienaarskap te bewys</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde HTS adresse</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde BKS adresse</translation>
     </message>
     <message>
         <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
-        <translation>Versoek betalings (genereer QR-kodes en HTS: URI's)</translation>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
+        <translation>Versoek betalings (genereer QR-kodes en BKS: URI's)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -213,8 +213,8 @@
         <translation>Vertoon die lys van gebruikte ontvangers-adresse en etikette</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>Skep 'n HTS: URI of betalingsversoek</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>Skep 'n BKS: URI of betalingsversoek</translation>
     </message>
     </context>
 <context>
@@ -310,10 +310,10 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Kern</translation>
+        <source>BKS Core</source>
+        <translation>BKS Kern</translation>
     </message>
     <message>
         <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>

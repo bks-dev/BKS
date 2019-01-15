@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The HTS Core developers
+# Copyright (c) 2018 The BKS Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
 import time
 
-class CommunityFundRawTXCreateProposalTest(HTSTestFramework):
+class CommunityFundRawTXCreateProposalTest(BKSTestFramework):
     """Tests the state transition of proposals of the Community fund."""
 
     def __init__(self):
@@ -17,7 +17,7 @@ class CommunityFundRawTXCreateProposalTest(HTSTestFramework):
         self.num_nodes = 1
 
 
-        self.goodDescription = "these are not the HTS Droids you are looking for"
+        self.goodDescription = "these are not the BKS Droids you are looking for"
         self.goodDuration = 360000
         self.goodAmount = 100
         self.goodPropHash = ""

@@ -79,7 +79,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Quit application</source>
         <translation>Κλείσιμο εφαρμογής</translation>
@@ -218,7 +218,7 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Insufficient funds</source>
         <translation>Κεφάλαια μη επαρκή</translation>

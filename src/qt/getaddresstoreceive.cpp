@@ -27,7 +27,7 @@ getAddressToReceive::getAddressToReceive(QWidget *parent) :
     LOCK(pwalletMain->cs_wallet);
     BOOST_FOREACH(const PAIRTYPE(CTxDestination, CAddressBookData)& item, pwalletMain->mapAddressBook)
     {
-        const CHTSAddress& addressbook = item.first;
+        const CBKSAddress& addressbook = item.first;
         bool fMine = IsMine(*pwalletMain, addressbook.Get());
         if(fMine)
         {
@@ -76,7 +76,7 @@ void getAddressToReceive::getNewAddress()
 void getAddressToReceive::showQR()
 {
 #ifdef USE_QRCODE
-    QString uri = "HTS:" + address;
+    QString uri = "BKS:" + address;
     ui->lblQRCode->setText("");
     if(!uri.isEmpty())
     {

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_COINCONTROLDIALOG_H
-#define HTS_QT_COINCONTROLDIALOG_H
+#ifndef BKS_QT_COINCONTROLDIALOG_H
+#define BKS_QT_COINCONTROLDIALOG_H
 
 #include "amount.h"
 
@@ -130,4 +130,4 @@ private Q_SLOTS:
     void updateLabelLocked();
 };
 
-#endif // HTS_QT_COINCONTROLDIALOG_H
+#endif // BKS_QT_COINCONTROLDIALOG_H

@@ -159,7 +159,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Потпиши &amp;порака...</translation>
@@ -233,7 +233,7 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
+        <source>Send coins to a BKS address</source>
         <translation>Испрати биткоини на Биткоин адреса</translation>
     </message>
     <message>
@@ -241,7 +241,7 @@
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>HTS</source>
+        <source>BKS</source>
         <translation>Биткоин</translation>
     </message>
     <message>
@@ -648,13 +648,13 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Опции:</translation>
     </message>
     <message>
-        <source>HTS Core</source>
+        <source>BKS Core</source>
         <translation>Биткоин Core</translation>
     </message>
     <message>

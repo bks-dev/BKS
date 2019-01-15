@@ -14,29 +14,29 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-HTS_CONFIG_INCLUDES=-I$(builddir)/config
-HTS_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+BKS_CONFIG_INCLUDES=-I$(builddir)/config
+BKS_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-HTS_INCLUDES += -I$(srcdir)/secp256k1/include
-HTS_INCLUDES += $(UNIVALUE_CFLAGS)
+BKS_INCLUDES += -I$(srcdir)/secp256k1/include
+BKS_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBHTS_SERVER=libHTS_server.a
-LIBHTS_COMMON=libHTS_common.a
-LIBHTS_CONSENSUS=libHTS_consensus.a
-LIBHTS_CLI=libHTS_cli.a
-LIBHTS_UTIL=libHTS_util.a
-LIBHTS_CRYPTO=crypto/libHTS_crypto.a
-LIBHTSQT=qt/libHTSqt.a
+LIBBKS_SERVER=libBKS_server.a
+LIBBKS_COMMON=libBKS_common.a
+LIBBKS_CONSENSUS=libBKS_consensus.a
+LIBBKS_CLI=libBKS_cli.a
+LIBBKS_UTIL=libBKS_util.a
+LIBBKS_CRYPTO=crypto/libBKS_crypto.a
+LIBBKSQT=qt/libBKSqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBHTS_ZMQ=libHTS_zmq.a
+LIBBKS_ZMQ=libBKS_zmq.a
 endif
-if BUILD_HTS_LIBS
-LIBHTSCONSENSUS=libHTSconsensus.la
+if BUILD_BKS_LIBS
+LIBBKSCONSENSUS=libBKSconsensus.la
 endif
 if ENABLE_WALLET
-LIBHTS_WALLET=libHTS_wallet.a
+LIBBKS_WALLET=libBKS_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -45,32 +45,32 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBHTS_CRYPTO) \
-  $(LIBHTS_UTIL) \
-  $(LIBHTS_COMMON) \
-  $(LIBHTS_CONSENSUS) \
-  $(LIBHTS_SERVER) \
-  $(LIBHTS_CLI) \
-  $(LIBHTS_WALLET) \
-  $(LIBHTS_ZMQ)
+  $(LIBBKS_CRYPTO) \
+  $(LIBBKS_UTIL) \
+  $(LIBBKS_COMMON) \
+  $(LIBBKS_CONSENSUS) \
+  $(LIBBKS_SERVER) \
+  $(LIBBKS_CLI) \
+  $(LIBBKS_WALLET) \
+  $(LIBBKS_ZMQ)
 
-lib_LTLIBRARIES = $(LIBHTSCONSENSUS)
+lib_LTLIBRARIES = $(LIBBKSCONSENSUS)
 
 bin_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_HTSD
-  bin_PROGRAMS += HTSd
+if BUILD_BKSD
+  bin_PROGRAMS += BKSd
 endif
 
-if BUILD_HTS_UTILS
-  bin_PROGRAMS += HTS-cli HTS-tx
+if BUILD_BKS_UTILS
+  bin_PROGRAMS += BKS-cli BKS-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# HTS core #
-HTS_CORE_H = \
+# BKS core #
+BKS_CORE_H = \
   addressindex.h \
   spentindex.h \
   timestampindex.h \
@@ -165,12 +165,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh $(abs_top_builddir)/src/obj/build.h \
 	  $(abs_top_srcdir)
-libHTS_util_a-clientversion.$(OBJEXT): obj/build.h
+libBKS_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between HTSd and HTS-qt
-libHTS_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libHTS_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_server_a_SOURCES = \
+# server: shared between BKSd and BKS-qt
+libBKS_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libBKS_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_server_a_SOURCES = \
   addrman.cpp \
   bloom.cpp \
   blockencodings.cpp \
@@ -210,23 +210,23 @@ libHTS_server_a_SOURCES = \
   utils/dns_utils.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(HTS_CORE_H)
+  $(BKS_CORE_H)
 
 if ENABLE_ZMQ
-libHTS_zmq_a_CPPFLAGS = $(HTS_INCLUDES) $(ZMQ_CFLAGS)
-libHTS_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_zmq_a_SOURCES = \
+libBKS_zmq_a_CPPFLAGS = $(BKS_INCLUDES) $(ZMQ_CFLAGS)
+libBKS_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between HTSd and HTS-qt, but only linked
+# wallet: shared between BKSd and BKS-qt, but only linked
 # when wallet enabled
-libHTS_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-libHTS_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_wallet_a_SOURCES = \
+libBKS_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+libBKS_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_wallet_a_SOURCES = \
   consensus/cfund.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
@@ -235,12 +235,12 @@ libHTS_wallet_a_SOURCES = \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
   policy/rbf.cpp \
-  $(HTS_CORE_H)
+  $(BKS_CORE_H)
 
 # crypto primitives library
-crypto_libHTS_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_CONFIG_INCLUDES)
-crypto_libHTS_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libHTS_crypto_a_SOURCES = \
+crypto_libBKS_crypto_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_CONFIG_INCLUDES)
+crypto_libBKS_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libBKS_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/common.h \
@@ -258,9 +258,9 @@ crypto_libHTS_crypto_a_SOURCES = \
   crypto/sha512.h
 
 # consensus: shared between all executables that validate any consensus rules.
-libHTS_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-libHTS_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_consensus_a_SOURCES = \
+libBKS_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+libBKS_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -307,7 +307,7 @@ libHTS_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/HTSconsensus.cpp \
+  script/BKSconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -322,10 +322,10 @@ libHTS_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between HTSd, and HTS-qt and non-server tools
-libHTS_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-libHTS_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_common_a_SOURCES = \
+# common: shared between BKSd, and BKS-qt and non-server tools
+libBKS_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+libBKS_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_common_a_SOURCES = \
   amount.cpp \
   base58.cpp \
   chainparams.cpp \
@@ -340,14 +340,14 @@ libHTS_common_a_SOURCES = \
   scheduler.cpp \
   script/sign.cpp \
   script/standard.cpp \
-  $(HTS_CORE_H)
+  $(BKS_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libHTS_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-libHTS_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_util_a_SOURCES = \
+libBKS_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+libBKS_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_util_a_SOURCES = \
   support/pagelocker.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -362,100 +362,100 @@ libHTS_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(HTS_CORE_H)
+  $(BKS_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libHTS_util_a_SOURCES += compat/glibc_compat.cpp
+libBKS_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between HTS-cli and HTS-qt
-libHTS_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-libHTS_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libHTS_cli_a_SOURCES = \
+# cli: shared between BKS-cli and BKS-qt
+libBKS_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+libBKS_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKS_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(HTS_CORE_H)
+  $(BKS_CORE_H)
 
-nodist_libHTS_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libBKS_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# HTSd binary #
-HTSd_SOURCES = HTSd.cpp
-HTSd_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-HTSd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-HTSd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# BKSd binary #
+BKSd_SOURCES = BKSd.cpp
+BKSd_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+BKSd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+BKSd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-HTSd_SOURCES += HTSd-res.rc
+BKSd_SOURCES += BKSd-res.rc
 endif
 
-HTSd_LDADD = \
-  $(LIBHTS_SERVER) \
-  $(LIBHTS_COMMON) \
+BKSd_LDADD = \
+  $(LIBBKS_SERVER) \
+  $(LIBBKS_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBHTS_UTIL) \
-  $(LIBHTS_WALLET) \
-  $(LIBHTS_ZMQ) \
-  $(LIBHTS_CONSENSUS) \
-  $(LIBHTS_CRYPTO) \
+  $(LIBBKS_UTIL) \
+  $(LIBBKS_WALLET) \
+  $(LIBBKS_ZMQ) \
+  $(LIBBKS_CONSENSUS) \
+  $(LIBBKS_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-HTSd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+BKSd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# HTS-cli binary #
-HTS_cli_SOURCES = HTS-cli.cpp
-HTS_cli_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES) $(EVENT_CFLAGS)
-HTS_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-HTS_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# BKS-cli binary #
+BKS_cli_SOURCES = BKS-cli.cpp
+BKS_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES) $(EVENT_CFLAGS)
+BKS_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+BKS_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-HTS_cli_SOURCES += HTS-cli-res.rc
+BKS_cli_SOURCES += BKS-cli-res.rc
 endif
 
-HTS_cli_LDADD = \
-  $(LIBHTS_CLI) \
+BKS_cli_LDADD = \
+  $(LIBBKS_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBHTS_UTIL) \
-  $(LIBHTS_CRYPTO)
+  $(LIBBKS_UTIL) \
+  $(LIBBKS_CRYPTO)
 
-HTS_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+BKS_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# HTS-tx binary #
-HTS_tx_SOURCES = HTS-tx.cpp
-HTS_tx_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES)
-HTS_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-HTS_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# BKS-tx binary #
+BKS_tx_SOURCES = BKS-tx.cpp
+BKS_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES)
+BKS_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+BKS_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-HTS_tx_SOURCES += HTS-tx-res.rc
+BKS_tx_SOURCES += BKS-tx-res.rc
 endif
 
-HTS_tx_LDADD = \
+BKS_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBHTS_COMMON) \
-  $(LIBHTS_UTIL) \
-  $(LIBHTS_CONSENSUS) \
-  $(LIBHTS_CRYPTO) \
+  $(LIBBKS_COMMON) \
+  $(LIBBKS_UTIL) \
+  $(LIBBKS_CONSENSUS) \
+  $(LIBBKS_CRYPTO) \
   $(LIBSECP256K1)
 
-HTS_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+BKS_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
-# HTSconsensus library #
-if BUILD_HTS_LIBS
-include_HEADERS = script/HTSconsensus.h
-libHTSconsensus_la_SOURCES = $(crypto_libHTS_crypto_a_SOURCES) $(libHTS_consensus_a_SOURCES)
+# BKSconsensus library #
+if BUILD_BKS_LIBS
+include_HEADERS = script/BKSconsensus.h
+libBKSconsensus_la_SOURCES = $(crypto_libBKS_crypto_a_SOURCES) $(libBKS_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
-  libHTSconsensus_la_SOURCES += compat/glibc_compat.cpp
+  libBKSconsensus_la_SOURCES += compat/glibc_compat.cpp
 endif
 
-libHTSconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libHTSconsensus_la_LIBADD = $(LIBSECP256K1)
-libHTSconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_HTS_INTERNAL
-libHTSconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libBKSconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libBKSconsensus_la_LIBADD = $(LIBSECP256K1)
+libBKSconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BKS_INTERNAL
+libBKSconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #

@@ -7,10 +7,10 @@
 # Test merkleblock fetch/validation
 #
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
-class MerkleBlockTest(HTSTestFramework):
+class MerkleBlockTest(BKSTestFramework):
 
     def __init__(self):
         super().__init__()

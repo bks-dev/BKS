@@ -5,12 +5,12 @@
 
 #
 # Helper script to create the cache
-# (see HTSTestFramework.setup_chain)
+# (see BKSTestFramework.setup_chain)
 #
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 
-class CreateCache(HTSTestFramework):
+class CreateCache(BKSTestFramework):
 
     def setup_network(self):
         # Don't setup any test nodes

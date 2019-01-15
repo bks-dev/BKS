@@ -6,7 +6,7 @@
 #
 # script.py
 #
-# This file is modified from python-HTSlib.
+# This file is modified from python-BKSlib.
 #
 
 """Scripts

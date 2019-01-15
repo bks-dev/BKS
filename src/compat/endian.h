@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_COMPAT_ENDIAN_H
-#define HTS_COMPAT_ENDIAN_H
+#ifndef BKS_COMPAT_ENDIAN_H
+#define BKS_COMPAT_ENDIAN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include <stdint.h>
@@ -193,4 +193,4 @@ inline uint64_t le64toh(uint64_t little_endian_64bits)
 
 #endif // WORDS_BIGENDIAN
 
-#endif // HTS_COMPAT_ENDIAN_H
+#endif // BKS_COMPAT_ENDIAN_H

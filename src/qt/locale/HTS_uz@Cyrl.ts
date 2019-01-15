@@ -211,7 +211,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Хабар ёзиш...</translation>
@@ -289,8 +289,8 @@
         <translation>Дискдаги блоклар қайта индексланмоқда...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Тангаларни HTS манзилига жўнатиш</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Тангаларни BKS манзилига жўнатиш</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -313,8 +313,8 @@
         <translation>Хабарни &amp;тасдиқлаш...</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -341,12 +341,12 @@
         <translation>Ҳамёнингизга тегишли махфий калитларни кодлаш</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>HTS манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>BKS манзилидан унинг эгаси эканлигингизни исботлаш учун хабарлар ёзинг</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Хабарларни махсус HTS манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Хабарларни махсус BKS манзилларингиз билан ёзилганлигига ишонч ҳосил қилиш учун уларни тасдиқланг</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -361,8 +361,8 @@
         <translation>&amp;Ёрдам</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
-        <translation>Тўловлар (QR кодлари ва HTS ёрдамида яратишлар: URI’лар) сўраш</translation>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
+        <translation>Тўловлар (QR кодлари ва BKS ёрдамида яратишлар: URI’лар) сўраш</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -373,16 +373,16 @@
         <translation>Фойдаланилган қабул қилинган манзиллар ва ёрлиқлар рўйхатини кўрсатиш</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>HTS’ни очиш: URI ёки тўлов сўрови</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>BKS’ни очиш: URI ёки тўлов сўрови</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Буйруқлар сатри мосламалари</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to HTS network</source>
-        <translation><numerusform>%n та HTS тармоғига фаол уланиш мавжуд</numerusform></translation>
+        <source>%n active connection(s) to BKS network</source>
+        <translation><numerusform>%n та BKS тармоғига фаол уланиш мавжуд</numerusform></translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -642,8 +642,8 @@
         <translation>Миқдори</translation>
     </message>
     <message>
-        <source>Enter a HTS address (e.g. %1)</source>
-        <translation>HTS манзилини киритинг (масалан.  %1)</translation>
+        <source>Enter a BKS address (e.g. %1)</source>
+        <translation>BKS манзилини киритинг (масалан.  %1)</translation>
     </message>
     <message>
         <source>%1 m</source>
@@ -1174,7 +1174,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Танламалар:</translation>
@@ -1192,8 +1192,8 @@
         <translation>Демон сифатида орқа фонда ишга туширинг ва буйруқларга рози бўлинг</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Core</translation>
+        <source>BKS Core</source>
+        <translation>BKS Core</translation>
     </message>
     <message>
         <source>Connection options:</source>

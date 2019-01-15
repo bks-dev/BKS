@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_RPCCONSOLE_H
-#define HTS_QT_RPCCONSOLE_H
+#ifndef BKS_QT_RPCCONSOLE_H
+#define BKS_QT_RPCCONSOLE_H
 
 #include "guiutil.h"
 #include "peertablemodel.h"
@@ -26,7 +26,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local HTS RPC console. */
+/** Local BKS RPC console. */
 class RPCConsole: public QWidget
 {
     Q_OBJECT
@@ -142,4 +142,4 @@ private:
     QCompleter *autoCompleter;
 };
 
-#endif // HTS_QT_RPCCONSOLE_H
+#endif // BKS_QT_RPCCONSOLE_H

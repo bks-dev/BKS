@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_AMOUNT_H
-#define HTS_AMOUNT_H
+#ifndef BKS_AMOUNT_H
+#define BKS_AMOUNT_H
 
 #include "serialize.h"
 
@@ -21,8 +21,8 @@ extern const std::string CURRENCY_UNIT;
 
 /** No amount larger than this (in satoshi) is valid.
  *
- * Note that this constant is *not* the total money supply, which in HTS
- * currently happens to be less than 21,000,000 HTS for various reasons, but
+ * Note that this constant is *not* the total money supply, which in BKS
+ * currently happens to be less than 21,000,000 BKS for various reasons, but
  * rather a sanity check. As this sanity check is used by consensus-critical
  * validation code, the exact value of the MAX_MONEY constant is consensus
  * critical; in unusual circumstances like a(nother) overflow bug that allowed
@@ -69,4 +69,4 @@ public:
     }
 };
 
-#endif //  HTS_AMOUNT_H
+#endif //  BKS_AMOUNT_H

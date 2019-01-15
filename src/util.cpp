@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include "util.h"
@@ -102,8 +102,8 @@ namespace boost {
 
 using namespace std;
 
-const char * const HTS_CONF_FILENAME = "HTS.conf";
-const char * const HTS_PID_FILENAME = "HTS.pid";
+const char * const BKS_CONF_FILENAME = "BKS.conf";
+const char * const BKS_PID_FILENAME = "BKS.pid";
 
 std::vector<std::string> vAddedAnonServers;
 CCriticalSection cs_vAddedAnonServers;
@@ -444,7 +444,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "HTS";
+    const char* pszModule = "BKS";
 #endif
     if (pex)
         return strprintf(
@@ -464,13 +464,13 @@ void PrintExceptionContinue(const std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\HTS
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\HTS
-    // Mac: ~/Library/Application Support/HTS
-    // Unix: ~/.HTS
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\BKS
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\BKS
+    // Mac: ~/Library/Application Support/BKS
+    // Unix: ~/.BKS
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "HTS4";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "BKS4";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -480,10 +480,10 @@ boost::filesystem::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/HTS4";
+    return pathRet / "Library/Application Support/BKS4";
 #else
     // Unix
-    return pathRet / ".HTS4";
+    return pathRet / ".BKS4";
 #endif
 #endif
 }
@@ -530,7 +530,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", HTS_CONF_FILENAME));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", BKS_CONF_FILENAME));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -542,14 +542,14 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good())
-        return; // No HTS.conf file is OK
+        return; // No BKS.conf file is OK
 
     set<string> setOptions;
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {
-        // Don't overwrite existing settings so command line settings override HTS.conf
+        // Don't overwrite existing settings so command line settings override BKS.conf
         string strKey = string("-") + it->string_key;
         string strValue = it->value[0];
 
@@ -696,7 +696,7 @@ void RemoveConfigFile(std::string key)
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", HTS_PID_FILENAME));
+    boost::filesystem::path pathPidFile(GetArg("-pid", BKS_PID_FILENAME));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

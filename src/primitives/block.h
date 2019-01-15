@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_PRIMITIVES_BLOCK_H
-#define HTS_PRIMITIVES_BLOCK_H
+#ifndef BKS_PRIMITIVES_BLOCK_H
+#define BKS_PRIMITIVES_BLOCK_H
 
 #include "primitives/transaction.h"
 #include "serialize.h"
@@ -217,4 +217,4 @@ struct CBlockLocator
 /** Compute the consensus-critical block weight (see BIP 141). */
 int64_t GetBlockWeight(const CBlock& tx);
 
-#endif // HTS_PRIMITIVES_BLOCK_H
+#endif // BKS_PRIMITIVES_BLOCK_H

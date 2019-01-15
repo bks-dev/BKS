@@ -7,13 +7,13 @@
 # Test node handling
 #
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
 import http.client
 import urllib.parse
 
-class NodeHandlingTest (HTSTestFramework):
+class NodeHandlingTest (BKSTestFramework):
 
     def __init__(self):
         super().__init__()

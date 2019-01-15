@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_CORE_IO_H
-#define HTS_CORE_IO_H
+#ifndef BKS_CORE_IO_H
+#define BKS_CORE_IO_H
 
 #include <string>
 #include <vector>
@@ -35,4 +35,4 @@ extern std::string EncodeHexTxIn(const CTxIn& txin);
 extern void ScriptPubKeyToUniv(const CScript& scriptPubKey, UniValue& out, bool fIncludeHex);
 extern void TxToUniv(const CTransaction& tx, const uint256& hashBlock, UniValue& entry);
 
-#endif // HTS_CORE_IO_H
+#endif // BKS_CORE_IO_H

@@ -1,5 +1,5 @@
-#ifndef HTSTECHITEM_H
-#define HTSTECHITEM_H
+#ifndef BKSTECHITEM_H
+#define BKSTECHITEM_H
 
 #include <QWidget>
 
@@ -23,4 +23,4 @@ private:
     QString name;
 };
 
-#endif // HTSTECHITEM_H
+#endif // BKSTECHITEM_H

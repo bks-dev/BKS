@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_TEST_SCRIPTNUM10_H
-#define HTS_TEST_SCRIPTNUM10_H
+#ifndef BKS_TEST_SCRIPTNUM10_H
+#define BKS_TEST_SCRIPTNUM10_H
 
 #include <algorithm>
 #include <limits>
@@ -23,7 +23,7 @@ public:
 class CScriptNum10
 {
 /**
- * The ScriptNum implementation from HTS Core 0.10.0, for cross-comparison.
+ * The ScriptNum implementation from BKS Core 0.10.0, for cross-comparison.
  */
 public:
 
@@ -180,4 +180,4 @@ private:
 };
 
 
-#endif // HTS_TEST_BIGNUM_H
+#endif // BKS_TEST_BIGNUM_H

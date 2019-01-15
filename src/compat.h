@@ -3,11 +3,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_COMPAT_H
-#define HTS_COMPAT_H
+#ifndef BKS_COMPAT_H
+#define BKS_COMPAT_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #ifdef WIN32
@@ -101,4 +101,4 @@ bool static inline IsSelectableSocket(SOCKET s) {
 #endif
 
 
-#endif // HTS_COMPAT_H
+#endif // BKS_COMPAT_H

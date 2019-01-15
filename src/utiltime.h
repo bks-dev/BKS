@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_UTILTIME_H
-#define HTS_UTILTIME_H
+#ifndef BKS_UTILTIME_H
+#define BKS_UTILTIME_H
 
 #include <stdint.h>
 #include <string>
@@ -43,4 +43,4 @@ static std::vector<std::string> vDefaultNtpServers = {"de.pool.ntp.org",
                   "uk.pool.ntp.org", "ca.pool.ntp.org", "us.pool.ntp.org", "au.pool.ntp.org",
                   "nz.pool.ntp.org", "br.pool.ntp.org"};
 
-#endif // HTS_UTILTIME_H
+#endif // BKS_UTILTIME_H

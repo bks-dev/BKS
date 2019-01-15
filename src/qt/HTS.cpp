@@ -3,10 +3,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
-#include "HTSgui.h"
+#include "BKSgui.h"
 
 #include "chainparams.h"
 #include "clientmodel.h"
@@ -93,7 +93,7 @@ static void InitMessage(const std::string &message)
  */
 static std::string Translate(const char* psz)
 {
-    return QCoreApplication::translate("HTS-core", psz).toStdString();
+    return QCoreApplication::translate("BKS-core", psz).toStdString();
 }
 
 static QString GetLangTerritory()
@@ -140,11 +140,11 @@ static void initTranslations(QTranslator &qtTranslatorBase, QTranslator &qtTrans
     if (qtTranslator.load("qt_" + lang_territory, QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
         QApplication::installTranslator(&qtTranslator);
 
-    // Load e.g. HTS_de.qm (shortcut "de" needs to be defined in HTS.qrc)
+    // Load e.g. BKS_de.qm (shortcut "de" needs to be defined in BKS.qrc)
     if (translatorBase.load(lang, ":/translations/"))
         QApplication::installTranslator(&translatorBase);
 
-    // Load e.g. HTS_de_DE.qm (shortcut "de_DE" needs to be defined in HTS.qrc)
+    // Load e.g. BKS_de_DE.qm (shortcut "de_DE" needs to be defined in BKS.qrc)
     if (translator.load(lang_territory, ":/translations/"))
         QApplication::installTranslator(&translator);
 }
@@ -165,14 +165,14 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-/** Class encapsulating HTS Core startup and shutdown.
+/** Class encapsulating BKS Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
-class HTSCore: public QObject
+class BKSCore: public QObject
 {
     Q_OBJECT
 public:
-    explicit HTSCore();
+    explicit BKSCore();
 
 public Q_SLOTS:
     void initialize();
@@ -191,13 +191,13 @@ private:
     void handleRunawayException(const std::exception *e);
 };
 
-/** Main HTS application object */
-class HTSApplication: public QApplication
+/** Main BKS application object */
+class BKSApplication: public QApplication
 {
     Q_OBJECT
 public:
-    explicit HTSApplication(int &argc, char **argv);
-    ~HTSApplication();
+    explicit BKSApplication(int &argc, char **argv);
+    ~BKSApplication();
 
 #ifdef ENABLE_WALLET
     /// Create payment server
@@ -220,7 +220,7 @@ public:
     /// Get process return value
     int getReturnValue() { return returnValue; }
 
-    /// Get window identifier of QMainWindow (HTSGUI)
+    /// Get window identifier of QMainWindow (BKSGUI)
     WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -239,7 +239,7 @@ private:
     QThread *coreThread;
     OptionsModel *optionsModel;
     ClientModel *clientModel;
-    HTSGUI *window;
+    BKSGUI *window;
     QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
     PaymentServer* paymentServer;
@@ -252,20 +252,20 @@ private:
     void startThread();
 };
 
-#include "HTS.moc"
+#include "BKS.moc"
 
-HTSCore::HTSCore():
+BKSCore::BKSCore():
     QObject()
 {
 }
 
-void HTSCore::handleRunawayException(const std::exception *e)
+void BKSCore::handleRunawayException(const std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
     Q_EMIT runawayException(QString::fromStdString(strMiscWarning));
 }
 
-void HTSCore::initialize()
+void BKSCore::initialize()
 {
     try
     {
@@ -279,7 +279,7 @@ void HTSCore::initialize()
     }
 }
 
-void HTSCore::shutdown()
+void BKSCore::shutdown()
 {
     try
     {
@@ -296,7 +296,7 @@ void HTSCore::shutdown()
     }
 }
 
-HTSApplication::HTSApplication(int &argc, char **argv):
+BKSApplication::BKSApplication(int &argc, char **argv):
     QApplication(argc, argv),
     coreThread(0),
     optionsModel(0),
@@ -312,17 +312,17 @@ HTSApplication::HTSApplication(int &argc, char **argv):
     setQuitOnLastWindowClosed(false);
 
     // UI per-platform customization
-    // This must be done inside the HTSApplication constructor, or after it, because
+    // This must be done inside the BKSApplication constructor, or after it, because
     // PlatformStyle::instantiate requires a QApplication
     std::string platformName;
-    platformName = GetArg("-uiplatform", HTSGUI::DEFAULT_UIPLATFORM);
+    platformName = GetArg("-uiplatform", BKSGUI::DEFAULT_UIPLATFORM);
     platformStyle = PlatformStyle::instantiate(QString::fromStdString(platformName));
     if (!platformStyle) // Fall back to "other" if specified name not found
         platformStyle = PlatformStyle::instantiate("other");
     assert(platformStyle);
 }
 
-HTSApplication::~HTSApplication()
+BKSApplication::~BKSApplication()
 {
     if(coreThread)
     {
@@ -345,27 +345,27 @@ HTSApplication::~HTSApplication()
 }
 
 #ifdef ENABLE_WALLET
-void HTSApplication::createPaymentServer()
+void BKSApplication::createPaymentServer()
 {
     paymentServer = new PaymentServer(this);
 }
 #endif
 
-void HTSApplication::createOptionsModel(bool resetSettings)
+void BKSApplication::createOptionsModel(bool resetSettings)
 {
     optionsModel = new OptionsModel(NULL, resetSettings);
 }
 
-void HTSApplication::createWindow(const NetworkStyle *networkStyle)
+void BKSApplication::createWindow(const NetworkStyle *networkStyle)
 {
-    window = new HTSGUI(platformStyle, networkStyle, 0);
+    window = new BKSGUI(platformStyle, networkStyle, 0);
 
     pollShutdownTimer = new QTimer(window);
     connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
     pollShutdownTimer->start(200);
 }
 
-void HTSApplication::createSplashScreen(const NetworkStyle *networkStyle)
+void BKSApplication::createSplashScreen(const NetworkStyle *networkStyle)
 {
     SplashScreen *splash = new SplashScreen(0, networkStyle);
     // We don't hold a direct pointer to the splash screen after creation, so use
@@ -375,12 +375,12 @@ void HTSApplication::createSplashScreen(const NetworkStyle *networkStyle)
     connect(this, SIGNAL(requestedShutdown()), splash, SLOT(close()));
 }
 
-void HTSApplication::startThread()
+void BKSApplication::startThread()
 {
     if(coreThread)
         return;
     coreThread = new QThread(this);
-    HTSCore *executor = new HTSCore();
+    BKSCore *executor = new BKSCore();
     executor->moveToThread(coreThread);
 
     /*  communication to and from thread */
@@ -396,20 +396,20 @@ void HTSApplication::startThread()
     coreThread->start();
 }
 
-void HTSApplication::parameterSetup()
+void BKSApplication::parameterSetup()
 {
     InitLogging();
     InitParameterInteraction();
 }
 
-void HTSApplication::requestInitialize()
+void BKSApplication::requestInitialize()
 {
     qDebug() << __func__ << ": Requesting initialize";
     startThread();
     Q_EMIT requestedInitialize();
 }
 
-void HTSApplication::requestShutdown()
+void BKSApplication::requestShutdown()
 {
     qDebug() << __func__ << ": Requesting shutdown";
     startThread();
@@ -432,7 +432,7 @@ void HTSApplication::requestShutdown()
     Q_EMIT requestedShutdown();
 }
 
-void HTSApplication::initializeResult(int retval)
+void BKSApplication::initializeResult(int retval)
 {
     qDebug() << __func__ << ": Initialization result: " << retval;
     // Set exit result: 0 if successful, 1 if failure
@@ -454,8 +454,8 @@ void HTSApplication::initializeResult(int retval)
         {
             walletModel = new WalletModel(platformStyle, pwalletMain, optionsModel);
 
-            window->addWallet(HTSGUI::DEFAULT_WALLET, walletModel);
-            window->setCurrentWallet(HTSGUI::DEFAULT_WALLET);
+            window->addWallet(BKSGUI::DEFAULT_WALLET, walletModel);
+            window->setCurrentWallet(BKSGUI::DEFAULT_WALLET);
             paymentServer->setWalletModel(walletModel);
 
             connect(walletModel, SIGNAL(coinsSent(CWallet*,SendCoinsRecipient,QByteArray)),
@@ -483,7 +483,7 @@ void HTSApplication::initializeResult(int retval)
 
 #ifdef ENABLE_WALLET
         // Now that initialization/startup is done, process any command-line
-        // HTS: URIs or payment requests:
+        // BKS: URIs or payment requests:
         connect(paymentServer, SIGNAL(receivedPaymentRequest(SendCoinsRecipient)),
                          window, SLOT(handlePaymentRequest(SendCoinsRecipient)));
         connect(window, SIGNAL(receivedURI(QString)),
@@ -498,19 +498,19 @@ void HTSApplication::initializeResult(int retval)
     }
 }
 
-void HTSApplication::shutdownResult(int retval)
+void BKSApplication::shutdownResult(int retval)
 {
     qDebug() << __func__ << ": Shutdown result: " << retval;
     quit(); // Exit main loop after shutdown finished
 }
 
-void HTSApplication::handleRunawayException(const QString &message)
+void BKSApplication::handleRunawayException(const QString &message)
 {
-    QMessageBox::critical(0, "Runaway exception", HTSGUI::tr("A fatal error occurred. HTS can no longer continue safely and will quit.") + QString("\n\n") + message);
+    QMessageBox::critical(0, "Runaway exception", BKSGUI::tr("A fatal error occurred. BKS can no longer continue safely and will quit.") + QString("\n\n") + message);
     ::exit(1);
 }
 
-WId HTSApplication::getMainWinId() const
+WId BKSApplication::getMainWinId() const
 {
     if (!window)
         return 0;
@@ -518,7 +518,7 @@ WId HTSApplication::getMainWinId() const
     return window->winId();
 }
 
-#ifndef HTS_QT_TEST
+#ifndef BKS_QT_TEST
 int main(int argc, char *argv[])
 {
     // Address 4K screen resolution: http://doc.qt.io/qt-5/highdpi.html
@@ -540,10 +540,10 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());
 #endif
 
-    Q_INIT_RESOURCE(HTS);
-    Q_INIT_RESOURCE(HTS_locale);
+    Q_INIT_RESOURCE(BKS);
+    Q_INIT_RESOURCE(BKS_locale);
 
-    HTSApplication app(argc, argv);
+    BKSApplication app(argc, argv);
 #if QT_VERSION > 0x050100
     // Generate high-dpi pixmaps
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -595,7 +595,7 @@ int main(int argc, char *argv[])
     // User language is set up: pick a data directory
     Intro::pickDataDirectory();
 
-    /// 6. Determine availability of data directory and parse HTS.conf
+    /// 6. Determine availability of data directory and parse BKS.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
@@ -653,7 +653,7 @@ int main(int argc, char *argv[])
         exit(0);
 
     // Start up the payment server early, too, so impatient users that click on
-    // HTS: links repeatedly have their payment requests routed to this process:
+    // BKS: links repeatedly have their payment requests routed to this process:
     app.createPaymentServer();
 #endif
 
@@ -701,4 +701,4 @@ int main(int argc, char *argv[])
     }
     return app.getReturnValue();
 }
-#endif // HTS_QT_TEST
+#endif // BKS_QT_TEST

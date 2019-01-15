@@ -4,7 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include "chainparams.h"
@@ -31,8 +31,8 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called HTS (https://www.HTS.org/),
- * which enables instant payments to anyone, anywhere in the world. HTS uses peer-to-peer technology to operate
+ * This is the developer documentation of the reference client for an experimental new digital currency called BKS (https://www.BKS.org/),
+ * which enables instant payments to anyone, anywhere in the world. BKS uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
  * The software is a community-driven open source project, released under the MIT license.
@@ -73,7 +73,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/HTS.conf are parsed in qt/HTS.cpp's main()
+    // If Qt is used, parameters/BKS.conf are parsed in qt/BKS.cpp's main()
     ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
@@ -88,9 +88,9 @@ bool AppInit(int argc, char* argv[])
         else
         {
             strUsage += "\n" + _("Usage:") + "\n" +
-                    "  HTSd [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
+                    "  BKSd [options]                     " + strprintf(_("Start %s Daemon"), _(PACKAGE_NAME)) + "\n";
 
-            strUsage += "\n" + HelpMessage(HMM_HTSD);
+            strUsage += "\n" + HelpMessage(HMM_BKSD);
         }
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -123,19 +123,19 @@ bool AppInit(int argc, char* argv[])
         // Command-line RPC
         bool fCommandLine = false;
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "HTS:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "BKS:"))
                 fCommandLine = true;
 
         if (fCommandLine)
         {
-            fprintf(stderr, "Error: There is no RPC client functionality in HTSd anymore. Use the HTS-cli utility instead.\n");
+            fprintf(stderr, "Error: There is no RPC client functionality in BKSd anymore. Use the BKS-cli utility instead.\n");
             exit(1);
         }
 #ifndef WIN32
         fDaemon = GetBoolArg("-daemon", false);
         if (fDaemon)
         {
-            fprintf(stdout, "HTS server starting\n");
+            fprintf(stdout, "BKS server starting\n");
 
             // Daemonize
             pid_t pid = fork();
@@ -186,7 +186,7 @@ int main(int argc, char* argv[])
 {
     SetupEnvironment();
 
-    // Connect HTSd signal handlers
+    // Connect BKSd signal handlers
     noui_connect();
 
     return (AppInit(argc, argv) ? 0 : 1);

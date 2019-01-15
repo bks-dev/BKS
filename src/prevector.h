@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef _HTS_PREVECTOR_H_
-#define _HTS_PREVECTOR_H_
+#ifndef _BKS_PREVECTOR_H_
+#define _BKS_PREVECTOR_H_
 
 #include <stdlib.h>
 #include <stdint.h>

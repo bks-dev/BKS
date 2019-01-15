@@ -1,5 +1,5 @@
 ---
-name: "HTS-linux-4.0.0"
+name: "BKS-linux-4.0.0"
 enable_cache: true
 suites:
 - "trusty"
@@ -29,8 +29,8 @@ packages:
 - "python"
 - "libexpat1-dev"
 remotes:
-- "url": "https://github.com/HTSdev/HTS-core.git"
-  "dir": "HTS-core"
+- "url": "https://github.com/BKSdev/BKS-core.git"
+  "dir": "BKS-core"
 files: []
 script: |
 
@@ -106,7 +106,7 @@ script: |
   chmod +x ${WRAP_DIR}/${prog}
   done
 
-  cd HTS-core
+  cd BKS-core
   BASEPREFIX=`pwd`/depends
   # Build dependencies for each host
   for i in $HOSTS; do
@@ -128,13 +128,13 @@ script: |
   ./autogen.sh
   CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
   make dist
-  SOURCEDIST=`echo HTS-*.tar.gz`
+  SOURCEDIST=`echo BKS-*.tar.gz`
   DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
   # Correct tar file order
   mkdir -p temp
   pushd temp
   tar xf ../$SOURCEDIST
-  find HTS-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
+  find BKS-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
 
   ORIGPATH="$PATH"

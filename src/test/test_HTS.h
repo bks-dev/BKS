@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_TEST_TEST_HTS_H
-#define HTS_TEST_TEST_HTS_H
+#ifndef BKS_TEST_TEST_BKS_H
+#define BKS_TEST_TEST_BKS_H
 
 #include "chainparamsbase.h"
 #include "key.h"

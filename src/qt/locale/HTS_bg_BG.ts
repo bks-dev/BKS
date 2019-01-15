@@ -103,7 +103,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Подпиши съобщение...</translation>
@@ -286,9 +286,9 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
-        <source>HTS Core</source>
+        <source>BKS Core</source>
         <translation>Биткойн ядро</translation>
     </message>
     </context>

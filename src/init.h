@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_INIT_H
-#define HTS_INIT_H
+#ifndef BKS_INIT_H
+#define BKS_INIT_H
 
 #include <string>
 
@@ -29,8 +29,8 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler);
 
 /** The help message mode determines what help message to show */
 enum HelpMessageMode {
-    HMM_HTSD,
-    HMM_HTS_QT
+    HMM_BKSD,
+    HMM_BKS_QT
 };
 
 /** Help for options shared between UI and daemon (for -help) */
@@ -42,4 +42,4 @@ void AlertNotify(const std::string& strMessage);
 
 extern char *sPrivKey, *sPubKey;
 
-#endif // HTS_INIT_H
+#endif // BKS_INIT_H

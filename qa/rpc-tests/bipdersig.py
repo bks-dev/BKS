@@ -7,10 +7,10 @@
 # Test the BIP66 changeover logic
 #
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
-class BIP66Test(HTSTestFramework):
+class BIP66Test(BKSTestFramework):
     def __init__(self):
         super().__init__()
         self.num_nodes = 3

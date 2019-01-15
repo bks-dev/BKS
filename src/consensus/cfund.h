@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The HTS Core developers
+// Copyright (c) 2018 The BKS Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_CFUND_H
-#define HTS_CFUND_H
+#ifndef BKS_CFUND_H
+#define BKS_CFUND_H
 
 #include "amount.h"
 #include "script/script.h"
@@ -332,4 +332,4 @@ public:
 
 }
 
-#endif // HTS_CFUND_H
+#endif // BKS_CFUND_H

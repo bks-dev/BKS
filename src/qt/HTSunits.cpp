@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "HTSunits.h"
+#include "BKSunits.h"
 
 #include "primitives/transaction.h"
 #include "util.h"
@@ -16,31 +16,31 @@
 #include <string>
 #include <iomanip>
 
-HTSUnits::HTSUnits(QObject *parent):
+BKSUnits::BKSUnits(QObject *parent):
         QAbstractListModel(parent),
         unitlist(availableUnits())
 {
 }
 
-QList<HTSUnits::Unit> HTSUnits::availableUnits()
+QList<BKSUnits::Unit> BKSUnits::availableUnits()
 {
-    QList<HTSUnits::Unit> unitlist;
-    unitlist.append(HTS);
-//    unitlist.append(mHTS);
-//    unitlist.append(uHTS);
+    QList<BKSUnits::Unit> unitlist;
+    unitlist.append(BKS);
+//    unitlist.append(mBKS);
+//    unitlist.append(uBKS);
     unitlist.append(BTC);
     unitlist.append(EUR);
     unitlist.append(USD);
     return unitlist;
 }
 
-bool HTSUnits::valid(int unit)
+bool BKSUnits::valid(int unit)
 {
     switch(unit)
     {
-    case HTS:
-//    case mHTS:
-//    case uHTS:
+    case BKS:
+//    case mBKS:
+//    case uBKS:
     case BTC:
     case EUR:
     case USD:
@@ -50,13 +50,13 @@ bool HTSUnits::valid(int unit)
     }
 }
 
-QString HTSUnits::name(int unit)
+QString BKSUnits::name(int unit)
 {
     switch(unit)
     {
-    case HTS: return QString("HTS");
-//    case mHTS: return QString("mHTS");
-//    case uHTS: return QString::fromUtf8("μHTS");
+    case BKS: return QString("BKS");
+//    case mBKS: return QString("mBKS");
+//    case uBKS: return QString::fromUtf8("μBKS");
     case BTC: return QString::fromUtf8("BTC");
     case EUR: return QString::fromUtf8("EUR");
     case USD: return QString::fromUtf8("USD");
@@ -64,13 +64,13 @@ QString HTSUnits::name(int unit)
     }
 }
 
-QString HTSUnits::description(int unit)
+QString BKSUnits::description(int unit)
 {
     switch(unit)
     {
-    case HTS: return QString("HTSs");
-//    case mHTS: return QString("Milli-HTSs (1 / 1" THIN_SP_UTF8 "000)");
-//    case uHTS: return QString("Micro-HTSs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BKS: return QString("BKSs");
+//    case mBKS: return QString("Milli-BKSs (1 / 1" THIN_SP_UTF8 "000)");
+//    case uBKS: return QString("Micro-BKSs (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     case BTC: return QString("BTC");
     case EUR: return QString("Euro");
     case USD: return QString("US Dolar");
@@ -78,16 +78,16 @@ QString HTSUnits::description(int unit)
     }
 }
 
-qint64 HTSUnits::factor(int unit)
+qint64 BKSUnits::factor(int unit)
 {
 
     QSettings settings;
 
     switch(unit)
     {
-    case HTS:  return 100000000;
-//    case mHTS: return 100000;
-//    case uHTS: return 100;
+    case BKS:  return 100000000;
+//    case mBKS: return 100000;
+//    case uBKS: return 100;
     case BTC:  return settings.value("btcFactor", 0).toFloat();
     case EUR:  return settings.value("eurFactor", 0).toFloat();
     case USD:  return settings.value("usdFactor", 0).toFloat();
@@ -95,13 +95,13 @@ qint64 HTSUnits::factor(int unit)
     }
 }
 
-int HTSUnits::decimals(int unit)
+int BKSUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case HTS: return 8;
-//    case mHTS: return 5;
-//    case uHTS: return 2;
+    case BKS: return 8;
+//    case mBKS: return 5;
+//    case uBKS: return 2;
     case BTC: return 8;
     case EUR: return 6;
     case USD: return 6;
@@ -109,7 +109,7 @@ int HTSUnits::decimals(int unit)
     }
 }
 
-QString HTSUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
+QString BKSUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -160,12 +160,12 @@ QString HTSUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyl
 // Please take care to use formatHtmlWithUnit instead, when
 // appropriate.
 
-QString HTSUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString BKSUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
 }
 
-QString HTSUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+QString BKSUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
 {
     QString str(formatWithUnit(unit, amount, plussign, separators));
     str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
@@ -173,7 +173,7 @@ QString HTSUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool pluss
 }
 
 
-bool HTSUnits::parse(int unit, const QString &value, CAmount *val_out)
+bool BKSUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -212,23 +212,23 @@ bool HTSUnits::parse(int unit, const QString &value, CAmount *val_out)
     return ok;
 }
 
-QString HTSUnits::getAmountColumnTitle(int unit)
+QString BKSUnits::getAmountColumnTitle(int unit)
 {
     QString amountTitle = QObject::tr("Amount");
-    if (HTSUnits::valid(unit))
+    if (BKSUnits::valid(unit))
     {
-        amountTitle += " ("+HTSUnits::name(unit) + ")";
+        amountTitle += " ("+BKSUnits::name(unit) + ")";
     }
     return amountTitle;
 }
 
-int HTSUnits::rowCount(const QModelIndex &parent) const
+int BKSUnits::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
     return unitlist.size();
 }
 
-QVariant HTSUnits::data(const QModelIndex &index, int role) const
+QVariant BKSUnits::data(const QModelIndex &index, int role) const
 {
     int row = index.row();
     if(row >= 0 && row < unitlist.size())
@@ -248,7 +248,7 @@ QVariant HTSUnits::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-CAmount HTSUnits::maxMoney()
+CAmount BKSUnits::maxMoney()
 {
     return MAX_MONEY;
 }

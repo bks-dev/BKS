@@ -1,14 +1,14 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2018 The HTS Core developers
+// Copyright (c) 2018 The BKS Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_MAIN_H
-#define HTS_MAIN_H
+#ifndef BKS_MAIN_H
+#define BKS_MAIN_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include "amount.h"
@@ -570,7 +570,7 @@ bool InvalidateBlock(CValidationState& state, const CChainParams& chainparams, C
 /** Remove invalidity status from a block and its descendants. */
 bool ResetBlockFailureFlags(CBlockIndex *pindex);
 
-// HTS
+// BKS
 
 inline unsigned int GetTargetSpacing(int nHeight) { return 30; }
 
@@ -660,4 +660,4 @@ void CountVotes(CValidationState& state, CBlockIndex *pindexNew, bool fUndo);
 
 bool IsSigHFEnabled(const Consensus::Params &consensus, const CBlockIndex *pindexPrev);
 
-#endif // HTS_MAIN_H
+#endif // BKS_MAIN_H

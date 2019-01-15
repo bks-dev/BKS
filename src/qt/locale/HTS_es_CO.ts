@@ -99,7 +99,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Sincronizando con la red...</translation>
@@ -161,8 +161,8 @@
         <translation>Abrir &amp;URL...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Enviando monedas a una dirección de HTS</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Enviando monedas a una dirección de BKS</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -181,8 +181,8 @@
         <translation>&amp;Verificar Mensaje...</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -310,10 +310,10 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Core</translation>
+        <source>BKS Core</source>
+        <translation>BKS Core</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

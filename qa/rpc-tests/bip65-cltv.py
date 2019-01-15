@@ -7,10 +7,10 @@
 # Test the CHECKLOCKTIMEVERIFY (BIP65) soft-fork logic
 #
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
-class BIP65Test(HTSTestFramework):
+class BIP65Test(BKSTestFramework):
     def __init__(self):
         super().__init__()
         self.num_nodes = 3

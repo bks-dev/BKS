@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 from test_framework.mininode import *
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 import time
 
@@ -79,12 +79,12 @@ class TestNode(NodeConnCB):
         self.ping_counter += 1
         return success
 
-class MaxUploadTest(HTSTestFramework):
+class MaxUploadTest(BKSTestFramework):
  
     def add_options(self, parser):
         parser.add_option("--testbinary", dest="testbinary",
-                          default=os.getenv("HTSD", "HTSd"),
-                          help="HTSd binary to test")
+                          default=os.getenv("BKSD", "BKSd"),
+                          help="BKSd binary to test")
 
     def __init__(self):
         super().__init__()

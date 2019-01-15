@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_TRANSACTIONDESCDIALOG_H
-#define HTS_QT_TRANSACTIONDESCDIALOG_H
+#ifndef BKS_QT_TRANSACTIONDESCDIALOG_H
+#define BKS_QT_TRANSACTIONDESCDIALOG_H
 
 #include <QDialog>
 
@@ -28,4 +28,4 @@ private:
     Ui::TransactionDescDialog *ui;
 };
 
-#endif // HTS_QT_TRANSACTIONDESCDIALOG_H
+#endif // BKS_QT_TRANSACTIONDESCDIALOG_H

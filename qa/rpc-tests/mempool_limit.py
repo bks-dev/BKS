@@ -5,10 +5,10 @@
 
 # Test mempool limiting together/eviction with the wallet
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
-class MempoolLimitTest(HTSTestFramework):
+class MempoolLimitTest(BKSTestFramework):
 
     def setup_network(self):
         self.nodes = []

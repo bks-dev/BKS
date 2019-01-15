@@ -3,13 +3,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 
-#include "HTSunits.h"
+#include "BKSunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -89,8 +89,8 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     /* Display elements init */
     QDir translations(":translations");
 
-    ui->HTSAtStartup->setToolTip(ui->HTSAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
-    ui->HTSAtStartup->setText(ui->HTSAtStartup->text().arg(tr(PACKAGE_NAME)));
+    ui->BKSAtStartup->setToolTip(ui->BKSAtStartup->toolTip().arg(tr(PACKAGE_NAME)));
+    ui->BKSAtStartup->setText(ui->BKSAtStartup->text().arg(tr(PACKAGE_NAME)));
 
     ui->lang->setToolTip(ui->lang->toolTip().arg(tr(PACKAGE_NAME)));
     ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -124,7 +124,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet) :
     ui->thirdPartyTxUrls->setPlaceholderText("http://explorer.hotshotcoin.org/tx/%s");
 #endif
 
-    ui->unit->setModel(new HTSUnits(this));
+    ui->unit->setModel(new BKSUnits(this));
 
     /* Widget-to-option mapper */
     mapper = new QDataWidgetMapper(this);
@@ -191,7 +191,7 @@ void OptionsDialog::setModel(OptionsModel *model)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->HTSAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->BKSAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
 
@@ -254,12 +254,12 @@ void OptionsDialog::on_okButton_clicked()
     updateDefaultProxyNets();
 }
 
-void OptionsDialog::on_openHTSConfButton_clicked()
+void OptionsDialog::on_openBKSConfButton_clicked()
 {
       QMessageBox::information(this, tr("Configuration options"),
             tr("The configuration is used to specify advanced user options less any command-line or Qt options. "
             "Any command-line options will override this configuration file."));
-      GUIUtil::openHTSConf();
+      GUIUtil::openBKSConf();
  }
 
 void OptionsDialog::on_cancelButton_clicked()

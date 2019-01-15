@@ -127,7 +127,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Signa &amp;nuntium...</translation>
@@ -189,8 +189,8 @@
         <translation>Recreans indicem frustorum in disco...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Mitte nummos ad inscriptionem HTS</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Mitte nummos ad inscriptionem BKS</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -213,8 +213,8 @@
         <translation>&amp;Verifica nuntium...</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -241,12 +241,12 @@
         <translation>Cifra claves privatas quae cassidili tui sunt</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>Signa nuntios cum tuis inscriptionibus HTS ut demonstres te eas possidere</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>Signa nuntios cum tuis inscriptionibus BKS ut demonstres te eas possidere</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Verifica nuntios ut certus sis eos signatos esse cum specificatis inscriptionibus HTS</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Verifica nuntios ut certus sis eos signatos esse cum specificatis inscriptionibus BKS</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -350,8 +350,8 @@
         <translation>Cassidile</translation>
     </message>
     <message>
-        <source>Automatically open the HTS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Aperi per se portam clientis HTS in itineratore.  Hoc tantum effectivum est si itineratrum tuum supportat UPnP et id activum est.</translation>
+        <source>Automatically open the BKS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Aperi per se portam clientis BKS in itineratore.  Hoc tantum effectivum est si itineratrum tuum supportat UPnP et id activum est.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -644,8 +644,8 @@
         <translation>Copia signationem in latibulum systematis</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
-        <translation>Signa nuntium ut demonstres hanc inscriptionem HTS a te possessa esse</translation>
+        <source>Sign the message to prove you own this BKS address</source>
+        <translation>Signa nuntium ut demonstres hanc inscriptionem BKS a te possessa esse</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -664,8 +664,8 @@
         <translation>&amp;Verifica Nuntium</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified HTS address</source>
-        <translation>Verifica nuntium ut cures signatum esse cum specifica inscriptione HTS</translation>
+        <source>Verify the message to ensure it was signed with the specified BKS address</source>
+        <translation>Verifica nuntium ut cures signatum esse cum specifica inscriptione BKS</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -754,7 +754,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Optiones:</translation>
@@ -784,8 +784,8 @@
         <translation>Accipe conexiones externas (praedefinitum: 1 nisi -proxy neque -connect)</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Nucleus</translation>
+        <source>BKS Core</source>
+        <translation>BKS Nucleus</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

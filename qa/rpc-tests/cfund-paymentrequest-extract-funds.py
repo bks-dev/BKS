@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018 The HTS Core developers
+# Copyright (c) 2018 The BKS Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
 import time
 
-class CommunityFundPaymentRequestExtractFundsTest(HTSTestFramework):
+class CommunityFundPaymentRequestExtractFundsTest(BKSTestFramework):
     """Tests the payment request procedures of the Community fund."""
 
     def __init__(self):

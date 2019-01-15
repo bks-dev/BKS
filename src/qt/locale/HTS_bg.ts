@@ -267,7 +267,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Подписване на &amp;съобщение...</translation>
@@ -357,7 +357,7 @@
         <translation>Повторно индексиране на блоковете на диска...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
+        <source>Send coins to a BKS address</source>
         <translation>Изпращане към Биткоин адрес</translation>
     </message>
     <message>
@@ -381,7 +381,7 @@
         <translation>&amp;Проверка на съобщение...</translation>
     </message>
     <message>
-        <source>HTS</source>
+        <source>BKS</source>
         <translation>Биткоин</translation>
     </message>
     <message>
@@ -409,11 +409,11 @@
         <translation>Шифроване на личните ключове,които принадлежат на портфейла Ви.</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
         <translation>Пишете съобщения със своя Биткойн адрес за да докажете,че е ваш.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
         <translation>Потвърждаване на съобщения  за да се знае,че са написани с дадените Биткойн адреси.</translation>
     </message>
     <message>
@@ -429,7 +429,7 @@
         <translation>&amp;Помощ</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
         <translation>Изискване на плащания(генерира QR кодове и биткойн: URIs)</translation>
     </message>
     <message>
@@ -441,7 +441,7 @@
         <translation>Покажи списък с използваните адреси и имена.</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
+        <source>Open a BKS: URI or payment request</source>
         <translation>Отворете биткойн: URI  или заявка за плащане</translation>
     </message>
     <message>
@@ -449,7 +449,7 @@
         <translation>&amp;Налични команди</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to HTS network</source>
+        <source>%n active connection(s) to BKS network</source>
         <translation><numerusform>%n активна връзка към Биткойн мрежата</numerusform><numerusform>%n активни връзки към Биткойн мрежата</numerusform></translation>
     </message>
     <message>
@@ -525,7 +525,7 @@
         <translation>Синхронизиран</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible HTS command-line options</source>
+        <source>Show the %1 help message to get a list with possible BKS command-line options</source>
         <translation>Покажи %1 помощно съобщение за да получиш лист с възможни Биткойн команди</translation>
     </message>
     <message>
@@ -668,15 +668,15 @@
         <translation>&amp;Похарчете непотвърденото ресто</translation>
     </message>
     <message>
-        <source>Automatically open the HTS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматично отваряне на входящия HTS порт. Работи само с рутери поддържащи UPnP.</translation>
+        <source>Automatically open the BKS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматично отваряне на входящия BKS порт. Работи само с рутери поддържащи UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Отваряне на входящия порт чрез &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a SOCKS5 proxy.</source>
+        <source>Connect to the BKS network through a SOCKS5 proxy.</source>
         <translation>Свързване с Биткойн мрежата чрез SOCKS5  прокси.</translation>
     </message>
     <message>
@@ -800,7 +800,7 @@
         <translation>Сума</translation>
     </message>
     <message>
-        <source>Enter a HTS address (e.g. %1)</source>
+        <source>Enter a BKS address (e.g. %1)</source>
         <translation>Въведете Биткойн адрес (например: %1)</translation>
     </message>
     <message>
@@ -1286,7 +1286,7 @@
         <translation>Копиране на текущия подпис</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
+        <source>Sign the message to prove you own this BKS address</source>
         <translation>Подпишете съобщение като доказателство, че притежавате определен адрес</translation>
     </message>
     <message>
@@ -1302,7 +1302,7 @@
         <translation>&amp;Провери</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified HTS address</source>
+        <source>Verify the message to ensure it was signed with the specified BKS address</source>
         <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Биткоин адрес</translation>
     </message>
     <message>
@@ -1396,7 +1396,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Опции:</translation>
@@ -1418,7 +1418,7 @@
         <translation>Приемайте връзки отвън.(по подразбиране:1 в противен случай -proxy или -connect)</translation>
     </message>
     <message>
-        <source>HTS Core</source>
+        <source>BKS Core</source>
         <translation>Биткойн ядро</translation>
     </message>
     <message>

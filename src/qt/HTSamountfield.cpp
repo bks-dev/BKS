@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "HTSamountfield.h"
+#include "BKSamountfield.h"
 
-#include "HTSunits.h"
+#include "BKSunits.h"
 #include "guiconstants.h"
 #include "qvaluecombobox.h"
 #include "skinize.h"
@@ -27,7 +27,7 @@ class AmountSpinBox: public QAbstractSpinBox
 public:
     explicit AmountSpinBox(QWidget *parent):
         QAbstractSpinBox(parent),
-        currentUnit(HTSUnits::HTS),
+        currentUnit(BKSUnits::BKS),
         singleStep(100000) // satoshis
     {
         setAlignment(Qt::AlignRight);
@@ -51,7 +51,7 @@ public:
         CAmount val = parse(input, &valid);
         if(valid)
         {
-            input = HTSUnits::format(currentUnit, val, false, HTSUnits::separatorAlways);
+            input = BKSUnits::format(currentUnit, val, false, BKSUnits::separatorAlways);
             lineEdit()->setText(input);
         }
     }
@@ -63,7 +63,7 @@ public:
 
     void setValue(const CAmount& value)
     {
-        lineEdit()->setText(HTSUnits::format(currentUnit, value, false, HTSUnits::separatorAlways));
+        lineEdit()->setText(BKSUnits::format(currentUnit, value, false, BKSUnits::separatorAlways));
         Q_EMIT valueChanged();
     }
 
@@ -72,7 +72,7 @@ public:
         bool valid = false;
         CAmount val = value(&valid);
         val = val + steps * singleStep;
-        val = qMin(qMax(val, CAmount(0)), HTSUnits::maxMoney());
+        val = qMin(qMax(val, CAmount(0)), BKSUnits::maxMoney());
         setValue(val);
     }
 
@@ -102,7 +102,7 @@ public:
 
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
-            int w = fm.width(HTSUnits::format(HTSUnits::HTS, HTSUnits::maxMoney(), false, HTSUnits::separatorAlways));
+            int w = fm.width(BKSUnits::format(BKSUnits::BKS, BKSUnits::maxMoney(), false, BKSUnits::separatorAlways));
             w += 2; // cursor blinking space
 
             QStyleOptionSpinBox opt;
@@ -140,10 +140,10 @@ private:
     CAmount parse(const QString &text, bool *valid_out=0) const
     {
         CAmount val = 0;
-        bool valid = HTSUnits::parse(0, text, &val);
+        bool valid = BKSUnits::parse(0, text, &val);
         if(valid)
         {
-            if(val < 0 || val > HTSUnits::maxMoney())
+            if(val < 0 || val > BKSUnits::maxMoney())
                 valid = false;
         }
         if(valid_out)
@@ -181,7 +181,7 @@ protected:
         {
             if(val > 0)
                 rv |= StepDownEnabled;
-            if(val < HTSUnits::maxMoney())
+            if(val < BKSUnits::maxMoney())
                 rv |= StepUpEnabled;
         }
         return rv;
@@ -192,9 +192,9 @@ Q_SIGNALS:
 
 };
 
-#include "HTSamountfield.moc"
+#include "BKSamountfield.moc"
 
-HTSAmountField::HTSAmountField(QWidget *parent) :
+BKSAmountField::BKSAmountField(QWidget *parent) :
     QWidget(parent),
     amount(0)
 {
@@ -221,18 +221,18 @@ HTSAmountField::HTSAmountField(QWidget *parent) :
 
 }
 
-void HTSAmountField::clear()
+void BKSAmountField::clear()
 {
     amount->clear();
     unit->setText("0 EUR / 0 USD / 0 BTC");
 }
 
-void HTSAmountField::setEnabled(bool fEnabled)
+void BKSAmountField::setEnabled(bool fEnabled)
 {
     amount->setEnabled(fEnabled);
 }
 
-bool HTSAmountField::validate()
+bool BKSAmountField::validate()
 {
     bool valid = false;
     value(&valid);
@@ -240,7 +240,7 @@ bool HTSAmountField::validate()
     return valid;
 }
 
-void HTSAmountField::setValid(bool valid)
+void BKSAmountField::setValid(bool valid)
 {
     if (valid)
         amount->setStyleSheet(Skinize());
@@ -248,7 +248,7 @@ void HTSAmountField::setValid(bool valid)
         amount->setStyleSheet(STYLE_INVALID);
 }
 
-bool HTSAmountField::eventFilter(QObject *object, QEvent *event)
+bool BKSAmountField::eventFilter(QObject *object, QEvent *event)
 {
     if (event->type() == QEvent::FocusIn)
     {
@@ -258,47 +258,47 @@ bool HTSAmountField::eventFilter(QObject *object, QEvent *event)
     return QWidget::eventFilter(object, event);
 }
 
-QWidget *HTSAmountField::setupTabChain(QWidget *prev)
+QWidget *BKSAmountField::setupTabChain(QWidget *prev)
 {
     QWidget::setTabOrder(prev, amount);
     QWidget::setTabOrder(amount, unit);
     return unit;
 }
 
-CAmount HTSAmountField::value(bool *valid_out) const
+CAmount BKSAmountField::value(bool *valid_out) const
 {
     return amount->value(valid_out);
 }
 
-void HTSAmountField::setValue(const CAmount& value)
+void BKSAmountField::setValue(const CAmount& value)
 {
     amount->setValue(value);
 }
 
-void HTSAmountField::valueDidChange()
+void BKSAmountField::valueDidChange()
 {
     QSettings settings;
     bool valid;
     unit->setText(QString("%1 EUR / ").arg(value(&valid) / settings.value("eurFactor", 0).toFloat()).append("%2 USD / ").arg(value(&valid) / settings.value("usdFactor", 0).toFloat()).append("%3 BTC").arg(value(&valid) / settings.value("btcFactor", 0).toFloat()));
 }
 
-void HTSAmountField::setReadOnly(bool fReadOnly)
+void BKSAmountField::setReadOnly(bool fReadOnly)
 {
     amount->setReadOnly(fReadOnly);
 }
 
-void HTSAmountField::unitChanged(int idx)
+void BKSAmountField::unitChanged(int idx)
 {
 
 }
 
-void HTSAmountField::setDisplayUnit(int newUnit)
+void BKSAmountField::setDisplayUnit(int newUnit)
 {
     amount->setDisplayUnit(newUnit);
 }
 
 
-void HTSAmountField::setSingleStep(const CAmount& step)
+void BKSAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }

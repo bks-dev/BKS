@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_RPCSERVER_H
-#define HTS_RPCSERVER_H
+#ifndef BKS_RPCSERVER_H
+#define BKS_RPCSERVER_H
 
 #include "amount.h"
 #include "rpc/protocol.h"
@@ -134,7 +134,7 @@ public:
 };
 
 /**
- * HTS RPC command dispatcher.
+ * BKS RPC command dispatcher.
  */
 class CRPCTable
 {
@@ -195,4 +195,4 @@ void InterruptRPC();
 void StopRPC();
 std::string JSONRPCExecBatch(const UniValue& vReq);
 
-#endif // HTS_RPCSERVER_H
+#endif // BKS_RPCSERVER_H

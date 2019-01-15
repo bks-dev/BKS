@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_TRANSACTIONFILTERPROXY_H
-#define HTS_QT_TRANSACTIONFILTERPROXY_H
+#ifndef BKS_QT_TRANSACTIONFILTERPROXY_H
+#define BKS_QT_TRANSACTIONFILTERPROXY_H
 
 #include "amount.h"
 
@@ -65,4 +65,4 @@ private:
     bool showInactive;
 };
 
-#endif // HTS_QT_TRANSACTIONFILTERPROXY_H
+#endif // BKS_QT_TRANSACTIONFILTERPROXY_H

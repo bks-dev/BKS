@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_WALLET_WALLET_H
-#define HTS_WALLET_WALLET_H
+#ifndef BKS_WALLET_WALLET_H
+#define BKS_WALLET_WALLET_H
 
 #include "amount.h"
 #include "streams.h"
@@ -1047,4 +1047,4 @@ public:
     }
 };
 
-#endif // HTS_WALLET_WALLET_H
+#endif // BKS_WALLET_WALLET_H

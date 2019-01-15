@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: HTSd.service
-Upstart: HTSd.conf
-OpenRC:  HTSd.openrc
-         HTSd.openrcconf
-CentOS:  HTSd.init
-OS X:    org.HTS.HTSd.plist
+SystemD: BKSd.service
+Upstart: BKSd.conf
+OpenRC:  BKSd.openrc
+         BKSd.openrcconf
+CentOS:  BKSd.init
+OS X:    org.BKS.BKSd.plist
 
 have been made available to assist packagers in creating node packages here.
 

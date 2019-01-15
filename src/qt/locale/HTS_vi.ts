@@ -75,7 +75,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     </context>
 <context>
     <name>NavTechInit</name>
@@ -182,7 +182,7 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     </context>
 <context>
     <name>navtechitem</name>

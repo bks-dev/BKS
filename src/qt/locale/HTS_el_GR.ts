@@ -223,7 +223,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Υπογραφή &amp;Μηνύματος...</translation>
@@ -305,8 +305,8 @@
         <translation>Φόρτωση ευρετηρίου μπλοκ στον σκληρο δισκο...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Στείλε νομίσματα σε μια διεύθυνση HTS</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Στείλε νομίσματα σε μια διεύθυνση BKS</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -329,8 +329,8 @@
         <translation>&amp;Επιβεβαίωση μηνύματος</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -357,12 +357,12 @@
         <translation>Κρυπτογραφήστε τα ιδιωτικά κλειδιά που ανήκουν στο πορτοφόλι σας </translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
         <translation>Υπογράψτε ένα μήνυμα για να βεβαιώσετε πως είστε ο κάτοχος αυτής της διεύθυνσης</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση HTS</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση BKS</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -377,8 +377,8 @@
         <translation>&amp;Βοήθεια</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
-        <translation>Αίτηση πληρωμών (δημιουργεί QR codes και διευθύνσεις HTS: )</translation>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
+        <translation>Αίτηση πληρωμών (δημιουργεί QR codes και διευθύνσεις BKS: )</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -389,8 +389,8 @@
         <translation>Προβολή της λίστας των χρησιμοποιημένων διευθύνσεων και ετικετών λήψεως</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>Άνοιγμα HTS: URI αίτησης πληρωμής</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>Άνοιγμα BKS: URI αίτησης πληρωμής</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -592,16 +592,16 @@
         <translation>&amp;Ξόδεμα μη επικυρωμένων ρέστων</translation>
     </message>
     <message>
-        <source>Automatically open the HTS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Αυτόματο άνοιγμα των θυρών HTS στον δρομολογητή. Λειτουργεί μόνο αν ο δρομολογητής σας υποστηρίζει τη λειτουργία UPnP.</translation>
+        <source>Automatically open the BKS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Αυτόματο άνοιγμα των θυρών BKS στον δρομολογητή. Λειτουργεί μόνο αν ο δρομολογητής σας υποστηρίζει τη λειτουργία UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Απόδοση θυρών με χρήστη &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a SOCKS5 proxy.</source>
-        <translation>Σύνδεση στο HTS δίκτυο μέσω διαμεσολαβητή SOCKS5 (π.χ. για σύνδεση μέσω Tor)</translation>
+        <source>Connect to the BKS network through a SOCKS5 proxy.</source>
+        <translation>Σύνδεση στο BKS δίκτυο μέσω διαμεσολαβητή SOCKS5 (π.χ. για σύνδεση μέσω Tor)</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -721,8 +721,8 @@
         <translation>Ποσό</translation>
     </message>
     <message>
-        <source>Enter a HTS address (e.g. %1)</source>
-        <translation>Εισάγετε μια διεύθυνση HTS (π.χ. %1)</translation>
+        <source>Enter a BKS address (e.g. %1)</source>
+        <translation>Εισάγετε μια διεύθυνση BKS (π.χ. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1130,8 +1130,8 @@
         <translation>Αυτή είναι μια απλή πληρωμή.</translation>
     </message>
     <message>
-        <source>The HTS address to send the payment to</source>
-        <translation>Η διεύθυνση HTS που θα σταλεί η πληρωμή</translation>
+        <source>The BKS address to send the payment to</source>
+        <translation>Η διεύθυνση BKS που θα σταλεί η πληρωμή</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1179,8 +1179,8 @@
         <translation>&amp;Υπογραφή Μηνύματος</translation>
     </message>
     <message>
-        <source>The HTS address to sign the message with</source>
-        <translation>Διεύθυνση HTS που θα σταλεί το μήνυμα</translation>
+        <source>The BKS address to sign the message with</source>
+        <translation>Διεύθυνση BKS που θα σταλεί το μήνυμα</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1211,8 +1211,8 @@
         <translation>Αντέγραφη της επιλεγμενης διεύθυνσης στο πρόχειρο του συστηματος</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως σας ανήκει μια συγκεκριμένη διεύθυνση HTS</translation>
+        <source>Sign the message to prove you own this BKS address</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως σας ανήκει μια συγκεκριμένη διεύθυνση BKS</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1231,12 +1231,12 @@
         <translation>&amp;Επιβεβαίωση μηνύματος</translation>
     </message>
     <message>
-        <source>The HTS address the message was signed with</source>
-        <translation>Διεύθυνση HTS η οποία το μήνυμα έχει υπογραφεί</translation>
+        <source>The BKS address the message was signed with</source>
+        <translation>Διεύθυνση BKS η οποία το μήνυμα έχει υπογραφεί</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified HTS address</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως υπογραφθηκε απο μια συγκεκριμένη διεύθυνση HTS</translation>
+        <source>Verify the message to ensure it was signed with the specified BKS address</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως υπογραφθηκε απο μια συγκεκριμένη διεύθυνση BKS</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1337,7 +1337,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Επιλογές:</translation>
@@ -1367,8 +1367,8 @@
         <translation>Να δέχεσαι συνδέσεις από έξω(προεπιλογή:1)</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Core</translation>
+        <source>BKS Core</source>
+        <translation>BKS Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

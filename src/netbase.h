@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_NETBASE_H
-#define HTS_NETBASE_H
+#ifndef BKS_NETBASE_H
+#define BKS_NETBASE_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include "compat.h"
@@ -223,4 +223,4 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking);
  */
 struct timeval MillisToTimeval(int64_t nTimeout);
 
-#endif // HTS_NETBASE_H
+#endif // BKS_NETBASE_H

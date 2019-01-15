@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_CRYPTO_COMMON_H
-#define HTS_CRYPTO_COMMON_H
+#ifndef BKS_CRYPTO_COMMON_H
+#define BKS_CRYPTO_COMMON_H
 
 #if defined(HAVE_CONFIG_H)
-#include "HTS-config.h"
+#include "BKS-config.h"
 #endif
 
 #include <stdint.h>
@@ -63,4 +63,4 @@ void static inline WriteBE64(unsigned char* ptr, uint64_t x)
     *((uint64_t*)ptr) = htobe64(x);
 }
 
-#endif // HTS_CRYPTO_COMMON_H
+#endif // BKS_CRYPTO_COMMON_H

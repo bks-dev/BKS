@@ -4,7 +4,7 @@
 
 #include "paymentserver.h"
 
-#include "HTSunits.h"
+#include "BKSunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 
@@ -48,17 +48,17 @@
 #include <QUrlQuery>
 #endif
 
-const int HTS_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString HTS_IPC_PREFIX("HTS:");
+const int BKS_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
+const QString BKS_IPC_PREFIX("BKS:");
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
 const char* NIP01_MESSAGE_SIGNEDMSG = "SignedMsg";
 // BIP71 payment protocol media types
-const char* BIP71_MIMETYPE_PAYMENT = "application/HTS-payment";
-const char* BIP71_MIMETYPE_PAYMENTACK = "application/HTS-paymentack";
-const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/HTS-paymentrequest";
-const char* NIP01_MIMETYPE_SIGNEDMSG = "application/HTS-signedmsg";
+const char* BIP71_MIMETYPE_PAYMENT = "application/BKS-payment";
+const char* BIP71_MIMETYPE_PAYMENTACK = "application/BKS-paymentack";
+const char* BIP71_MIMETYPE_PAYMENTREQUEST = "application/BKS-paymentrequest";
+const char* NIP01_MIMETYPE_SIGNEDMSG = "application/BKS-signedmsg";
 // BIP70 max payment request size in bytes (DoS protection)
 const qint64 BIP70_MAX_PAYMENTREQUEST_SIZE = 50000;
 
@@ -79,7 +79,7 @@ void PaymentServer::freeCertStore()
 //
 static QString ipcServerName()
 {
-    QString name("HTSQt");
+    QString name("BKSQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -213,18 +213,18 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         if (arg.startsWith("-"))
             continue;
 
-        // If the HTS: URI contains a payment request, we are not able to detect the
+        // If the BKS: URI contains a payment request, we are not able to detect the
         // network as that would require fetching and parsing the payment request.
         // That means clicking such an URI which contains a testnet payment request
         // will start a mainnet instance and throw a "wrong network" error.
-        if (arg.startsWith(HTS_IPC_PREFIX, Qt::CaseInsensitive)) // HTS: URI
+        if (arg.startsWith(BKS_IPC_PREFIX, Qt::CaseInsensitive)) // BKS: URI
         {
             savedPaymentRequests.append(arg);
 
             SendCoinsRecipient r;
-            if (GUIUtil::parseHTSURI(arg, &r) && !r.address.isEmpty())
+            if (GUIUtil::parseBKSURI(arg, &r) && !r.address.isEmpty())
             {
-                CHTSAddress address(r.address.toStdString());
+                CBKSAddress address(r.address.toStdString());
 
                 if (address.IsValid(Params(CBaseChainParams::MAIN)))
                 {
@@ -283,7 +283,7 @@ bool PaymentServer::ipcSendCommandLine()
     {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
-        if (!socket->waitForConnected(HTS_IPC_CONNECT_TIMEOUT))
+        if (!socket->waitForConnected(BKS_IPC_CONNECT_TIMEOUT))
         {
             delete socket;
             socket = NULL;
@@ -298,7 +298,7 @@ bool PaymentServer::ipcSendCommandLine()
 
         socket->write(block);
         socket->flush();
-        socket->waitForBytesWritten(HTS_IPC_CONNECT_TIMEOUT);
+        socket->waitForBytesWritten(BKS_IPC_CONNECT_TIMEOUT);
         socket->disconnectFromServer();
 
         delete socket;
@@ -322,7 +322,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
     GOOGLE_PROTOBUF_VERIFY_VERSION;
 
     // Install global event filter to catch QFileOpenEvents
-    // on Mac: sent when you click HTS: links
+    // on Mac: sent when you click BKS: links
     // other OSes: helpful when dealing with payment request files
     if (parent)
         parent->installEventFilter(this);
@@ -338,7 +338,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
 
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
-            LogPrintf("Cannot start HTS: click-to-pay handler\n");
+            LogPrintf("Cannot start BKS: click-to-pay handler\n");
         }
         else {
             connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
@@ -353,7 +353,7 @@ PaymentServer::~PaymentServer()
 }
 
 //
-// OSX-specific way of handling HTS: URIs and PaymentRequest mime types.
+// OSX-specific way of handling BKS: URIs and PaymentRequest mime types.
 // Also used by paymentservertests.cpp and when opening a payment request file
 // via "Open URI..." menu entry.
 //
@@ -379,7 +379,7 @@ void PaymentServer::initNetManager()
     if (netManager != NULL)
         delete netManager;
 
-    // netManager is used to fetch paymentrequests given in HTS: URIs
+    // netManager is used to fetch paymentrequests given in BKS: URIs
     netManager = new QNetworkAccessManager(this);
 
     QNetworkProxy proxy;
@@ -424,12 +424,12 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith("HTS://", Qt::CaseInsensitive))
+    if (s.startsWith("BKS://", Qt::CaseInsensitive))
     {
-        Q_EMIT message(tr("URI handling"), tr("'HTS://' is not a valid URI. Use 'HTS:' instead."),
+        Q_EMIT message(tr("URI handling"), tr("'BKS://' is not a valid URI. Use 'BKS:' instead."),
                        CClientUIInterface::MSG_ERROR);
     }
-    else if (s.startsWith(HTS_IPC_PREFIX, Qt::CaseInsensitive)) // HTS: URI
+    else if (s.startsWith(BKS_IPC_PREFIX, Qt::CaseInsensitive)) // BKS: URI
     {
 #if QT_VERSION < 0x050000
         QUrl uri(s);
@@ -447,7 +447,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
             if (!model)
                 return;
 
-            CHTSAddress addr(uri.queryItemValue("a").toStdString());
+            CBKSAddress addr(uri.queryItemValue("a").toStdString());
             if (!addr.IsValid())
             {
                 Q_EMIT message(tr("Verify address"), tr("The provided address is invalid.") + QString(" ") + tr("Please check the address and try again."),
@@ -492,7 +492,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
 
             QString signature = (QString::fromStdString(EncodeBase64(&vchSig[0], vchSig.size())));
 
-            QUrl fetchUrlConstructed(s.mid(HTS_IPC_PREFIX.length()));
+            QUrl fetchUrlConstructed(s.mid(BKS_IPC_PREFIX.length()));
 
             sendSignature(fetchUrlConstructed, signature);
 
@@ -522,12 +522,12 @@ void PaymentServer::handleURIOrFile(const QString& s)
         else // normal URI
         {
             SendCoinsRecipient recipient;
-            if (GUIUtil::parseHTSURI(s, &recipient))
+            if (GUIUtil::parseBKSURI(s, &recipient))
             {
               std::string address_str = recipient.address.toStdString();
               utils::DNSResolver* DNS = nullptr;
 
-              // Validate the passed HTS address
+              // Validate the passed BKS address
               if(DNS->check_address_syntax(recipient.address.toStdString().c_str()))
               {
 
@@ -544,7 +544,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
                   address_str = addresses.front();
               }
 
-              CHTSAddress address(address_str);
+              CBKSAddress address(address_str);
               if (!address.IsValid()) {
                 Q_EMIT message(tr("URI handling"), tr("Invalid payment address %1").arg(recipient.address),
                                CClientUIInterface::MSG_ERROR);
@@ -554,7 +554,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
             }
             else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid HTS address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid BKS address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;
@@ -663,10 +663,10 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
         CTxDestination dest;
         if (ExtractDestination(sendingTo.first, dest)) {
             // Append destination address
-            addresses.append(QString::fromStdString(CHTSAddress(dest).ToString()));
+            addresses.append(QString::fromStdString(CBKSAddress(dest).ToString()));
         }
         else if (!recipient.authenticatedMerchant.isEmpty()) {
-            // Unauthenticated payment requests to custom HTS addresses are not supported
+            // Unauthenticated payment requests to custom BKS addresses are not supported
             // (there is no good way to tell the user where they are paying in a way they'd
             // have a chance of understanding).
             Q_EMIT message(tr("Payment request rejected"),
@@ -675,7 +675,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
             return false;
         }
 
-        // HTS amounts are stored as (optional) uint64 in the protobuf messages (see paymentrequest.proto),
+        // BKS amounts are stored as (optional) uint64 in the protobuf messages (see paymentrequest.proto),
         // but CAmount is defined as int64_t. Because of that we need to verify that amounts are in a valid range
         // and no overflow has happened.
         if (!verifyAmount(sendingTo.second)) {
@@ -687,7 +687,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
         CTxOut txOut(sendingTo.second, sendingTo.first);
         if (txOut.IsDust(::minRelayTxFee)) {
             Q_EMIT message(tr("Payment request error"), tr("Requested payment amount of %1 is too small (considered dust).")
-                .arg(HTSUnits::formatWithUnit(optionsModel->getDisplayUnit(), sendingTo.second)),
+                .arg(BKSUnits::formatWithUnit(optionsModel->getDisplayUnit(), sendingTo.second)),
                 CClientUIInterface::MSG_ERROR);
 
             return false;

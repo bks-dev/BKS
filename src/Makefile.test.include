@@ -1,13 +1,13 @@
-TESTS += test/test_HTS
-bin_PROGRAMS += test/test_HTS
+TESTS += test/test_BKS
+bin_PROGRAMS += test/test_BKS
 TEST_SRCDIR = test
-TEST_BINARY=test/test_HTS$(EXEEXT)
+TEST_BINARY=test/test_BKS$(EXEEXT)
 
 
 EXTRA_DIST += \
 	test/bctest.py \
-	test/HTS-util-test.py \
-	test/data/HTS-util-test.json \
+	test/BKS-util-test.py \
+	test/data/BKS-util-test.json \
 	test/data/blanktx.hex \
 	test/data/tt-delin1-out.hex \
 	test/data/tt-delout1-out.hex \
@@ -35,7 +35,7 @@ RAW_TEST_FILES =
 GENERATED_TEST_FILES = $(JSON_TEST_FILES:.json=.json.h) $(RAW_TEST_FILES:.raw=.raw.h)
 
 
-HTS_TESTS =\
+BKS_TESTS =\
   test/scriptnum10.h \
   test/addrman_tests.cpp \
   test/amount_tests.cpp \
@@ -71,15 +71,15 @@ HTS_TESTS =\
   test/sigopcount_tests.cpp \
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
-  test/test_HTS.cpp \
-  test/test_HTS.h \
+  test/test_BKS.cpp \
+  test/test_BKS.h \
   test/testutil.cpp \
   test/testutil.h \
   test/timedata_tests.cpp \
   test/univalue_tests.cpp
 
 
-#HTS_TESTS =\
+#BKS_TESTS =\
 #  test/arith_uint256_tests.cpp \
 #  test/scriptnum10.h \
 #  test/addrman_tests.cpp \
@@ -125,8 +125,8 @@ HTS_TESTS =\
 #  test/sigopcount_tests.cpp \
 #  test/skiplist_tests.cpp \
 #  test/streams_tests.cpp \
-#  test/test_HTS.cpp \
-#  test/test_HTS.h \
+#  test/test_BKS.cpp \
+#  test/test_BKS.h \
 #  test/testutil.cpp \
 #  test/testutil.h \
 #  test/timedata_tests.cpp \
@@ -138,7 +138,7 @@ HTS_TESTS =\
 #  test/util_tests.cpp
 
 #if ENABLE_WALLET
-#HTS_TESTS += \
+#BKS_TESTS += \
 #  wallet/test/wallet_test_fixture.cpp \
 #  wallet/test/wallet_test_fixture.h \
 #  wallet/test/accounting_tests.cpp \
@@ -147,44 +147,44 @@ HTS_TESTS =\
 #  wallet/test/rpc_wallet_tests.cpp
 #endif
 
-test_test_HTS_SOURCES = $(HTS_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
-test_test_HTS_CPPFLAGS = $(AM_CPPFLAGS) $(HTS_INCLUDES) -I$(builddir)/test/ $(TESTDEFS)
-test_test_HTS_LDADD = $(LIBHTS_SERVER) $(LIBHTS_CLI) $(LIBHTS_COMMON) $(LIBHTS_UTIL) $(LIBHTS_CONSENSUS) $(LIBHTS_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+test_test_BKS_SOURCES = $(BKS_TESTS) $(JSON_TEST_FILES) $(RAW_TEST_FILES)
+test_test_BKS_CPPFLAGS = $(AM_CPPFLAGS) $(BKS_INCLUDES) -I$(builddir)/test/ $(TESTDEFS)
+test_test_BKS_LDADD = $(LIBBKS_SERVER) $(LIBBKS_CLI) $(LIBBKS_COMMON) $(LIBBKS_UTIL) $(LIBBKS_CONSENSUS) $(LIBBKS_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIB) $(LIBSECP256K1)
-test_test_HTS_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+test_test_BKS_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 if ENABLE_WALLET
-test_test_HTS_LDADD += $(LIBHTS_WALLET)
+test_test_BKS_LDADD += $(LIBBKS_WALLET)
 endif
 
-test_test_HTS_LDADD += $(LIBHTS_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBHTS_ZMQ) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
-test_test_HTS_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+test_test_BKS_LDADD += $(LIBBKS_CONSENSUS) $(BDB_LIBS) $(SSL_LIBS) $(UNBOUND_LIBS) $(CURL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBBKS_ZMQ) $(EVENT_LIBS) $(EVENT_PTHREADS_LIBS)
+test_test_BKS_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
 
 if ENABLE_ZMQ
-test_test_HTS_LDADD += $(ZMQ_LIBS)
+test_test_BKS_LDADD += $(ZMQ_LIBS)
 endif
 
-nodist_test_test_HTS_SOURCES = $(GENERATED_TEST_FILES)
+nodist_test_test_BKS_SOURCES = $(GENERATED_TEST_FILES)
 
-$(HTS_TESTS): $(GENERATED_TEST_FILES)
+$(BKS_TESTS): $(GENERATED_TEST_FILES)
 
-CLEAN_HTS_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
+CLEAN_BKS_TEST = test/*.gcda test/*.gcno $(GENERATED_TEST_FILES)
 
-CLEANFILES += $(CLEAN_HTS_TEST)
+CLEANFILES += $(CLEAN_BKS_TEST)
 
 # This file is problematic for out-of-tree builds if it exists.
 DISTCLEANFILES += test/buildenv.pyc
 
-HTS_test: $(TEST_BINARY)
+BKS_test: $(TEST_BINARY)
 
-HTS_test_check: $(TEST_BINARY) FORCE
+BKS_test_check: $(TEST_BINARY) FORCE
 	$(MAKE) check-TESTS TESTS=$^
 
-HTS_test_clean : FORCE
-	rm -f $(CLEAN_HTS_TEST) $(test_test_HTS_OBJECTS) $(TEST_BINARY)
+BKS_test_clean : FORCE
+	rm -f $(CLEAN_BKS_TEST) $(test_test_BKS_OBJECTS) $(TEST_BINARY)
 
 check-local:
-	@echo "Running test/HTS-util-test.py..."
-	$(AM_V_at)srcdir=$(srcdir) PYTHONPATH=$(builddir)/test $(PYTHON) $(srcdir)/test/HTS-util-test.py
+	@echo "Running test/BKS-util-test.py..."
+	$(AM_V_at)srcdir=$(srcdir) PYTHONPATH=$(builddir)/test $(PYTHON) $(srcdir)/test/BKS-util-test.py
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
 if EMBEDDED_UNIVALUE
 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue check

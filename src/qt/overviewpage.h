@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_OVERVIEWPAGE_H
-#define HTS_QT_OVERVIEWPAGE_H
+#ifndef BKS_QT_OVERVIEWPAGE_H
+#define BKS_QT_OVERVIEWPAGE_H
 
 #include "amount.h"
 
@@ -91,4 +91,4 @@ private Q_SLOTS:
 
 };
 
-#endif // HTS_QT_OVERVIEWPAGE_H
+#endif // BKS_QT_OVERVIEWPAGE_H

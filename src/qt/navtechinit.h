@@ -1,5 +1,5 @@
-#ifndef HTSTECHINIT_H
-#define HTSTECHINIT_H
+#ifndef BKSTECHINIT_H
+#define BKSTECHINIT_H
 
 #include <QDialog>
 
@@ -21,4 +21,4 @@ private:
     Ui::NavTechInit *ui;
 };
 
-#endif // HTSTECHINIT_H
+#endif // BKSTECHINIT_H

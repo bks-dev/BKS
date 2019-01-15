@@ -215,7 +215,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Chứ ký &amp; Tin nhắn...</translation>
@@ -305,8 +305,8 @@
         <translation>Đánh chỉ số (indexing) lại các khối (blocks) trên ổ đĩa ...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Gửi coins đến tài khoản HTS</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Gửi coins đến tài khoản BKS</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -325,8 +325,8 @@
         <translation>&amp;Tin nhắn xác thực</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -353,12 +353,12 @@
         <translation>Mã hoá các khoá bí mật trong Ví của bạn.</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>Dùng địa chỉ HTS của bạn ký các tin nhắn để xác minh những nội dung tin nhắn đó là của bạn.</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>Dùng địa chỉ BKS của bạn ký các tin nhắn để xác minh những nội dung tin nhắn đó là của bạn.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Kiểm tra các tin nhắn để chắc chắn rằng chúng được ký bằng các địa chỉ HTS xác định.</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Kiểm tra các tin nhắn để chắc chắn rằng chúng được ký bằng các địa chỉ BKS xác định.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -373,8 +373,8 @@
         <translation>Trợ &amp;giúp</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
-        <translation>Yêu cầu thanh toán(tạo mã QR và địa chỉ HTS: URLs)</translation>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
+        <translation>Yêu cầu thanh toán(tạo mã QR và địa chỉ BKS: URLs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -385,8 +385,8 @@
         <translation>Hiện thỉ danh sách các địa chỉ và nhãn đã dùng để nhận.</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>Mở HTS:URL hoặc yêu cầu thanh toán</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>Mở BKS:URL hoặc yêu cầu thanh toán</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -540,8 +540,8 @@
         <translation>Ví</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a SOCKS5 proxy.</source>
-        <translation>Kết nối đến máy chủ HTS thông qua SOCKS5 proxy.</translation>
+        <source>Connect to the BKS network through a SOCKS5 proxy.</source>
+        <translation>Kết nối đến máy chủ BKS thông qua SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -792,14 +792,14 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Lựa chọn:</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS Core</translation>
+        <source>BKS Core</source>
+        <translation>BKS Core</translation>
     </message>
     <message>
         <source>(default: %u)</source>

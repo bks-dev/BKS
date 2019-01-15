@@ -121,13 +121,13 @@ UniValue getnewaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "getnewaddress ( \"account\" )\n"
-            "\nReturns a new HTS address for receiving payments.\n"
+            "\nReturns a new BKS address for receiving payments.\n"
             "If 'account' is specified (DEPRECATED), it is added to the address book \n"
             "so payments received with the address will be credited to 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account \"\" is used. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"HTSaddress\"    (string) The new HTS address\n"
+            "\"BKSaddress\"    (string) The new BKS address\n"
             "\nExamples:\n"
             + HelpExampleCli("getnewaddress", "")
             + HelpExampleRpc("getnewaddress", "")
@@ -151,18 +151,18 @@ UniValue getnewaddress(const UniValue& params, bool fHelp)
 
     pwalletMain->SetAddressBook(keyID, strAccount, "receive");
 
-    return CHTSAddress(keyID).ToString();
+    return CBKSAddress(keyID).ToString();
 }
 
 
-CHTSAddress GetAccountAddress(string strAccount, bool bForceNew=false)
+CBKSAddress GetAccountAddress(string strAccount, bool bForceNew=false)
 {
     CPubKey pubKey;
     if (!pwalletMain->GetAccountPubkey(pubKey, strAccount, bForceNew)) {
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
     }
 
-    return CHTSAddress(pubKey.GetID());
+    return CBKSAddress(pubKey.GetID());
 }
 
 UniValue getaccountaddress(const UniValue& params, bool fHelp)
@@ -173,11 +173,11 @@ UniValue getaccountaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 1)
         throw runtime_error(
             "getaccountaddress \"account\"\n"
-            "\nDEPRECATED. Returns the current HTS address for receiving payments to this account.\n"
+            "\nDEPRECATED. Returns the current BKS address for receiving payments to this account.\n"
             "\nArguments:\n"
             "1. \"account\"       (string, required) The account name for the address. It can also be set to the empty string \"\" to represent the default account. The account does not need to exist, it will be created and a new address created  if there is no account by the given name.\n"
             "\nResult:\n"
-            "\"HTSaddress\"   (string) The account HTS address\n"
+            "\"BKSaddress\"   (string) The account BKS address\n"
             "\nExamples:\n"
             + HelpExampleCli("getaccountaddress", "")
             + HelpExampleCli("getaccountaddress", "\"\"")
@@ -205,7 +205,7 @@ UniValue getrawchangeaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "getrawchangeaddress\n"
-            "\nReturns a new HTS address, for receiving change.\n"
+            "\nReturns a new BKS address, for receiving change.\n"
             "This is for use with raw transactions, NOT normal use.\n"
             "\nResult:\n"
             "\"address\"    (string) The address\n"
@@ -228,7 +228,7 @@ UniValue getrawchangeaddress(const UniValue& params, bool fHelp)
 
     CKeyID keyID = vchPubKey.GetID();
 
-    return CHTSAddress(keyID).ToString();
+    return CBKSAddress(keyID).ToString();
 }
 
 
@@ -239,10 +239,10 @@ UniValue setaccount(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "setaccount \"HTSaddress\" \"account\"\n"
+            "setaccount \"BKSaddress\" \"account\"\n"
             "\nDEPRECATED. Sets the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address to be associated with an account.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
             "\nExamples:\n"
             + HelpExampleCli("setaccount", "\"1D1ZrZNe3JUo7ZycKEYQQiQAWd9y54F4XZ\" \"tabby\"")
@@ -251,9 +251,9 @@ UniValue setaccount(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CHTSAddress address(params[0].get_str());
+    CBKSAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
     string strAccount;
     if (params.size() > 1)
@@ -285,10 +285,10 @@ UniValue getaccount(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getaccount \"HTSaddress\"\n"
+            "getaccount \"BKSaddress\"\n"
             "\nDEPRECATED. Returns the account associated with the given address.\n"
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address for account lookup.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address for account lookup.\n"
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
             "\nExamples:\n"
@@ -298,9 +298,9 @@ UniValue getaccount(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CHTSAddress address(params[0].get_str());
+    CBKSAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
     string strAccount;
     map<CTxDestination, CAddressBookData>::iterator mi = pwalletMain->mapAddressBook.find(address.Get());
@@ -323,7 +323,7 @@ UniValue getaddressesbyaccount(const UniValue& params, bool fHelp)
             "1. \"account\"  (string, required) The account name.\n"
             "\nResult:\n"
             "[                     (json array of string)\n"
-            "  \"HTSaddress\"  (string) a HTS address associated with the given account\n"
+            "  \"BKSaddress\"  (string) a BKS address associated with the given account\n"
             "  ,...\n"
             "]\n"
             "\nExamples:\n"
@@ -337,9 +337,9 @@ UniValue getaddressesbyaccount(const UniValue& params, bool fHelp)
 
     // Find all addresses that have the given account
     UniValue ret(UniValue::VARR);
-    BOOST_FOREACH(const PAIRTYPE(CHTSAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
+    BOOST_FOREACH(const PAIRTYPE(CBKSAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
     {
-        const CHTSAddress& address = item.first;
+        const CBKSAddress& address = item.first;
         const string& strName = item.second.name;
         if (strName == strAccount)
             ret.push_back(address.ToString());
@@ -360,7 +360,7 @@ static void SendMoney(const CTxDestination &address, CAmount nValue, bool fSubtr
 
     CScript CFContributionScript;
 
-    // Parse HTS address
+    // Parse BKS address
     CScript scriptPubKey = GetScriptForDestination(address);
 
     if(donate)
@@ -390,20 +390,20 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() < 2 || params.size() > 6)
         throw runtime_error(
-            "sendtoaddress \"HTSaddress\" amount ( \"comment\" \"comment-to\" \"anon-destination\" subtractfeefromamount )\n"
+            "sendtoaddress \"BKSaddress\" amount ( \"comment\" \"comment-to\" \"anon-destination\" subtractfeefromamount )\n"
             "\nSend an amount to a given address.\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address to send to.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address to send to.\n"
             "2. \"amount\"      (numeric or string, required) The amount in " + CURRENCY_UNIT + " to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
             "4. \"comment-to\"  (string, optional) A comment to store the name of the person or organization \n"
             "                             to which you're sending the transaction. This is not part of the \n"
             "                             transaction, just kept in your wallet.\n"
-            "5. \"anon-destination\"  (string, optional) Encrypted destination address if you're sending a HTStech transaction \n"
+            "5. \"anon-destination\"  (string, optional) Encrypted destination address if you're sending a BKStech transaction \n"
             "6. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
-            "                             The recipient will receive less HTSs than you enter in the amount field.\n"
+            "                             The recipient will receive less BKSs than you enter in the amount field.\n"
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
@@ -436,9 +436,9 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
 
     }
 
-    CHTSAddress address(address_str);
+    CBKSAddress address(address_str);
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -500,10 +500,10 @@ UniValue createproposal(const UniValue& params, bool fHelp)
     if (fHelp || params.size() < 4)
         throw runtime_error(
             "createproposal address amount deadline\n"
-            "\nCreates a proposal for the community fund. Min fee of " + std::to_string((float)Params().GetConsensus().nProposalMinimalFee/COIN) + "HTS is required.\n"
+            "\nCreates a proposal for the community fund. Min fee of " + std::to_string((float)Params().GetConsensus().nProposalMinimalFee/COIN) + "BKS is required.\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"HTSaddress\"     (string, required) The HTS address where coins would be sent if proposal is approved.\n"
+            "1. \"BKSaddress\"     (string, required) The BKS address where coins would be sent if proposal is approved.\n"
             "2. \"amount\"             (numeric or string, required) The amount in " + CURRENCY_UNIT + " to requesst. eg 0.1\n"
             "3. duration               (numeric, required) Number of seconds the proposal will exist after being accepted.\n"
             "4. \"desc\"               (string, required) Short description of the proposal.\n"
@@ -517,7 +517,7 @@ UniValue createproposal(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CHTSAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
+    CBKSAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
 
     // Amount
     CAmount nAmount = params.size() == 5 ? AmountFromValue(params[4]) : Params().GetConsensus().nProposalMinimalFee;
@@ -529,9 +529,9 @@ UniValue createproposal(const UniValue& params, bool fHelp)
 
     string Address = params[0].get_str();
 
-    CHTSAddress destaddress(Address);
+    CBKSAddress destaddress(Address);
     if (!destaddress.IsValid())
-      throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+      throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
     CAmount nReqAmount = AmountFromValue(params[1]);
     int64_t nDeadline = params[2].get_int64();
@@ -591,7 +591,7 @@ UniValue createpaymentrequest(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 3)
         throw runtime_error(
             "createpaymentrequest hash amount id\n"
-            "\nCreates a proposal to withdraw funds from the community fund. Fee: 0.0001 HTS\n"
+            "\nCreates a proposal to withdraw funds from the community fund. Fee: 0.0001 BKS\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
             "1. \"hash\"               (string, required) The hash of the proposal from which you want to withdraw funds. It must be approved.\n"
@@ -614,10 +614,10 @@ UniValue createpaymentrequest(const UniValue& params, bool fHelp)
     if(proposal.fState != CFund::ACCEPTED)
         throw JSONRPCError(RPC_TYPE_ERROR, "Proposal has not been accepted.");
 
-    CHTSAddress address(proposal.Address);
+    CBKSAddress address(proposal.Address);
 
     if(!address.IsValid())
-        throw JSONRPCError(RPC_TYPE_ERROR, "Address of the proposal is not a valid HTS address.");
+        throw JSONRPCError(RPC_TYPE_ERROR, "Address of the proposal is not a valid BKS address.");
 
     CKeyID keyID;
     if (!address.GetKeyID(keyID))
@@ -634,7 +634,7 @@ UniValue createpaymentrequest(const UniValue& params, bool fHelp)
     std::string sRandom = random_string(16);
 
     std::string Secret = sRandom + "I kindly ask to withdraw " +
-            std::to_string(nReqAmount) + "HTS from the proposal " +
+            std::to_string(nReqAmount) + "BKS from the proposal " +
             proposal.hash.ToString() + ". Payment request id: " + id;
 
     CHashWriter ss(SER_GETHASH, 0);
@@ -691,7 +691,7 @@ UniValue donatefund(const UniValue& params, bool fHelp)
             "\nArguments:\n"
             "1. \"amount\"      (numeric or string, required) The amount in " + CURRENCY_UNIT + " to donate. eg 0.1\n"
             "2. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
-            "                             The fund will receive less HTSs than you enter in the amount field.\n"
+            "                             The fund will receive less BKSs than you enter in the amount field.\n"
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
@@ -702,7 +702,7 @@ UniValue donatefund(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    CHTSAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
+    CBKSAddress address("NQFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ"); // Dummy address
 
     // Amount
     CAmount nAmount = AmountFromValue(params[0]);
@@ -729,11 +729,11 @@ UniValue anonsend(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() < 2 || params.size() > 5)
         throw runtime_error(
-            "anonsend \"HTSaddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "anonsend \"BKSaddress\" amount ( \"comment\" \"comment-to\" )\n"
             "\nSend an amount to a given address anonymously.\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address to send to.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address to send to.\n"
             "2. \"amount\"      (numeric or string, required) The amount in " + CURRENCY_UNIT + " to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                             This is not part of the transaction, just kept in your wallet.\n"
@@ -756,7 +756,7 @@ UniValue anonsend(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    int nEntropy = GetArg("anon_entropy",HTSTECH_DEFAULT_ENTROPY);
+    int nEntropy = GetArg("anon_entropy",BKSTECH_DEFAULT_ENTROPY);
 
     unsigned int nTransactions = (rand() % nEntropy) + 2;
 
@@ -781,21 +781,21 @@ UniValue anonsend(const UniValue& params, bool fHelp)
 
     }
 
-    CHTSAddress address(address_str);
+    CBKSAddress address(address_str);
     if (!address.IsValid())
-      throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+      throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
     //UniValue navtechData = navtech.CreateAnonTransaction(params[0].get_str(), nAmount / (nTransactions * 2), nTransactions);
 //    std::vector<UniValue> serverNavAddresses(find_value(navtechData, "anonaddress").getValues());
 
     if(serverNavAddresses.size() != nTransactions)
-      throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "HTSTech server returned a different number of addresses.");
+      throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "BKSTech server returned a different number of addresses.");
 
     for(unsigned int i = 0; i < serverNavAddresses.size(); i++)
     {
-        CHTSAddress serverNavAddress(serverNavAddresses[i].get_str());
+        CBKSAddress serverNavAddress(serverNavAddresses[i].get_str());
         if (!serverNavAddress.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address provided by HTSTech server");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address provided by BKSTech server");
     }
 
     // Wallet comments
@@ -821,7 +821,7 @@ UniValue anonsend(const UniValue& params, bool fHelp)
 
     for(unsigned int i = 0; i < serverNavAddresses.size(); i++)
     {
-        CHTSAddress serverNavAddress(serverNavAddresses[i].get_str());
+        CBKSAddress serverNavAddress(serverNavAddresses[i].get_str());
         CAmount nAmountRound = 0;
         CAmount nAmountNotProcessed = nAmount - nAmountAlreadyProcessed;
         CAmount nAmountToSubstract = nAmountNotProcessed / ((rand() % nEntropy)+2);
@@ -852,11 +852,11 @@ UniValue getanondestination(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getanondestination \"HTSaddress\"\n"
+            "getanondestination \"BKSaddress\"\n"
             "\nGet the the encrypted anon destination and address to send to.\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address to send to.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address to send to.\n"
             "\nResult:\n"
             "\"anondestination\"  (string) The encrypted information to attach to the transaction.\n"
             "\"anonaddress\"  (string) The nav coin address to send the anon transaction to.\n"
@@ -887,15 +887,15 @@ UniValue getanondestination(const UniValue& params, bool fHelp)
 
     }
 
-    CHTSAddress address(address_str);
+    CBKSAddress address(address_str);
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
   //  UniValue navtechData = navtech.CreateAnonTransaction(params[0].get_str());
 
-//    CHTSAddress serverNavAddress(find_value(navtechData, "anonaddress").get_str());
+//    CBKSAddress serverNavAddress(find_value(navtechData, "anonaddress").get_str());
   //  if (!serverNavAddress.IsValid())
-    //    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address provided by HTSTech server");
+    //    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address provided by BKSTech server");
 
 //    return navtechData;
 }
@@ -916,7 +916,7 @@ UniValue listaddressgroupings(const UniValue& params, bool fHelp)
             "[\n"
             "  [\n"
             "    [\n"
-            "      \"HTSaddress\",     (string) The HTS address\n"
+            "      \"BKSaddress\",     (string) The BKS address\n"
             "      amount,                 (numeric) The amount in " + CURRENCY_UNIT + "\n"
             "      \"account\"             (string, optional) The account (DEPRECATED)\n"
             "    ]\n"
@@ -939,11 +939,11 @@ UniValue listaddressgroupings(const UniValue& params, bool fHelp)
         BOOST_FOREACH(CTxDestination address, grouping)
         {
             UniValue addressInfo(UniValue::VARR);
-            addressInfo.push_back(CHTSAddress(address).ToString());
+            addressInfo.push_back(CBKSAddress(address).ToString());
             addressInfo.push_back(ValueFromAmount(balances[address]));
             {
-                if (pwalletMain->mapAddressBook.find(CHTSAddress(address).Get()) != pwalletMain->mapAddressBook.end())
-                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CHTSAddress(address).Get())->second.name);
+                if (pwalletMain->mapAddressBook.find(CBKSAddress(address).Get()) != pwalletMain->mapAddressBook.end())
+                    addressInfo.push_back(pwalletMain->mapAddressBook.find(CBKSAddress(address).Get())->second.name);
             }
             jsonGrouping.push_back(addressInfo);
         }
@@ -959,11 +959,11 @@ UniValue signmessage(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "signmessage \"HTSaddress\" \"message\"\n"
+            "signmessage \"BKSaddress\" \"message\"\n"
             "\nSign a message with the private key of an address"
             + HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address to use for the private key.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address to use for the private key.\n"
             "2. \"message\"         (string, required) The message to create a signature of.\n"
             "\nResult:\n"
             "\"signature\"          (string) The signature of the message encoded in base 64\n"
@@ -985,7 +985,7 @@ UniValue signmessage(const UniValue& params, bool fHelp)
     string strAddress = params[0].get_str();
     string strMessage = params[1].get_str();
 
-    CHTSAddress addr(strAddress);
+    CBKSAddress addr(strAddress);
     if (!addr.IsValid())
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid address");
 
@@ -1015,10 +1015,10 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "getreceivedbyaddress \"HTSaddress\" ( minconf )\n"
-            "\nReturns the total amount received by the given HTSaddress in transactions with at least minconf confirmations.\n"
+            "getreceivedbyaddress \"BKSaddress\" ( minconf )\n"
+            "\nReturns the total amount received by the given BKSaddress in transactions with at least minconf confirmations.\n"
             "\nArguments:\n"
-            "1. \"HTSaddress\"  (string, required) The HTS address for transactions.\n"
+            "1. \"BKSaddress\"  (string, required) The BKS address for transactions.\n"
             "2. minconf             (numeric, optional, default=1) Only include transactions confirmed at least this many times.\n"
             "\nResult:\n"
             "amount   (numeric) The total amount in " + CURRENCY_UNIT + " received at this address.\n"
@@ -1035,10 +1035,10 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    // HTS address
-    CHTSAddress address = CHTSAddress(params[0].get_str());
+    // BKS address
+    CBKSAddress address = CBKSAddress(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
     CScript scriptPubKey = GetScriptForDestination(address.Get());
     if (!IsMine(*pwalletMain, scriptPubKey))
         return ValueFromAmount(0);
@@ -1268,12 +1268,12 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
 
     if (fHelp || params.size() < 3 || params.size() > 6)
         throw runtime_error(
-            "sendfrom \"fromaccount\" \"toHTSaddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
-            "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a HTS address."
+            "sendfrom \"fromaccount\" \"toBKSaddress\" amount ( minconf \"comment\" \"comment-to\" )\n"
+            "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a BKS address."
             + HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
             "1. \"fromaccount\"       (string, required) The name of the account to send funds from. May be the default account using \"\".\n"
-            "2. \"toHTSaddress\"  (string, required) The HTS address to send funds to.\n"
+            "2. \"toBKSaddress\"  (string, required) The BKS address to send funds to.\n"
             "3. amount                (numeric or string, required) The amount in " + CURRENCY_UNIT + " (transaction fee is added on top).\n"
             "4. minconf               (numeric, optional, default=1) Only use funds with at least this many confirmations.\n"
             "5. \"comment\"           (string, optional) A comment used to store what the transaction is for. \n"
@@ -1295,9 +1295,9 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
     string strAccount = AccountFromValue(params[0]);
-    CHTSAddress address(params[1].get_str());
+    CBKSAddress address(params[1].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
     CAmount nAmount = AmountFromValue(params[2]);
     if (nAmount <= 0)
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount for send");
@@ -1339,14 +1339,14 @@ UniValue sendmany(const UniValue& params, bool fHelp)
             "1. \"fromaccount\"         (string, required) DEPRECATED. The account to send the funds from. Should be \"\" for the default account\n"
             "2. \"amounts\"             (string, required) A json object with addresses and amounts\n"
             "    {\n"
-            "      \"address\":amount   (numeric or string) The HTS address is the key, the numeric amount (can be string) in " + CURRENCY_UNIT + " is the value\n"
+            "      \"address\":amount   (numeric or string) The BKS address is the key, the numeric amount (can be string) in " + CURRENCY_UNIT + " is the value\n"
             "      ,...\n"
             "    }\n"
             "3. minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.\n"
             "4. \"comment\"             (string, optional) A comment\n"
             "5. subtractfeefromamount   (string, optional) A json array with addresses.\n"
             "                           The fee will be equally deducted from the amount of each selected address.\n"
-            "                           Those recipients will receive less HTSs than you enter in their corresponding amount field.\n"
+            "                           Those recipients will receive less BKSs than you enter in their corresponding amount field.\n"
             "                           If no addresses are specified here, the sender pays the fee.\n"
             "    [\n"
             "      \"address\"            (string) Subtract fee from this address\n"
@@ -1383,16 +1383,16 @@ UniValue sendmany(const UniValue& params, bool fHelp)
     if (params.size() > 4)
         subtractFeeFromAmount = params[4].get_array();
 
-    set<CHTSAddress> setAddress;
+    set<CBKSAddress> setAddress;
     vector<CRecipient> vecSend;
 
     CAmount totalAmount = 0;
     vector<string> keys = sendTo.getKeys();
     BOOST_FOREACH(const string& name_, keys)
     {
-        CHTSAddress address(name_);
+        CBKSAddress address(name_);
         if (!address.IsValid())
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid HTS address: ")+name_);
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid BKS address: ")+name_);
 
         if (setAddress.count(address))
             throw JSONRPCError(RPC_INVALID_PARAMETER, string("Invalid parameter, duplicated address: ")+name_);
@@ -1448,20 +1448,20 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)
     {
         string msg = "addmultisigaddress nrequired [\"key\",...] ( \"account\" )\n"
             "\nAdd a nrequired-to-sign multisignature address to the wallet.\n"
-            "Each key is a HTS address or hex-encoded public key.\n"
+            "Each key is a BKS address or hex-encoded public key.\n"
             "If 'account' is specified (DEPRECATED), assign address to that account.\n"
 
             "\nArguments:\n"
             "1. nrequired        (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-            "2. \"keysobject\"   (string, required) A json array of HTS addresses or hex-encoded public keys\n"
+            "2. \"keysobject\"   (string, required) A json array of BKS addresses or hex-encoded public keys\n"
             "     [\n"
-            "       \"address\"  (string) HTS address or hex-encoded public key\n"
+            "       \"address\"  (string) BKS address or hex-encoded public key\n"
             "       ...,\n"
             "     ]\n"
             "3. \"account\"      (string, optional) DEPRECATED. An account to assign the addresses to.\n"
 
             "\nResult:\n"
-            "\"HTSaddress\"  (string) A HTS address associated with the keys.\n"
+            "\"BKSaddress\"  (string) A BKS address associated with the keys.\n"
 
             "\nExamples:\n"
             "\nAdd a multisig address from 2 addresses\n"
@@ -1484,7 +1484,7 @@ UniValue addmultisigaddress(const UniValue& params, bool fHelp)
     pwalletMain->AddCScript(inner);
 
     pwalletMain->SetAddressBook(innerID, strAccount, "send");
-    return CHTSAddress(innerID).ToString();
+    return CBKSAddress(innerID).ToString();
 }
 
 class Witnessifier : public boost::static_visitor<bool>
@@ -1553,9 +1553,9 @@ UniValue addwitnessaddress(const UniValue& params, bool fHelp)
         }
     }
 
-    CHTSAddress address(params[0].get_str());
+    CBKSAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid HTS address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid BKS address");
 
     Witnessifier w;
     CTxDestination dest = address.Get();
@@ -1564,7 +1564,7 @@ UniValue addwitnessaddress(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_WALLET_ERROR, "Public key or redeemscript not known to wallet");
     }
 
-    return CHTSAddress(w.result).ToString();
+    return CBKSAddress(w.result).ToString();
 }
 
 struct tallyitem
@@ -1599,7 +1599,7 @@ UniValue ListReceived(const UniValue& params, bool fByAccounts)
             filter = filter | ISMINE_WATCH_ONLY;
 
     // Tally
-    map<CHTSAddress, tallyitem> mapTally;
+    map<CBKSAddress, tallyitem> mapTally;
     for (map<uint256, CWalletTx>::iterator it = pwalletMain->mapWallet.begin(); it != pwalletMain->mapWallet.end(); ++it)
     {
         const CWalletTx& wtx = (*it).second;
@@ -1633,11 +1633,11 @@ UniValue ListReceived(const UniValue& params, bool fByAccounts)
     // Reply
     UniValue ret(UniValue::VARR);
     map<string, tallyitem> mapAccountTally;
-    BOOST_FOREACH(const PAIRTYPE(CHTSAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
+    BOOST_FOREACH(const PAIRTYPE(CBKSAddress, CAddressBookData)& item, pwalletMain->mapAddressBook)
     {
-        const CHTSAddress& address = item.first;
+        const CBKSAddress& address = item.first;
         const string& strAccount = item.second.name;
-        map<CHTSAddress, tallyitem>::iterator it = mapTally.find(address);
+        map<CBKSAddress, tallyitem>::iterator it = mapTally.find(address);
         if (it == mapTally.end() && !fIncludeEmpty)
             continue;
 
@@ -1778,7 +1778,7 @@ UniValue listreceivedbyaccount(const UniValue& params, bool fHelp)
 
 static void MaybePushAddress(UniValue & entry, const CTxDestination &dest)
 {
-    CHTSAddress addr;
+    CBKSAddress addr;
     if (addr.Set(dest))
         entry.push_back(Pair("address", addr.ToString()));
 }
@@ -1909,7 +1909,7 @@ UniValue listtransactions(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"account\":\"accountname\",       (string) DEPRECATED. The account name associated with the transaction. \n"
             "                                                It will be \"\" for the default account.\n"
-            "    \"address\":\"HTSaddress\",    (string) The HTS address of the transaction. Not present for \n"
+            "    \"address\":\"BKSaddress\",    (string) The BKS address of the transaction. Not present for \n"
             "                                                move transactions (category = move).\n"
             "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
             "                                                transaction between accounts, and not associated with an address,\n"
@@ -2113,7 +2113,7 @@ UniValue listsinceblock(const UniValue& params, bool fHelp)
             "{\n"
             "  \"transactions\": [\n"
             "    \"account\":\"accountname\",       (string) DEPRECATED. The account name associated with the transaction. Will be \"\" for the default account.\n"
-            "    \"address\":\"HTSaddress\",    (string) The HTS address of the transaction. Not present for move transactions (category = move).\n"
+            "    \"address\":\"BKSaddress\",    (string) The BKS address of the transaction. Not present for move transactions (category = move).\n"
             "    \"category\":\"send|receive\",     (string) The transaction category. 'send' has negative amounts, 'receive' has positive amounts.\n"
             "    \"amount\": x.xxx,          (numeric) The amount in " + CURRENCY_UNIT + ". This is negative for the 'send' category, and for the 'move' category for moves \n"
             "                                          outbound. It is positive for the 'receive' category, and for the 'move' category for inbound funds.\n"
@@ -2215,7 +2215,7 @@ UniValue gettransaction(const UniValue& params, bool fHelp)
             "  \"details\" : [\n"
             "    {\n"
             "      \"account\" : \"accountname\",  (string) DEPRECATED. The account name involved in the transaction, can be \"\" for the default account.\n"
-            "      \"address\" : \"HTSaddress\",   (string) The HTS address involved in the transaction\n"
+            "      \"address\" : \"BKSaddress\",   (string) The BKS address involved in the transaction\n"
             "      \"category\" : \"send|receive\",    (string) The category, either 'send' or 'receive'\n"
             "      \"amount\" : x.xxx,                 (numeric) The amount in " + CURRENCY_UNIT + "\n"
             "      \"label\" : \"label\",              (string) A comment for the address/transaction, if any\n"
@@ -2382,7 +2382,7 @@ UniValue walletpassphrase(const UniValue& params, bool fHelp)
         throw runtime_error(
             "walletpassphrase \"passphrase\" timeout [stakingonly]\n"
             "\nStores the wallet decryption key in memory for 'timeout' seconds.\n"
-            "This is needed prior to performing transactions related to private keys such as sending HTSs\n"
+            "This is needed prior to performing transactions related to private keys such as sending BKSs\n"
             "\nArguments:\n"
             "1. \"passphrase\"     (string, required) The wallet passphrase\n"
             "2. timeout            (numeric, required) The time to keep the decryption key in seconds.\n"
@@ -2543,10 +2543,10 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
             "\nExamples:\n"
             "\nEncrypt you wallet\n"
             + HelpExampleCli("encryptwallet", "\"my pass phrase\"") +
-            "\nNow set the passphrase to use the wallet, such as for signing or sending HTS\n"
+            "\nNow set the passphrase to use the wallet, such as for signing or sending BKS\n"
             + HelpExampleCli("walletpassphrase", "\"my pass phrase\"") +
             "\nNow we can so something like sign\n"
-            + HelpExampleCli("signmessage", "\"HTSaddress\" \"test message\"") +
+            + HelpExampleCli("signmessage", "\"BKSaddress\" \"test message\"") +
             "\nNow lock the wallet again by removing the passphrase\n"
             + HelpExampleCli("walletlock", "") +
             "\nAs a json rpc call\n"
@@ -2578,7 +2578,7 @@ UniValue encryptwallet(const UniValue& params, bool fHelp)
     // slack space in .dat files; that is bad if the old data is
     // unencrypted private keys. So:
     StartShutdown();
-    return "wallet encrypted; HTS server stopping, restart to run with encrypted wallet. The keypool has been flushed and a new HD seed was generated (if you are using HD). You need to make a new backup.";
+    return "wallet encrypted; BKS server stopping, restart to run with encrypted wallet. The keypool has been flushed and a new HD seed was generated (if you are using HD). You need to make a new backup.";
 }
 
 UniValue lockunspent(const UniValue& params, bool fHelp)
@@ -2592,7 +2592,7 @@ UniValue lockunspent(const UniValue& params, bool fHelp)
             "\nUpdates list of temporarily unspendable outputs.\n"
             "Temporarily lock (unlock=false) or unlock (unlock=true) specified transaction outputs.\n"
             "If no transaction outputs are specified when unlocking then all current locked transaction outputs are unlocked.\n"
-            "A locked transaction output will not be chosen by automatic coin selection, when spending HTSs.\n"
+            "A locked transaction output will not be chosen by automatic coin selection, when spending BKSs.\n"
             "Locks are stored in memory only. Nodes start with zero locked outputs, and the locked output list\n"
             "is always cleared (by virtue of process exit) when a node stops or fails.\n"
             "Also see the listunspent call\n"
@@ -2834,9 +2834,9 @@ UniValue listunspent(const UniValue& params, bool fHelp)
             "\nArguments:\n"
             "1. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
             "2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
-            "3. \"addresses\"    (string) A json array of HTS addresses to filter\n"
+            "3. \"addresses\"    (string) A json array of BKS addresses to filter\n"
             "    [\n"
-            "      \"address\"   (string) HTS address\n"
+            "      \"address\"   (string) BKS address\n"
             "      ,...\n"
             "    ]\n"
             "\nResult\n"
@@ -2844,7 +2844,7 @@ UniValue listunspent(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"txid\" : \"txid\",          (string) the transaction id \n"
             "    \"vout\" : n,               (numeric) the vout value\n"
-            "    \"address\" : \"address\",    (string) the HTS address\n"
+            "    \"address\" : \"address\",    (string) the BKS address\n"
             "    \"account\" : \"account\",    (string) DEPRECATED. The associated account, or \"\" for the default account\n"
             "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
             "    \"amount\" : x.xxx,         (numeric) the transaction amount in " + CURRENCY_UNIT + "\n"
@@ -2872,14 +2872,14 @@ UniValue listunspent(const UniValue& params, bool fHelp)
     if (params.size() > 1)
         nMaxDepth = params[1].get_int();
 
-    set<CHTSAddress> setAddress;
+    set<CBKSAddress> setAddress;
     if (params.size() > 2) {
         UniValue inputs = params[2].get_array();
         for (unsigned int idx = 0; idx < inputs.size(); idx++) {
             const UniValue& input = inputs[idx];
-            CHTSAddress address(input.get_str());
+            CBKSAddress address(input.get_str());
             if (!address.IsValid())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid HTS address: ")+input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid BKS address: ")+input.get_str());
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, string("Invalid parameter, duplicated address: ")+input.get_str());
            setAddress.insert(address);
@@ -2907,7 +2907,7 @@ UniValue listunspent(const UniValue& params, bool fHelp)
         entry.push_back(Pair("vout", out.i));
 
         if (fValidAddress) {
-            entry.push_back(Pair("address", CHTSAddress(address).ToString()));
+            entry.push_back(Pair("address", CBKSAddress(address).ToString()));
 
             if (pwalletMain->mapAddressBook.count(address))
                 entry.push_back(Pair("account", pwalletMain->mapAddressBook[address].name));
@@ -2952,7 +2952,7 @@ UniValue fundrawtransaction(const UniValue& params, bool fHelp)
                             "1. \"hexstring\"           (string, required) The hex string of the raw transaction\n"
                             "2. options               (object, optional)\n"
                             "   {\n"
-                            "     \"changeAddress\"     (string, optional, default pool address) The HTS address to receive the change\n"
+                            "     \"changeAddress\"     (string, optional, default pool address) The BKS address to receive the change\n"
                             "     \"changePosition\"    (numeric, optional, default random) The index of the change output\n"
                             "     \"includeWatching\"   (boolean, optional, default false) Also select inputs which are watch only\n"
                             "     \"lockUnspents\"      (boolean, optional, default false) Lock selected unspent outputs\n"
@@ -3007,10 +3007,10 @@ UniValue fundrawtransaction(const UniValue& params, bool fHelp)
             true, true);
 
         if (options.exists("changeAddress")) {
-            CHTSAddress address(options["changeAddress"].get_str());
+            CBKSAddress address(options["changeAddress"].get_str());
 
             if (!address.IsValid())
-                throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid HTS address");
+                throw JSONRPCError(RPC_INVALID_PARAMETER, "changeAddress must be a valid BKS address");
 
             changeAddress = address.Get();
         }
@@ -3251,12 +3251,12 @@ UniValue resolveopenalias(const UniValue& params, bool fHelp)
   if ((fHelp || params.size() != 1))
       throw runtime_error(
           "resolveopenallias \"openAlias\"\n"
-          "\nResolves the given OpenAlias address to a HTS address.\n"
+          "\nResolves the given OpenAlias address to a BKS address.\n"
           "\nArguments:\n"
           "1. \"address\"    (string) The OpenAlias address.\n"
           "\nExamples:\n"
           "\nGet information about an OpenAlias address\n"
-          + HelpExampleCli("resolveopenalias", "\"donate@HTS.org\"")
+          + HelpExampleCli("resolveopenalias", "\"donate@BKS.org\"")
       );
 
   std::string address = params[0].get_str();

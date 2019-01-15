@@ -155,7 +155,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Signeeri &amp;sõnum</translation>
@@ -221,8 +221,8 @@
         <translation>Kettal olevate blokkide re-indekseerimine...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Saada münte HTSi aadressile</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Saada münte BKSi aadressile</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -245,8 +245,8 @@
         <translation>&amp;Kontrolli sõnumit...</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -273,12 +273,12 @@
         <translation>Krüpteeri oma rahakoti privaatvõtmed</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>Omandi tõestamiseks allkirjasta sõnumid oma HTSi aadressiga</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>Omandi tõestamiseks allkirjasta sõnumid oma BKSi aadressiga</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Kinnita sõnumid kindlustamaks et need allkirjastati määratud HTSi aadressiga</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Kinnita sõnumid kindlustamaks et need allkirjastati määratud BKSi aadressiga</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -444,8 +444,8 @@
         <translation>Ekspert</translation>
     </message>
     <message>
-        <source>Automatically open the HTS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>HTSi kliendi pordi automaatne avamine ruuteris. Toimib, kui sinu ruuter aktsepteerib UPnP ühendust.</translation>
+        <source>Automatically open the BKS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>BKSi kliendi pordi automaatne avamine ruuteris. Toimib, kui sinu ruuter aktsepteerib UPnP ühendust.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -810,8 +810,8 @@
         <translation>Kopeeri praegune signatuur vahemällu</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
-        <translation>Allkirjasta sõnum HTSi aadressi sulle kuulumise tõestamiseks</translation>
+        <source>Sign the message to prove you own this BKS address</source>
+        <translation>Allkirjasta sõnum BKSi aadressi sulle kuulumise tõestamiseks</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -830,8 +830,8 @@
         <translation>&amp;Kinnita Sõnum</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified HTS address</source>
-        <translation>Kinnita sõnum tõestamaks selle allkirjastatust määratud HTSi aadressiga.</translation>
+        <source>Verify the message to ensure it was signed with the specified BKS address</source>
+        <translation>Kinnita sõnum tõestamaks selle allkirjastatust määratud BKSi aadressiga.</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -924,7 +924,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Valikud:</translation>
@@ -954,8 +954,8 @@
         <translation>Luba välisühendusi (vaikeväärtus: 1 kui puudub -proxy või -connect)</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTSi tuumik</translation>
+        <source>BKS Core</source>
+        <translation>BKSi tuumik</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

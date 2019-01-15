@@ -255,7 +255,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Allekirjoita viesti...</translation>
@@ -341,8 +341,8 @@
         <translation>Ladataan lohkoindeksiä...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Lähetä kolikoita HTS-osoitteeseen</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Lähetä kolikoita BKS-osoitteeseen</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -365,8 +365,8 @@
         <translation>Varmista &amp;viesti...</translation>
     </message>
     <message>
-        <source>HTS</source>
-        <translation>HTS</translation>
+        <source>BKS</source>
+        <translation>BKS</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -386,19 +386,19 @@
     </message>
     <message>
         <source>Show or hide the main Window</source>
-        <translation>Näytä tai piilota HTS-ikkuna</translation>
+        <translation>Näytä tai piilota BKS-ikkuna</translation>
     </message>
     <message>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Suojaa yksityiset avaimet, jotka kuuluvat lompakkoosi</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>Allekirjoita viestisi omalla HTS -osoitteellasi todistaaksesi, että omistat ne</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>Allekirjoita viestisi omalla BKS -osoitteellasi todistaaksesi, että omistat ne</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>Varmista, että viestisi on allekirjoitettu määritetyllä HTS -osoitteella</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>Varmista, että viestisi on allekirjoitettu määritetyllä BKS -osoitteella</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -413,8 +413,8 @@
         <translation>&amp;Apua</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
-        <translation>Pyydä maksuja (Luo QR koodit ja HTS: URIt)</translation>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
+        <translation>Pyydä maksuja (Luo QR koodit ja BKS: URIt)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -425,16 +425,16 @@
         <translation>Näytä vastaanottamiseen käytettyjen osoitteiden ja nimien lista</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>Avaa HTS: URI tai maksupyyntö</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>Avaa BKS: URI tai maksupyyntö</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Komentorivin valinnat</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to HTS network</source>
-        <translation><numerusform>%n aktiivinen yhteys HTS-verkkoon</numerusform><numerusform>%n aktiivista yhteyttä HTS-verkkoon</numerusform></translation>
+        <source>%n active connection(s) to BKS network</source>
+        <translation><numerusform>%n aktiivinen yhteys BKS-verkkoon</numerusform><numerusform>%n aktiivista yhteyttä BKS-verkkoon</numerusform></translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -660,16 +660,16 @@
         <translation>&amp;Käytä varmistamattomia vaihtorahoja</translation>
     </message>
     <message>
-        <source>Automatically open the HTS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Avaa HTS-asiakasohjelman portti reitittimellä automaattisesti. Tämä toimii vain, jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
+        <source>Automatically open the BKS client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avaa BKS-asiakasohjelman portti reitittimellä automaattisesti. Tämä toimii vain, jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Portin uudelleenohjaus &amp;UPnP:llä</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a SOCKS5 proxy.</source>
-        <translation>Yhdistä HTS-verkkoon SOCKS5-välityspalvelimen kautta.</translation>
+        <source>Connect to the BKS network through a SOCKS5 proxy.</source>
+        <translation>Yhdistä BKS-verkkoon SOCKS5-välityspalvelimen kautta.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -708,8 +708,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the HTS network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Yhdistä HTS-verkkoon erillisen SOCKS5-välityspalvelimen kautta piilotettuja Tor-palveluja varten.</translation>
+        <source>Connect to the BKS network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Yhdistä BKS-verkkoon erillisen SOCKS5-välityspalvelimen kautta piilotettuja Tor-palveluja varten.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -741,11 +741,11 @@
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>Yksikkö jona HTS-määrät näytetään</translation>
+        <translation>Yksikkö jona BKS-määrät näytetään</translation>
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Valitse mitä yksikköä käytetään ensisijaisesti HTS-määrien näyttämiseen.</translation>
+        <translation>Valitse mitä yksikköä käytetään ensisijaisesti BKS-määrien näyttämiseen.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
@@ -828,8 +828,8 @@
         <translation>Määrä</translation>
     </message>
     <message>
-        <source>Enter a HTS address (e.g. %1)</source>
-        <translation>Syötä HTS-osoite (esim. %1)</translation>
+        <source>Enter a BKS address (e.g. %1)</source>
+        <translation>Syötä BKS-osoite (esim. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1169,8 +1169,8 @@
         <translation>&amp;Uudelleenkäytä vastaanotto-osoitetta (ei suositella)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the HTS network.</source>
-        <translation>Valinnainen viesti liitetään maksupyyntöön ja näytetään avattaessa. Viestiä ei lähetetä HTS-verkkoon.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the BKS network.</source>
+        <translation>Valinnainen viesti liitetään maksupyyntöön ja näytetään avattaessa. Viestiä ei lähetetä BKS-verkkoon.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1251,7 +1251,7 @@
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Lähetä HTSeja</translation>
+        <translation>Lähetä BKSeja</translation>
     </message>
     <message>
         <source>Inputs...</source>
@@ -1373,8 +1373,8 @@
         <translation>Tämä on normaali maksu.</translation>
     </message>
     <message>
-        <source>The HTS address to send the payment to</source>
-        <translation>HTS-osoite johon maksu lähetetään</translation>
+        <source>The BKS address to send the payment to</source>
+        <translation>BKS-osoite johon maksu lähetetään</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1405,8 +1405,8 @@
         <translation>Aseta nimi tälle osoitteelle lisätäksesi sen käytettyjen osoitteiden listalle.</translation>
     </message>
     <message>
-        <source>A message that was attached to the HTS: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the HTS network.</source>
-        <translation>Viesti joka liitettiin HTS: URI:iin tallennetaan rahansiirtoon viitteeksi. Tätä viestiä ei lähetetä HTS-verkkoon.</translation>
+        <source>A message that was attached to the BKS: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the BKS network.</source>
+        <translation>Viesti joka liitettiin BKS: URI:iin tallennetaan rahansiirtoon viitteeksi. Tätä viestiä ei lähetetä BKS-verkkoon.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -1446,8 +1446,8 @@
         <translation>&amp;Allekirjoita viesti</translation>
     </message>
     <message>
-        <source>The HTS address to sign the message with</source>
-        <translation>HTS-osoite jolla viesti allekirjoitetaan</translation>
+        <source>The BKS address to sign the message with</source>
+        <translation>BKS-osoite jolla viesti allekirjoitetaan</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1478,8 +1478,8 @@
         <translation>Kopioi tämänhetkinen allekirjoitus leikepöydälle</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
-        <translation>Allekirjoita viesti todistaaksesi, että omistat tämän HTS-osoitteen</translation>
+        <source>Sign the message to prove you own this BKS address</source>
+        <translation>Allekirjoita viesti todistaaksesi, että omistat tämän BKS-osoitteen</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1498,12 +1498,12 @@
         <translation>&amp;Varmista viesti</translation>
     </message>
     <message>
-        <source>The HTS address the message was signed with</source>
-        <translation>HTS-osoite jolla viesti on allekirjoitettu</translation>
+        <source>The BKS address the message was signed with</source>
+        <translation>BKS-osoite jolla viesti on allekirjoitettu</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified HTS address</source>
-        <translation>Tarkista viestin allekirjoitus varmistaaksesi, että se allekirjoitettiin tietyllä HTS-osoitteella</translation>
+        <source>Verify the message to ensure it was signed with the specified BKS address</source>
+        <translation>Tarkista viestin allekirjoitus varmistaaksesi, että se allekirjoitettiin tietyllä BKS-osoitteella</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1578,7 +1578,7 @@
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>Lähetä HTSeja</translation>
+        <translation>Lähetä BKSeja</translation>
     </message>
 </context>
 <context>
@@ -1604,7 +1604,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>Asetukset:</translation>
@@ -1670,8 +1670,8 @@
         <translation>Hyväksy yhteyksiä ulkopuolelta (vakioasetus: 1 jos -proxy tai -connect ei määritelty)</translation>
     </message>
     <message>
-        <source>HTS Core</source>
-        <translation>HTS-ydin</translation>
+        <source>BKS Core</source>
+        <translation>BKS-ydin</translation>
     </message>
     <message>
         <source>The %s developers</source>

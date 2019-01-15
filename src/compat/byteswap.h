@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_COMPAT_BYTESWAP_H
-#define HTS_COMPAT_BYTESWAP_H
+#ifndef BKS_COMPAT_BYTESWAP_H
+#define BKS_COMPAT_BYTESWAP_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include <stdint.h>
@@ -44,4 +44,4 @@ inline uint64_t bswap_64(uint64_t x)
 }
 #endif // HAVE_DECL_BSWAP64
 
-#endif // HTS_COMPAT_BYTESWAP_H
+#endif // BKS_COMPAT_BYTESWAP_H

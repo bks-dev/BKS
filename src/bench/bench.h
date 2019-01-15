@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_BENCH_BENCH_H
-#define HTS_BENCH_BENCH_H
+#ifndef BKS_BENCH_BENCH_H
+#define BKS_BENCH_BENCH_H
 
 #include <map>
 #include <string>
@@ -70,4 +70,4 @@ namespace benchmark {
 #define BENCHMARK(n) \
     benchmark::BenchRunner BOOST_PP_CAT(bench_, BOOST_PP_CAT(__LINE__, n))(BOOST_PP_STRINGIZE(n), n);
 
-#endif // HTS_BENCH_BENCH_H
+#endif // BKS_BENCH_BENCH_H

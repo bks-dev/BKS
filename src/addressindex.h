@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_ADDRESSINDEX_H
-#define HTS_ADDRESSINDEX_H
+#ifndef BKS_ADDRESSINDEX_H
+#define BKS_ADDRESSINDEX_H
 
 #include "uint256.h"
 #include "amount.h"
@@ -292,4 +292,4 @@ struct CMempoolAddressDeltaKeyCompare
     }
 };
 
-#endif // HTS_ADDRESSINDEX_H
+#endif // BKS_ADDRESSINDEX_H

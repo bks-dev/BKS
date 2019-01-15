@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_WALLETFRAME_H
-#define HTS_QT_WALLETFRAME_H
+#ifndef BKS_QT_WALLETFRAME_H
+#define BKS_QT_WALLETFRAME_H
 
 #include <QFrame>
 #include <QMap>
@@ -11,7 +11,7 @@
 #include <QPushButton>
 
 
-class HTSGUI;
+class BKSGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -27,7 +27,7 @@ class WalletFrame : public QFrame
     Q_OBJECT
 
 public:
-    explicit WalletFrame(const PlatformStyle *platformStyle, HTSGUI *_gui = 0);
+    explicit WalletFrame(const PlatformStyle *platformStyle, BKSGUI *_gui = 0);
     ~WalletFrame();
 
     void setClientModel(ClientModel *clientModel);
@@ -46,7 +46,7 @@ public:
 
 private:
     QStackedWidget *walletStack;
-    HTSGUI *gui;
+    BKSGUI *gui;
     ClientModel *clientModel;
     QMap<QString, WalletView*> mapWalletViews;
 
@@ -112,4 +112,4 @@ public Q_SLOTS:
 
 };
 
-#endif // HTS_QT_WALLETFRAME_H
+#endif // BKS_QT_WALLETFRAME_H

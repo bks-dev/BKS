@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_OPTIONSMODEL_H
-#define HTS_QT_OPTIONSMODEL_H
+#ifndef BKS_QT_OPTIONSMODEL_H
+#define BKS_QT_OPTIONSMODEL_H
 
 #include "amount.h"
 
@@ -13,7 +13,7 @@ QT_BEGIN_NAMESPACE
 class QNetworkProxy;
 QT_END_NAMESPACE
 
-/** Interface from Qt to configuration data structure for HTS client.
+/** Interface from Qt to configuration data structure for BKS client.
    To Qt, the options are presented as a list with the different options
    laid out vertically.
    This can be changed to a tree once the settings become sufficiently
@@ -38,7 +38,7 @@ public:
         ProxyUseTor,            // bool
         ProxyIPTor,             // QString
         ProxyPortTor,           // int
-        DisplayUnit,            // HTSUnits::Unit
+        DisplayUnit,            // BKSUnits::Unit
         ThirdPartyTxUrls,       // QString
         Language,               // QString
         CoinControlFeatures,    // bool
@@ -95,4 +95,4 @@ Q_SIGNALS:
     void hideTrayIconChanged(bool);
 };
 
-#endif // HTS_QT_OPTIONSMODEL_H
+#endif // BKS_QT_OPTIONSMODEL_H

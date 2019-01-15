@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_PLATFORMSTYLE_H
-#define HTS_QT_PLATFORMSTYLE_H
+#ifndef BKS_QT_PLATFORMSTYLE_H
+#define BKS_QT_PLATFORMSTYLE_H
 
 #include <QIcon>
 #include <QPixmap>
@@ -51,5 +51,5 @@ private:
     /* ... more to come later */
 };
 
-#endif // HTS_QT_PLATFORMSTYLE_H
+#endif // BKS_QT_PLATFORMSTYLE_H
 

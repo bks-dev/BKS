@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_CLIENTMODEL_H
-#define HTS_QT_CLIENTMODEL_H
+#ifndef BKS_QT_CLIENTMODEL_H
+#define BKS_QT_CLIENTMODEL_H
 
 #include <QObject>
 #include <QDateTime>
@@ -35,7 +35,7 @@ enum NumConnections {
     CONNECTIONS_ALL  = (CONNECTIONS_IN | CONNECTIONS_OUT),
 };
 
-/** Model for HTS network client. */
+/** Model for BKS network client. */
 class ClientModel : public QObject
 {
     Q_OBJECT
@@ -108,4 +108,4 @@ public Q_SLOTS:
     void updateBanlist();
 };
 
-#endif // HTS_QT_CLIENTMODEL_H
+#endif // BKS_QT_CLIENTMODEL_H

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_QVALIDATEDLINEEDIT_H
-#define HTS_QT_QVALIDATEDLINEEDIT_H
+#ifndef BKS_QT_QVALIDATEDLINEEDIT_H
+#define BKS_QT_QVALIDATEDLINEEDIT_H
 
 #include <QLineEdit>
 
@@ -40,4 +40,4 @@ private Q_SLOTS:
     void checkValidity();
 };
 
-#endif // HTS_QT_QVALIDATEDLINEEDIT_H
+#endif // BKS_QT_QVALIDATEDLINEEDIT_H

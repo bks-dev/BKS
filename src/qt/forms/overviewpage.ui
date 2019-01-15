@@ -664,7 +664,7 @@
               <string notr="true">color: #000000</string>
              </property>
              <property name="text">
-              <string>87 312.312 123 HTS</string>
+              <string>87 312.312 123 BKS</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -726,7 +726,7 @@
               <string notr="true">color: #000000</string>
              </property>
              <property name="text">
-              <string>1 312.312 HTS</string>
+              <string>1 312.312 BKS</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -748,7 +748,7 @@
               <string notr="true">color: #000000</string>
              </property>
              <property name="text">
-              <string>132 431.41 HTS</string>
+              <string>132 431.41 BKS</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -850,7 +850,7 @@
               <string notr="true">color: #000000</string>
              </property>
              <property name="text">
-              <string>132 431.41 HTS</string>
+              <string>132 431.41 BKS</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -912,7 +912,7 @@
               <string notr="true">color: #000000</string>
              </property>
              <property name="text">
-              <string>132 431.41 HTS</string>
+              <string>132 431.41 BKS</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1175,7 +1175,7 @@
         <string notr="true">color: #000000</string>
        </property>
        <property name="text">
-        <string>Connecting to HTS network...</string>
+        <string>Connecting to BKS network...</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

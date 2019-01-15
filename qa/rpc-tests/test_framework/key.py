@@ -2,7 +2,7 @@
 #
 # key.py - OpenSSL wrapper
 #
-# This file is modified from python-HTSlib.
+# This file is modified from python-BKSlib.
 #
 
 """ECC secp256k1 crypto routines

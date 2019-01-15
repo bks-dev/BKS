@@ -1,10 +1,10 @@
-# HTS 4.0
+# BKS 4.0
 
 ## RELEASE NOTES
 
 ### Faster synchronization
 
-HTS Core now uses 'headers-first synchronization'. This means that we first ask peers for block headers and validate those. In a second stage, when the headers have been discovered, we download the blocks. However, as we already know about the whole chain in advance, the blocks can be downloaded in parallel from all available peers.
+BKS Core now uses 'headers-first synchronization'. This means that we first ask peers for block headers and validate those. In a second stage, when the headers have been discovered, we download the blocks. However, as we already know about the whole chain in advance, the blocks can be downloaded in parallel from all available peers.
 
 In practice, this means a much faster and more robust synchronization. On recent hardware with a decent network link, it can be as little as 1 hour for an initial full synchronization. You may notice a slower progress in the very first few minutes, when headers are still being fetched and verified, but it should gain speed afterwards.
 
@@ -25,9 +25,9 @@ Bug fixes to the getbalance/listaccounts RPC commands, which would report incorr
 
 New option: -zapwallettxes to rebuild the wallet's transaction information
 
-### HTS-cli
+### BKS-cli
 
-Another change in the 4.0 release is moving away from the HTSd executable functioning both as a server and as a RPC client. The RPC client functionality ("tell the running HTS daemon to do THIS") was split into a separate executable, 'HTS-cli'.
+Another change in the 4.0 release is moving away from the BKSd executable functioning both as a server and as a RPC client. The RPC client functionality ("tell the running BKS daemon to do THIS") was split into a separate executable, 'BKS-cli'.
 
 ### RPC access control changes
 
@@ -62,10 +62,10 @@ The RPC server is started earlier now, before most of the expensive intialisatio
 
 This new behaviour can be useful for clients to know that a server is already started and will be available soon (for instance, so that they do not have to start it themselves).
 
-### HTS-tx
+### BKS-tx
 
-It has been observed that many of the RPC functions offered by HTSd are "pure functions", and operate independently of the HTSd wallet. This included many of the RPC "raw transaction" API functions, such as createrawtransaction.
-HTS-tx is a newly introduced command line utility designed to enable easy manipulation of HTS transactions. A summary of its operation may be obtained via "HTS-tx --help"
+It has been observed that many of the RPC functions offered by BKSd are "pure functions", and operate independently of the BKSd wallet. This included many of the RPC "raw transaction" API functions, such as createrawtransaction.
+BKS-tx is a newly introduced command line utility designed to enable easy manipulation of BKS transactions. A summary of its operation may be obtained via "BKS-tx --help"
 
 Transactions may be created or signed in a manner similar to the RPC raw tx API. Transactions may be updated, deleting inputs or outputs, or appending new inputs and outputs.
 
@@ -125,15 +125,15 @@ When running in pruned mode, the client will now relay new blocks. When respondi
 
 ### Privacy: Automatically use Tor hidden services
 
-Starting with Tor version 0.2.7.1 it is possible, through Tor's control socket API, to create and destroy 'ephemeral' hidden services programmatically. HTS Core has been updated to make use of this.
+Starting with Tor version 0.2.7.1 it is possible, through Tor's control socket API, to create and destroy 'ephemeral' hidden services programmatically. BKS Core has been updated to make use of this.
 
-This means that if Tor is running (and proper authorization is available), HTS Core automatically creates a hidden service to listen on, without manual configuration. HTS Core will also use Tor automatically to connect to other .onion nodes if the control socket can be successfully opened. This will positively affect the number of available .onion nodes and their usage.
+This means that if Tor is running (and proper authorization is available), BKS Core automatically creates a hidden service to listen on, without manual configuration. BKS Core will also use Tor automatically to connect to other .onion nodes if the control socket can be successfully opened. This will positively affect the number of available .onion nodes and their usage.
 
-This new feature is enabled by default if HTS Core is listening, and a connection to Tor can be made. It can be configured with the -listenonion, -torcontrol and -torpassword settings. To show verbose debugging information, pass -debug=tor.
+This new feature is enabled by default if BKS Core is listening, and a connection to Tor can be made. It can be configured with the -listenonion, -torcontrol and -torpassword settings. To show verbose debugging information, pass -debug=tor.
 
 ### Notifications through ZMQ
 
-HTSd can now (optionally) asynchronously notify clients through a ZMQ-based PUB socket of the arrival of new transactions and blocks. This feature requires installation of the ZMQ C API library 4.x and configuring its use through the command line or configuration file. Please see docs/zmq.md for details of operation.
+BKSd can now (optionally) asynchronously notify clients through a ZMQ-based PUB socket of the arrival of new transactions and blocks. This feature requires installation of the ZMQ C API library 4.x and configuring its use through the command line or configuration file. Please see docs/zmq.md for details of operation.
 
 ### Linux ARM builds
 
@@ -141,9 +141,9 @@ Linux ARM builds have been added to the uploaded executables.
 
 The following extra files can be found in the download directory or torrent:
 
-HTS-${VERSION}-arm-linux-gnueabihf.tar.gz: Linux binaries targeting the 32-bit ARMv7-A architecture.
+BKS-${VERSION}-arm-linux-gnueabihf.tar.gz: Linux binaries targeting the 32-bit ARMv7-A architecture.
 
-HTS-${VERSION}-aarch64-linux-gnu.tar.gz: Linux binaries targeting the 64-bit ARMv8-A architecture.
+BKS-${VERSION}-aarch64-linux-gnu.tar.gz: Linux binaries targeting the 64-bit ARMv8-A architecture.
 
 ARM builds are still experimental. Note that the device you use must be (backward) compatible with the architecture targeted by the binary that you use. For example, a Raspberry Pi 2 Model B or Raspberry Pi 3 Model B (in its 32-bit execution state) device, can run the 32-bit ARMv7-A targeted binary. However, no model of Raspberry Pi 1 device can run either binary because they are all ARMv6 architecture devices that are not compatible with ARMv7-A or ARMv8-A.
 
@@ -167,7 +167,7 @@ Wallet dumps (created using the dumpwallet RPC) will contain the deterministic s
 
 HD key generation for new wallets can be disabled by -usehd=0. Keep in mind that this flag only has affect on newly created wallets. You can't disable HD key generation once you have created a HD wallet.
 
-There is no distinction between internal (change) and external keys. HD wallets are incompatible with older versions of HTS Core. Segregated Witness
+There is no distinction between internal (change) and external keys. HD wallets are incompatible with older versions of BKS Core. Segregated Witness
 
 The code preparations for Segregated Witness ("segwit"), as described in BIP 141, BIP 143, BIP 144, and BIP 145 are finished and included in this release. However, BIP 141 does not yet specify activation parameters on mainnet, and so this release does not support segwit use on mainnet.
 
@@ -177,17 +177,17 @@ Furthermore, because segwit activation is not yet specified for mainnet, version
 
 Block size has been reduced to 2MB to prevent flood attacks. A possible reduction in transaction processing capabilities will be compensated with a future activation of Segregated Witness.
 
-### New HTSTech RPC Commands
+### New BKSTech RPC Commands
 
-A command to generate a private payment has been added. HTS Core will take care of the negotiation with the HTSTech nodes and will create and broadcast the transaction. The syntax is:
+A command to generate a private payment has been added. BKS Core will take care of the negotiation with the BKSTech nodes and will create and broadcast the transaction. The syntax is:
 
 `anonsend address amount`
 
 Another command, getanondestination, has been added to obtain the encrypted anon destination of a given address.
 
-### Management of HTSTech servers
+### Management of BKSTech servers
 
-HTSTech servers added/removed with the RPC command addanonserver are now stored on the config file when specified by an extra parameter.
+BKSTech servers added/removed with the RPC command addanonserver are now stored on the config file when specified by an extra parameter.
 
 Additionally a new command listanonservers has been included to list the already added servers.
 

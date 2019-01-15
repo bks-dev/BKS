@@ -1,9 +1,9 @@
-// Copyright (c) 2018 The HTS Core developers
+// Copyright (c) 2018 The BKS Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_POS_H
-#define HTS_POS_H
+#ifndef BKS_POS_H
+#define BKS_POS_H
 
 #define COMMUNITY_FUND_AMOUNT 25000000
 
@@ -17,4 +17,4 @@ double GetPoSKernelPS();
 
 extern uint64_t nLastCoinStakeSearchInterval;
 
-#endif // HTS_POS_H
+#endif // BKS_POS_H

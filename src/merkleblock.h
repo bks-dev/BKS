@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_MERKLEBLOCK_H
-#define HTS_MERKLEBLOCK_H
+#ifndef BKS_MERKLEBLOCK_H
+#define BKS_MERKLEBLOCK_H
 
 #include "serialize.h"
 #include "uint256.h"
@@ -154,4 +154,4 @@ public:
     }
 };
 
-#endif // HTS_MERKLEBLOCK_H
+#endif // BKS_MERKLEBLOCK_H

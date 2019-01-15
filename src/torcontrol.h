@@ -5,8 +5,8 @@
 /**
  * Functionality for communicating with Tor.
  */
-#ifndef HTS_TORCONTROL_H
-#define HTS_TORCONTROL_H
+#ifndef BKS_TORCONTROL_H
+#define BKS_TORCONTROL_H
 
 #include "scheduler.h"
 
@@ -17,4 +17,4 @@ void StartTorControl(boost::thread_group& threadGroup, CScheduler& scheduler);
 void InterruptTorControl();
 void StopTorControl();
 
-#endif /* HTS_TORCONTROL_H */
+#endif /* BKS_TORCONTROL_H */

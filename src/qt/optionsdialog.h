@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_OPTIONSDIALOG_H
-#define HTS_QT_OPTIONSDIALOG_H
+#ifndef BKS_QT_OPTIONSDIALOG_H
+#define BKS_QT_OPTIONSDIALOG_H
 
 #include <QDialog>
 #include <QValidator>
@@ -49,7 +49,7 @@ private Q_SLOTS:
     void on_resetButton_clicked();
     void on_okButton_clicked();
     void on_cancelButton_clicked();
-    void on_openHTSConfButton_clicked();
+    void on_openBKSConfButton_clicked();
 
     void on_hideTrayIcon_stateChanged(int fState);
 
@@ -69,4 +69,4 @@ private:
     QDataWidgetMapper *mapper;
 };
 
-#endif // HTS_QT_OPTIONSDIALOG_H
+#endif // BKS_QT_OPTIONSDIALOG_H

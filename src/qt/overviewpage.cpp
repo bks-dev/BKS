@@ -6,7 +6,7 @@
 #include "ui_overviewpage.h"
 #include "skinize.h"
 
-#include "HTSunits.h"
+#include "BKSunits.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
@@ -31,7 +31,7 @@ class TxViewDelegate : public QAbstractItemDelegate
     Q_OBJECT
 public:
     TxViewDelegate(const PlatformStyle *platformStyle):
-        QAbstractItemDelegate(), unit(HTSUnits::HTS),
+        QAbstractItemDelegate(), unit(BKSUnits::BKS),
         platformStyle(platformStyle)
     {
 
@@ -85,7 +85,7 @@ public:
             foreground = COLOR_POSITIVE;
         }
         painter->setPen(foreground);
-        QString amountText = HTSUnits::formatWithUnit(unit, amount, true, HTSUnits::separatorAlways);
+        QString amountText = BKSUnits::formatWithUnit(unit, amount, true, BKSUnits::separatorAlways);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -183,11 +183,11 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     currentWatchOnlyBalance = watchOnlyBalance;
     currentWatchUnconfBalance = watchUnconfBalance;
     currentWatchImmatureBalance = watchImmatureBalance;
-    ui->labelBalance->setText(HTSUnits::formatWithUnit(unit, balance, false, HTSUnits::separatorAlways));
-    ui->labelUnconfirmed->setText(HTSUnits::formatWithUnit(unit, unconfirmedBalance, false, HTSUnits::separatorAlways));
-    ui->labelStaking->setText(HTSUnits::formatWithUnit(unit, stakingBalance, false, HTSUnits::separatorAlways));
-    ui->labelImmature->setText(HTSUnits::formatWithUnit(unit, immatureBalance, false, HTSUnits::separatorAlways));
-    ui->labelTotal->setText(HTSUnits::formatWithUnit(unit, balance + unconfirmedBalance + stakingBalance, false, HTSUnits::separatorAlways));
+    ui->labelBalance->setText(BKSUnits::formatWithUnit(unit, balance, false, BKSUnits::separatorAlways));
+    ui->labelUnconfirmed->setText(BKSUnits::formatWithUnit(unit, unconfirmedBalance, false, BKSUnits::separatorAlways));
+    ui->labelStaking->setText(BKSUnits::formatWithUnit(unit, stakingBalance, false, BKSUnits::separatorAlways));
+    ui->labelImmature->setText(BKSUnits::formatWithUnit(unit, immatureBalance, false, BKSUnits::separatorAlways));
+    ui->labelTotal->setText(BKSUnits::formatWithUnit(unit, balance + unconfirmedBalance + stakingBalance, false, BKSUnits::separatorAlways));
 
     bool showStaking = stakingBalance != 0;
 
@@ -285,7 +285,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("HTS")
+    // update the display unit, to not use the default ("BKS")
     updateDisplayUnit();
 }
 
@@ -377,11 +377,11 @@ void OverviewPage::updateStakeReport(bool fImmediate=false)
 
     int unit = walletModel->getOptionsModel()->getDisplayUnit();
 
-    ui->label24hStakingStats->setText(HTSUnits::formatWithUnit(unit, aRange[i++].Total, false, HTSUnits::separatorAlways));
-    ui->label7dStakingStats->setText(HTSUnits::formatWithUnit(unit, aRange[i++].Total, false, HTSUnits::separatorAlways));
-    ui->label30dStakingStats->setText(HTSUnits::formatWithUnit(unit, aRange[i++].Total, false, HTSUnits::separatorAlways));
-    ui->label1yStakingStats->setText(HTSUnits::formatWithUnit(unit, aRange[i++].Total, false, HTSUnits::separatorAlways));
-    ui->labelallStakingStats->setText(HTSUnits::formatWithUnit(unit, aRange[i++].Total, false, HTSUnits::separatorAlways));
+    ui->label24hStakingStats->setText(BKSUnits::formatWithUnit(unit, aRange[i++].Total, false, BKSUnits::separatorAlways));
+    ui->label7dStakingStats->setText(BKSUnits::formatWithUnit(unit, aRange[i++].Total, false, BKSUnits::separatorAlways));
+    ui->label30dStakingStats->setText(BKSUnits::formatWithUnit(unit, aRange[i++].Total, false, BKSUnits::separatorAlways));
+    ui->label1yStakingStats->setText(BKSUnits::formatWithUnit(unit, aRange[i++].Total, false, BKSUnits::separatorAlways));
+    ui->labelallStakingStats->setText(BKSUnits::formatWithUnit(unit, aRange[i++].Total, false, BKSUnits::separatorAlways));
 }
 
 

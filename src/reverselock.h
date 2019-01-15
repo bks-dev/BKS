@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_REVERSELOCK_H
-#define HTS_REVERSELOCK_H
+#ifndef BKS_REVERSELOCK_H
+#define BKS_REVERSELOCK_H
 
 /**
  * An RAII-style reverse lock. Unlocks on construction and locks on destruction.
@@ -31,4 +31,4 @@ private:
     Lock templock;
 };
 
-#endif // HTS_REVERSELOCK_H
+#endif // BKS_REVERSELOCK_H

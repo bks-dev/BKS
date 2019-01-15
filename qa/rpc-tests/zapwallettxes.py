@@ -3,11 +3,11 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
 
-class ZapWalletTXesTest (HTSTestFramework):
+class ZapWalletTXesTest (BKSTestFramework):
 
     def __init__(self):
         super().__init__()
@@ -52,18 +52,18 @@ class ZapWalletTXesTest (HTSTestFramework):
         tx3 = self.nodes[0].gettransaction(txid3)
         assert_equal(tx3['txid'], txid3) #tx3 must be available (unconfirmed)
         
-        #restart HTSd
+        #restart BKSd
         self.nodes[0].stop()
-        HTSd_processes[0].wait()
+        BKSd_processes[0].wait()
         self.nodes[0] = start_node(0,self.options.tmpdir)
         
         tx3 = self.nodes[0].gettransaction(txid3)
         assert_equal(tx3['txid'], txid3) #tx must be available (unconfirmed)
         
         self.nodes[0].stop()
-        HTSd_processes[0].wait()
+        BKSd_processes[0].wait()
         
-        #restart HTSd with zapwallettxes
+        #restart BKSd with zapwallettxes
         self.nodes[0] = start_node(0,self.options.tmpdir, ["-zapwallettxes=1"])
         
         assert_raises(JSONRPCException, self.nodes[0].gettransaction, [txid3])

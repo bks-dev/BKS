@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_DBWRAPPER_H
-#define HTS_DBWRAPPER_H
+#ifndef BKS_DBWRAPPER_H
+#define BKS_DBWRAPPER_H
 
 #include "clientversion.h"
 #include "serialize.h"
@@ -284,5 +284,5 @@ public:
     bool IsEmpty();
 };
 
-#endif // HTS_DBWRAPPER_H
+#endif // BKS_DBWRAPPER_H
 

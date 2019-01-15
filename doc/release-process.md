@@ -1,15 +1,15 @@
 Release Process
 ====================
 
-Before any code can be accepted into HTS Core a Release Candidate branch and PR must be presented to the community for a minimum stand-down period - as detailed below.
+Before any code can be accepted into BKS Core a Release Candidate branch and PR must be presented to the community for a minimum stand-down period - as detailed below.
 
 ### Release Candidates
 
-Release candidates are critical to the HTS release eco-system and give the community and interested parties time to review the code and potentially prepare for any changes that may be introduced.  
+Release candidates are critical to the BKS release eco-system and give the community and interested parties time to review the code and potentially prepare for any changes that may be introduced.  
 
 #### Release Candidates and Release Version Convention
 
-HTS follows the Semantic Versioning.
+BKS follows the Semantic Versioning.
 
 e.g `v(MAJOR).(MINOR).(PATCH)` = `v4.2.1`
 
@@ -40,7 +40,7 @@ Please note any type of network security or stability issues will be prioritized
 
 Before every release candidate:
 
-* Update translations see [translation_process.md](https://github.com/HTS/HTS-core/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations see [translation_process.md](https://github.com/BKS/BKS-core/blob/master/doc/translation_process.md#synchronising-translations).
 
 Before every minor and major release:
 
@@ -58,9 +58,9 @@ Before every major release:
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/HTS/HTS-core.git
+    git clone https://github.com/BKS/BKS-core.git
 
-### HTS maintainers/release engineers, update version in sources
+### BKS maintainers/release engineers, update version in sources
 
 Update the following:
 
@@ -97,7 +97,7 @@ Tag version (or release candidate) in git
 
 Setup Gitian descriptors:
 
-    pushd ./HTS-core
+    pushd ./BKS-core
     export VERSION=(new version, e.g. v4.1.0)
     git fetch
     git checkout v${VERSION}
@@ -124,7 +124,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../HTS-core/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../BKS-core/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -132,58 +132,58 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url HTS-core=/path/to/HTS,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url BKS-core=/path/to/BKS,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign HTS Core for Linux, Windows, and OS X:
+### Build and sign BKS Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit HTS-core=${VERSION} ../HTS-core/contrib/gitian-descriptors/gitian-arm.yml
-    mv build/out/HTS-*.tar.gz build/out/src/HTS-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit BKS-core=${VERSION} ../BKS-core/contrib/gitian-descriptors/gitian-arm.yml
+    mv build/out/BKS-*.tar.gz build/out/src/BKS-*.tar.gz ../
     
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit HTS-core=${VERSION} ../HTS-core/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/HTS-*.tar.gz build/out/src/HTS-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit BKS-core=${VERSION} ../BKS-core/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/BKS-*.tar.gz build/out/src/BKS-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit HTS-core=${VERSION} ../HTS-core/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/HTS-*-win-unsigned.tar.gz inputs/HTS-win-unsigned.tar.gz
-    mv build/out/HTS-*.zip build/out/HTS-*.exe ../
+    ./bin/gbuild --memory 3000 --commit BKS-core=${VERSION} ../BKS-core/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/BKS-*-win-unsigned.tar.gz inputs/BKS-win-unsigned.tar.gz
+    mv build/out/BKS-*.zip build/out/BKS-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit HTS-core=${VERSION} ../HTS-core/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/HTS-*-osx-unsigned.tar.gz inputs/HTS-osx-unsigned.tar.gz
-    mv build/out/HTS-*.tar.gz build/out/HTS-*.dmg ../
+    ./bin/gbuild --memory 3000 --commit BKS-core=${VERSION} ../BKS-core/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/BKS-*-osx-unsigned.tar.gz inputs/BKS-osx-unsigned.tar.gz
+    mv build/out/BKS-*.tar.gz build/out/BKS-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`HTS-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`HTS-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`HTS-${VERSION}-win[32|64]-setup-unsigned.exe`, `HTS-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`HTS-${VERSION}-osx-unsigned.dmg`, `HTS-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`BKS-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`BKS-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`BKS-${VERSION}-win[32|64]-setup-unsigned.exe`, `BKS-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`BKS-${VERSION}-osx-unsigned.dmg`, `BKS-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 
 The list of files should be:
 ```
-HTS-${VERSION}-aarch64-linux-gnu.tar.gz
-HTS-${VERSION}-arm-linux-gnueabihf.tar.gz
-HTS-${VERSION}-i686-pc-linux-gnu.tar.gz
-HTS-${VERSION}-x86_64-linux-gnu.tar.gz
-HTS-${VERSION}-osx64.tar.gz
-HTS-${VERSION}-osx.dmg
-HTS-${VERSION}.tar.gz
-HTS-${VERSION}-win32-setup.exe
-HTS-${VERSION}-win32.zip
-HTS-${VERSION}-win64-setup.exe
-HTS-${VERSION}-win64.zip
+BKS-${VERSION}-aarch64-linux-gnu.tar.gz
+BKS-${VERSION}-arm-linux-gnueabihf.tar.gz
+BKS-${VERSION}-i686-pc-linux-gnu.tar.gz
+BKS-${VERSION}-x86_64-linux-gnu.tar.gz
+BKS-${VERSION}-osx64.tar.gz
+BKS-${VERSION}-osx.dmg
+BKS-${VERSION}.tar.gz
+BKS-${VERSION}-win32-setup.exe
+BKS-${VERSION}-win32.zip
+BKS-${VERSION}-win64-setup.exe
+BKS-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the HTS.org server, nor put them in the torrent*.
+space *do not upload these to the BKS.org server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -193,19 +193,19 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the HTS.org server
-  into `/var/www/bin/HTS-core-${VERSION}`
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the BKS.org server
+  into `/var/www/bin/BKS-core-${VERSION}`
 
 - A `.torrent` will appear in the directory after a few minutes. Optionally help seed this torrent. To get the `magnet:` URI use:
 ```bash
 transmission-show -m <torrent file>
 ```
 Insert the magnet URI into the announcement sent to mailing lists. This permits
-people without access to `HTS.org` to download the binary distribution.
+people without access to `BKS.org` to download the binary distribution.
 Also put it into the `optional_magnetlink:` slot in the YAML file for
-HTS.org (see below for HTS.org update instructions).
+BKS.org (see below for BKS.org update instructions).
 
-- Update HTS.org version
+- Update BKS.org version
 
 - Announce the release:
 

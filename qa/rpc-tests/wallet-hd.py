@@ -3,7 +3,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import (
     start_nodes,
     start_node,
@@ -14,7 +14,7 @@ import os
 import shutil
 
 
-class WalletHDTest(HTSTestFramework):
+class WalletHDTest(BKSTestFramework):
 
     def __init__(self):
         super().__init__()

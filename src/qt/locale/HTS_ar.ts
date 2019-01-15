@@ -255,7 +255,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>التوقيع و الرسائل</translation>
@@ -337,7 +337,7 @@
         <translation>إعادة الفهرسة الكتل على القرص ...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
+        <source>Send coins to a BKS address</source>
         <translation>ارسل عملات الى عنوان بيتكوين</translation>
     </message>
     <message>
@@ -361,7 +361,7 @@
         <translation>&amp;التحقق من الرسالة...</translation>
     </message>
     <message>
-        <source>HTS</source>
+        <source>BKS</source>
         <translation>بت كوين</translation>
     </message>
     <message>
@@ -389,12 +389,12 @@
         <translation>تشفير المفتاح الخاص بمحفظتك</translation>
     </message>
     <message>
-        <source>Sign messages with your HTS addresses to prove you own them</source>
-        <translation>وقَع الرسائل بواسطة ال: HTS الخاص بك لإثبات امتلاكك لهم</translation>
+        <source>Sign messages with your BKS addresses to prove you own them</source>
+        <translation>وقَع الرسائل بواسطة ال: BKS الخاص بك لإثبات امتلاكك لهم</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified HTS addresses</source>
-        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل HTS محدَدة</translation>
+        <source>Verify messages to ensure they were signed with specified BKS addresses</source>
+        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل BKS محدَدة</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -409,7 +409,7 @@
         <translation>&amp;مساعدة</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and HTS: URIs)</source>
+        <source>Request payments (generates QR codes and BKS: URIs)</source>
         <translation>أطلب دفعات (يولد كودات الرمز المربع وبيت كوين: العناوين المعطاة)</translation>
     </message>
     <message>
@@ -421,8 +421,8 @@
         <translation>عرض قائمة عناوين الإستقبال المستخدمة والملصقات</translation>
     </message>
     <message>
-        <source>Open a HTS: URI or payment request</source>
-        <translation>فتح URI : HTS أو طلب دفع</translation>
+        <source>Open a BKS: URI or payment request</source>
+        <translation>فتح URI : BKS أو طلب دفع</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -981,7 +981,7 @@
         <translation>هذا دفع اعتيادي</translation>
     </message>
     <message>
-        <source>The HTS address to send the payment to</source>
+        <source>The BKS address to send the payment to</source>
         <translation>عنوان البت كوين المرسل اليه الدفع</translation>
     </message>
     <message>
@@ -1046,7 +1046,7 @@
         <translation>التوقيع</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this HTS address</source>
+        <source>Sign the message to prove you own this BKS address</source>
         <translation>وقع الرسالة لتثبت انك تمتلك عنوان البت كوين هذا</translation>
     </message>
     <message>
@@ -1148,7 +1148,7 @@
     </message>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     <message>
         <source>Options:</source>
         <translation>خيارات: </translation>
@@ -1162,7 +1162,7 @@
         <translation>قبول الاتصالات من خارج</translation>
     </message>
     <message>
-        <source>HTS Core</source>
+        <source>BKS Core</source>
         <translation>جوهر البيت كوين</translation>
     </message>
     <message>

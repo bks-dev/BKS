@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>HTS.icns</string>
+  <string>BKS.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>HTS-Qt</string>
+  <string>BKS-Qt</string>
   
   <key>CFBundleName</key>
-  <string>HTS-Qt</string>
+  <string>BKS-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.HTSfoundation.HTS-Qt</string>
+  <string>org.BKSfoundation.BKS-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.HTS.HTSPayment</string>
+      <string>org.BKS.BKSPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>HTS</string>
+        <string>BKS</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.HTS.paymentrequest</string>
+      <string>org.BKS.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>HTS payment request</string>
+      <string>BKS payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-HTS-payment-request</string>
+        <string>application/x-BKS-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>HTSpaymentrequest</string>
+          <string>BKSpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.HTS.paymentrequest</string>
+        <string>org.BKS.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

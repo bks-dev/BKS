@@ -103,7 +103,7 @@
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje...</translation>
@@ -181,8 +181,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a HTS address</source>
-        <translation>Envia monedas a una dirección HTS</translation>
+        <source>Send coins to a BKS address</source>
+        <translation>Envia monedas a una dirección BKS</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -286,7 +286,7 @@
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     </context>
 <context>
     <name>navtechitem</name>

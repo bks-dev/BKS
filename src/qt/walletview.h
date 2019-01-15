@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_WALLETVIEW_H
-#define HTS_QT_WALLETVIEW_H
+#ifndef BKS_QT_WALLETVIEW_H
+#define BKS_QT_WALLETVIEW_H
 
 #include "amount.h"
 
 #include <QStackedWidget>
 #include <QPushButton>
 
-class HTSGUI;
+class BKSGUI;
 class ClientModel;
 class OverviewPage;
 class PlatformStyle;
@@ -41,13 +41,13 @@ public:
     explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);
     ~WalletView();
 
-    void setHTSGUI(HTSGUI *gui);
+    void setBKSGUI(BKSGUI *gui);
     /** Set the client model.
         The client model represents the part of the core that communicates with the P2P network, and is wallet-agnostic.
     */
     void setClientModel(ClientModel *clientModel);
     /** Set the wallet model.
-        The wallet model represents a HTS wallet, and offers access to the list of transactions, address book and sending
+        The wallet model represents a BKS wallet, and offers access to the list of transactions, address book and sending
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
@@ -148,7 +148,7 @@ Q_SIGNALS:
 
     void openAddressHistory();
 
-    friend HTSGUI;
+    friend BKSGUI;
 };
 
-#endif // HTS_QT_WALLETVIEW_H
+#endif // BKS_QT_WALLETVIEW_H

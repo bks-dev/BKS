@@ -80,7 +80,7 @@ Alihkan fail data ke dalam tab semasa</translation>
     <name>IntroPage</name>
     </context>
 <context>
-    <name>HTSGUI</name>
+    <name>BKSGUI</name>
     <message>
         <source>&amp;Options...</source>
         <translation>Pilihan</translation>
@@ -188,7 +188,7 @@ Alihkan fail data ke dalam tab semasa</translation>
     <name>getAddressToReceive</name>
     </context>
 <context>
-    <name>HTS-core</name>
+    <name>BKS-core</name>
     </context>
 <context>
     <name>navtechitem</name>

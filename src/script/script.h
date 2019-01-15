@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_SCRIPT_SCRIPT_H
-#define HTS_SCRIPT_SCRIPT_H
+#ifndef BKS_SCRIPT_SCRIPT_H
+#define BKS_SCRIPT_SCRIPT_H
 
 #include "crypto/common.h"
 #include "prevector.h"
@@ -656,7 +656,7 @@ public:
     }
 
     /**
-     * Pre-version-0.6, HTS always counted CHECKMULTISIGs
+     * Pre-version-0.6, BKS always counted CHECKMULTISIGs
      * as 20 sigops. With pay-to-script-hash, that changed:
      * CHECKMULTISIGs serialized in scriptSigs are
      * counted more accurately, assuming they are of the form
@@ -730,4 +730,4 @@ public:
 
 
 
-#endif // HTS_SCRIPT_SCRIPT_H
+#endif // BKS_SCRIPT_SCRIPT_H

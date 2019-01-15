@@ -85,7 +85,7 @@ public:
             LOCK(wallet->cs_wallet);
             BOOST_FOREACH(const PAIRTYPE(CTxDestination, CAddressBookData)& item, wallet->mapAddressBook)
             {
-                const CHTSAddress& address = item.first;
+                const CBKSAddress& address = item.first;
                 bool fMine = IsMine(*wallet, address.Get());
                 AddressTableEntry::Type addressType = translateTransactionType(
                         QString::fromStdString(item.second.purpose), fMine);
@@ -196,10 +196,10 @@ bool AddressTableModel::getPrivateKey(std::string publicKey, std::string &privat
       return false;
     }
 
-    CHTSAddress address;
+    CBKSAddress address;
     if (!address.SetString(publicKey))
     {
-        qWarning() << "Invalid HTS address";
+        qWarning() << "Invalid BKS address";
         return false;
     }
     CKeyID keyID;
@@ -214,7 +214,7 @@ bool AddressTableModel::getPrivateKey(std::string publicKey, std::string &privat
         qWarning() << "Private key for address is not known";
         return false;
     }
-    privateKey = CHTSSecret(vchSecret).ToString();
+    privateKey = CBKSSecret(vchSecret).ToString();
     return true;
 }
 
@@ -282,7 +282,7 @@ bool AddressTableModel::setData(const QModelIndex &index, const QVariant &value,
     if(role == Qt::EditRole)
     {
         LOCK(wallet->cs_wallet); /* For SetAddressBook / DelAddressBook */
-        CTxDestination curAddress = CHTSAddress(rec->address.toStdString()).Get();
+        CTxDestination curAddress = CBKSAddress(rec->address.toStdString()).Get();
         if(index.column() == Label)
         {
             // Do nothing, if old label == new label
@@ -293,7 +293,7 @@ bool AddressTableModel::setData(const QModelIndex &index, const QVariant &value,
             }
             wallet->SetAddressBook(curAddress, value.toString().toStdString(), strPurpose);
         } else if(index.column() == Address) {
-            CTxDestination newAddress = CHTSAddress(value.toString().toStdString()).Get();
+            CTxDestination newAddress = CBKSAddress(value.toString().toStdString()).Get();
             // Refuse to set invalid address, set error status and return false
             if(boost::get<CNoDestination>(&newAddress))
             {
@@ -373,7 +373,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex &par
 void AddressTableModel::updateEntry(const QString &address,
         const QString &label, bool isMine, const QString &purpose, int status)
 {
-    // Update address book model from HTS core
+    // Update address book model from BKS core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 
@@ -394,7 +394,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
         // Check for duplicate addresses
         {
             LOCK(wallet->cs_wallet);
-            if(wallet->mapAddressBook.count(CHTSAddress(strAddress).Get()))
+            if(wallet->mapAddressBook.count(CBKSAddress(strAddress).Get()))
             {
                 editStatus = DUPLICATE_ADDRESS;
                 return QString();
@@ -420,7 +420,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
                 return QString();
             }
         }
-        strAddress = CHTSAddress(newKey.GetID()).ToString();
+        strAddress = CBKSAddress(newKey.GetID()).ToString();
     }
     else
     {
@@ -430,7 +430,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
     // Add entry
     {
         LOCK(wallet->cs_wallet);
-        wallet->SetAddressBook(CHTSAddress(strAddress).Get(), strLabel,
+        wallet->SetAddressBook(CBKSAddress(strAddress).Get(), strLabel,
                                (type == Send ? "send" : "receive"));
     }
     return QString::fromStdString(strAddress);
@@ -448,7 +448,7 @@ bool AddressTableModel::removeRows(int row, int count, const QModelIndex &parent
     }
     {
         LOCK(wallet->cs_wallet);
-        wallet->DelAddressBook(CHTSAddress(rec->address.toStdString()).Get());
+        wallet->DelAddressBook(CBKSAddress(rec->address.toStdString()).Get());
     }
     return true;
 }
@@ -459,7 +459,7 @@ QString AddressTableModel::labelForAddress(const QString &address) const
 {
     {
         LOCK(wallet->cs_wallet);
-        CHTSAddress address_parsed(address.toStdString());
+        CBKSAddress address_parsed(address.toStdString());
         std::map<CTxDestination, CAddressBookData>::iterator mi = wallet->mapAddressBook.find(address_parsed.Get());
         if (mi != wallet->mapAddressBook.end())
         {

@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_ZMQ_ZMQCONFIG_H
-#define HTS_ZMQ_ZMQCONFIG_H
+#ifndef BKS_ZMQ_ZMQCONFIG_H
+#define BKS_ZMQ_ZMQCONFIG_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include <stdarg.h>
@@ -21,4 +21,4 @@
 
 void zmqError(const char *str);
 
-#endif // HTS_ZMQ_ZMQCONFIG_H
+#endif // BKS_ZMQ_ZMQCONFIG_H

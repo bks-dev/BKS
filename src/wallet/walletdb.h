@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_WALLET_WALLETDB_H
-#define HTS_WALLET_WALLETDB_H
+#ifndef BKS_WALLET_WALLETDB_H
+#define BKS_WALLET_WALLETDB_H
 
 #include "amount.h"
 #include "primitives/transaction.h"
@@ -187,4 +187,4 @@ private:
 
 void ThreadFlushWalletDB(const std::string& strFile);
 
-#endif // HTS_WALLET_WALLETDB_H
+#endif // BKS_WALLET_WALLETDB_H

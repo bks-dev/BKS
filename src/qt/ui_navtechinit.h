@@ -109,8 +109,8 @@ public:
     void retranslateUi(QDialog *NavTechInit)
     {
         NavTechInit->setWindowTitle(QApplication::translate("NavTechInit", "NavTech Setup", Q_NULLPTR));
-        label->setText(QApplication::translate("NavTechInit", "HTS uses an unique parallel cluster of nodes called NavTech to protect the privacy of your transactions.", Q_NULLPTR));
-        label_2->setText(QApplication::translate("NavTechInit", "You will find below the list of the HTS Foundation Servers. Feel free to modify this list to include your prefered servers:", Q_NULLPTR));
+        label->setText(QApplication::translate("NavTechInit", "BKS uses an unique parallel cluster of nodes called NavTech to protect the privacy of your transactions.", Q_NULLPTR));
+        label_2->setText(QApplication::translate("NavTechInit", "You will find below the list of the BKS Foundation Servers. Feel free to modify this list to include your prefered servers:", Q_NULLPTR));
         plainTextEdit->setPlainText(QApplication::translate("NavTechInit", "95.183.52.55:3000\n"
 "95.183.52.28:3000\n"
 "95.183.52.29:3000\n"

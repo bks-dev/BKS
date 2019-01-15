@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_NOUI_H
-#define HTS_NOUI_H
+#ifndef BKS_NOUI_H
+#define BKS_NOUI_H
 
 extern void noui_connect();
 
-#endif // HTS_NOUI_H
+#endif // BKS_NOUI_H

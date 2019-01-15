@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven HTS tests.
+Utilities to generate test vectors for the data-driven BKS tests.
 
 Usage: 
 

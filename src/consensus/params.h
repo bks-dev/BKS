@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_CONSENSUS_PARAMS_H
-#define HTS_CONSENSUS_PARAMS_H
+#ifndef BKS_CONSENSUS_PARAMS_H
+#define BKS_CONSENSUS_PARAMS_H
 
 #include "amount.h"
 #include "uint256.h"
@@ -104,4 +104,4 @@ struct Params {
 };
 } // namespace Consensus
 
-#endif // HTS_CONSENSUS_PARAMS_H
+#endif // BKS_CONSENSUS_PARAMS_H

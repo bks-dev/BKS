@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_STREAMS_H
-#define HTS_STREAMS_H
+#ifndef BKS_STREAMS_H
+#define BKS_STREAMS_H
 
 #include "support/allocators/zeroafterfree.h"
 #include "serialize.h"
@@ -641,4 +641,4 @@ public:
     }
 };
 
-#endif // HTS_STREAMS_H
+#endif // BKS_STREAMS_H

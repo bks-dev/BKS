@@ -9,11 +9,11 @@
 
 import time
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
 
-class TimestampIndexTest(HTSTestFramework):
+class TimestampIndexTest(BKSTestFramework):
 
     def setup_chain(self):
         print("Initializing test directory "+self.options.tmpdir)

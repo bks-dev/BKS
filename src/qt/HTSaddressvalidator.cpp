@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "HTSaddressvalidator.h"
+#include "BKSaddressvalidator.h"
 
 #include "base58.h"
 #include "utils/dns_utils.h"
@@ -17,12 +17,12 @@
   - All lower-case letters except for 'l'
 */
 
-HTSAddressEntryValidator::HTSAddressEntryValidator(QObject *parent) :
+BKSAddressEntryValidator::BKSAddressEntryValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State HTSAddressEntryValidator::validate(QString &input, int &pos) const
+QValidator::State BKSAddressEntryValidator::validate(QString &input, int &pos) const
 {
     Q_UNUSED(pos);
 
@@ -82,17 +82,17 @@ QValidator::State HTSAddressEntryValidator::validate(QString &input, int &pos) c
     return state;
 }
 
-HTSAddressCheckValidator::HTSAddressCheckValidator(QObject *parent) :
+BKSAddressCheckValidator::BKSAddressCheckValidator(QObject *parent) :
     QValidator(parent)
 {
 }
 
-QValidator::State HTSAddressCheckValidator::validate(QString &input, int &pos) const
+QValidator::State BKSAddressCheckValidator::validate(QString &input, int &pos) const
 {
   Q_UNUSED(pos);
   utils::DNSResolver* DNS = nullptr;
 
-  // Validate the passed HTS address
+  // Validate the passed BKS address
   if(DNS->check_address_syntax(input.toStdString().c_str()))
   {
 
@@ -108,7 +108,7 @@ QValidator::State HTSAddressCheckValidator::validate(QString &input, int &pos) c
   else
   {
 
-    CHTSAddress addr(input.toStdString());
+    CBKSAddress addr(input.toStdString());
     if (addr.IsValid())
       return QValidator::Acceptable;
 

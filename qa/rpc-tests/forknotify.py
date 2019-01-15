@@ -7,10 +7,10 @@
 # Test -alertnotify 
 #
 
-from test_framework.test_framework import HTSTestFramework
+from test_framework.test_framework import BKSTestFramework
 from test_framework.util import *
 
-class ForkNotifyTest(HTSTestFramework):
+class ForkNotifyTest(BKSTestFramework):
 
     def __init__(self):
         super().__init__()

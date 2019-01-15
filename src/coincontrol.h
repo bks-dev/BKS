@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_COINCONTROL_H
-#define HTS_COINCONTROL_H
+#ifndef BKS_COINCONTROL_H
+#define BKS_COINCONTROL_H
 
 #include "primitives/transaction.h"
 
@@ -73,4 +73,4 @@ private:
     std::set<COutPoint> setSelected;
 };
 
-#endif // HTS_COINCONTROL_H
+#endif // BKS_COINCONTROL_H

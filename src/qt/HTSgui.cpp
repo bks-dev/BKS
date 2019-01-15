@@ -3,12 +3,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/HTS-config.h"
+#include "config/BKS-config.h"
 #endif
 
 #include "main.h"
-#include "HTSgui.h"
-#include "HTSunits.h"
+#include "BKSgui.h"
+#include "BKSunits.h"
 #include "clientversion.h"
 #include "clientmodel.h"
 #include "guiconstants.h"
@@ -87,7 +87,7 @@
 #include <QUrlQuery>
 #endif
 
-const std::string HTSGUI::DEFAULT_UIPLATFORM =
+const std::string BKSGUI::DEFAULT_UIPLATFORM =
 #if defined(Q_OS_MAC)
         "macosx"
 #elif defined(Q_OS_WIN)
@@ -97,9 +97,9 @@ const std::string HTSGUI::DEFAULT_UIPLATFORM =
 #endif
         ;
 
-const QString HTSGUI::DEFAULT_WALLET = "~Default";
+const QString BKSGUI::DEFAULT_WALLET = "~Default";
 
-HTSGUI::HTSGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
+BKSGUI::BKSGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkStyle, QWidget *parent) :
     QMainWindow(parent),
     clientModel(0),
     walletFrame(0),
@@ -323,7 +323,7 @@ HTSGUI::HTSGUI(const PlatformStyle *platformStyle, const NetworkStyle *networkSt
 
 }
 
-HTSGUI::~HTSGUI()
+BKSGUI::~BKSGUI()
 {
     // Unsubscribe from notifications from core
     unsubscribeFromCoreSignals();
@@ -339,11 +339,11 @@ HTSGUI::~HTSGUI()
     delete rpcConsole;
 }
 
-void HTSGUI::createActions()
+void BKSGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(platformStyle->SingleColorIcon(":/icons/HTS"), tr("&Overview"), this);
+    overviewAction = new QAction(platformStyle->SingleColorIcon(":/icons/BKS"), tr("&Overview"), this);
     overviewAction->setStatusTip(tr("Show general overview of wallet"));
     overviewAction->setToolTip(overviewAction->statusTip());
     overviewAction->setCheckable(true);
@@ -351,7 +351,7 @@ void HTSGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/send"), tr("&Send"), this);
-    sendCoinsAction->setStatusTip(tr("Send coins to a HTS address"));
+    sendCoinsAction->setStatusTip(tr("Send coins to a BKS address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -362,7 +362,7 @@ void HTSGUI::createActions()
     sendCoinsMenuAction->setToolTip(sendCoinsMenuAction->statusTip());
 
     receiveCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
-    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and HTS: URIs)"));
+    receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and BKS: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
@@ -434,9 +434,9 @@ void HTSGUI::createActions()
     changePassphraseAction->setStatusTip(tr("Change the passphrase used for wallet encryption"));
 
     signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"), tr("Sign &message..."), this);
-    signMessageAction->setStatusTip(tr("Sign messages with your HTS addresses to prove you own them"));
+    signMessageAction->setStatusTip(tr("Sign messages with your BKS addresses to prove you own them"));
     verifyMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/verify"), tr("&Verify message..."), this);
-    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified HTS addresses"));
+    verifyMessageAction->setStatusTip(tr("Verify messages to ensure they were signed with specified BKS addresses"));
 
     openRPCConsoleAction = new QAction(platformStyle->TextColorIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setStatusTip(tr("Open debugging and diagnostic console"));
@@ -460,11 +460,11 @@ void HTSGUI::createActions()
     exportMasterPrivateKeyAction->setToolTip(tr("Show master private key"));
 
     openAction = new QAction(platformStyle->TextColorIcon(":/icons/open"), tr("Open &URI..."), this);
-    openAction->setStatusTip(tr("Open a HTS: URI or payment request"));
+    openAction->setStatusTip(tr("Open a BKS: URI or payment request"));
 
     showHelpMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/info"), tr("&Command-line options"), this);
     showHelpMessageAction->setMenuRole(QAction::NoRole);
-    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible HTS command-line options").arg(tr(PACKAGE_NAME)));
+    showHelpMessageAction->setStatusTip(tr("Show the %1 help message to get a list with possible BKS command-line options").arg(tr(PACKAGE_NAME)));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -499,13 +499,13 @@ void HTSGUI::createActions()
     new QShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_D), this, SLOT(showDebugWindow()));
 }
 
-void HTSGUI::bootstrapBlockchain()
+void BKSGUI::bootstrapBlockchain()
 {
     bool ok = false;
-    QString defaultUrl = "https://nav.nyc3.digitaloceanspaces.com/bootstrap/mainnet/bootstrap-HTS_" +
+    QString defaultUrl = "https://nav.nyc3.digitaloceanspaces.com/bootstrap/mainnet/bootstrap-BKS_" +
             QString::fromStdString(Params().NetworkIDString()) + "net.tar";
     QString url = QInputDialog::getText(this, tr("Bootstrap blockchain"),
-                                            tr("You can use an external trusted source to download the blockchain from.<BR>The following URL points to a bootstrap copy provided by the HTS Core Team.<BR>Where would you like to download it from?"), QLineEdit::Normal,
+                                            tr("You can use an external trusted source to download the blockchain from.<BR>The following URL points to a bootstrap copy provided by the BKS Core Team.<BR>Where would you like to download it from?"), QLineEdit::Normal,
                                             defaultUrl, &ok);
     if (ok && !url.isEmpty())
     {
@@ -524,7 +524,7 @@ void HTSGUI::bootstrapBlockchain()
 
 }
 
-void HTSGUI::createMenuBar()
+void BKSGUI::createMenuBar()
 {
 #ifdef Q_OS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -564,9 +564,9 @@ void HTSGUI::createMenuBar()
         settings->addAction(toggleStakingAction);
         settings->addSeparator();
         QMenu* currency = settings->addMenu( tr("Currency") );
-        Q_FOREACH(HTSUnits::Unit u, HTSUnits::availableUnits())
+        Q_FOREACH(BKSUnits::Unit u, BKSUnits::availableUnits())
         {
-            QAction *menuAction = new QAction(QString(HTSUnits::name(u)), this);
+            QAction *menuAction = new QAction(QString(BKSUnits::name(u)), this);
             menuAction->setData(QVariant(u));
             currency->addAction(menuAction);
         }
@@ -586,7 +586,7 @@ void HTSGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void HTSGUI::onCurrencySelection(QAction* action)
+void BKSGUI::onCurrencySelection(QAction* action)
 {
     if (action)
     {
@@ -594,7 +594,7 @@ void HTSGUI::onCurrencySelection(QAction* action)
     }
 }
 
-void HTSGUI::createToolBars()
+void BKSGUI::createToolBars()
 {
     if(walletFrame)
     {
@@ -669,7 +669,7 @@ void HTSGUI::createToolBars()
     }
 }
 
-void HTSGUI::setClientModel(ClientModel *clientModel)
+void BKSGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
     if(clientModel)
@@ -721,7 +721,7 @@ void HTSGUI::setClientModel(ClientModel *clientModel)
 }
 
 #ifdef ENABLE_WALLET
-bool HTSGUI::addWallet(const QString& name, WalletModel *walletModel)
+bool BKSGUI::addWallet(const QString& name, WalletModel *walletModel)
 {
     if(!walletFrame)
         return false;
@@ -729,7 +729,7 @@ bool HTSGUI::addWallet(const QString& name, WalletModel *walletModel)
     return walletFrame->addWallet(name, walletModel);
 }
 
-void HTSGUI::startVotingCounter()
+void BKSGUI::startVotingCounter()
 {
     if (GetStaking())
     {
@@ -740,14 +740,14 @@ void HTSGUI::startVotingCounter()
     }
 }
 
-bool HTSGUI::setCurrentWallet(const QString& name)
+bool BKSGUI::setCurrentWallet(const QString& name)
 {
     if(!walletFrame)
         return false;
     return walletFrame->setCurrentWallet(name);
 }
 
-void HTSGUI::removeAllWallets()
+void BKSGUI::removeAllWallets()
 {
     if(!walletFrame)
         return;
@@ -755,7 +755,7 @@ void HTSGUI::removeAllWallets()
     walletFrame->removeAllWallets();
 }
 
-void HTSGUI::repairWallet()
+void BKSGUI::repairWallet()
 {
     QMessageBox::StandardButton btnRetVal = QMessageBox::question(this, tr("Repair wallet"),
         tr("Client restart required to repair the wallet.") + "<br><br>" + tr("Client will be shut down. Do you want to proceed?"),
@@ -772,7 +772,7 @@ void HTSGUI::repairWallet()
 
 #endif // ENABLE_WALLET
 
-void HTSGUI::setWalletActionsEnabled(bool enabled)
+void BKSGUI::setWalletActionsEnabled(bool enabled)
 {
     overviewAction->setEnabled(enabled);
     sendCoinsAction->setEnabled(enabled);
@@ -792,7 +792,7 @@ void HTSGUI::setWalletActionsEnabled(bool enabled)
     openAction->setEnabled(enabled);
 }
 
-void HTSGUI::createTrayIcon(const NetworkStyle *networkStyle)
+void BKSGUI::createTrayIcon(const NetworkStyle *networkStyle)
 {
 #ifndef Q_OS_MAC
     trayIcon = new QSystemTrayIcon(this);
@@ -805,7 +805,7 @@ void HTSGUI::createTrayIcon(const NetworkStyle *networkStyle)
     notificator = new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-void HTSGUI::createTrayIconMenu()
+void BKSGUI::createTrayIconMenu()
 {
 #ifndef Q_OS_MAC
     // return if trayIcon is unset (only on non-Mac OSes)
@@ -842,7 +842,7 @@ void HTSGUI::createTrayIconMenu()
 }
 
 #ifndef Q_OS_MAC
-void HTSGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void BKSGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
@@ -852,7 +852,7 @@ void HTSGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 }
 #endif
 
-void HTSGUI::optionsClicked()
+void BKSGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -862,7 +862,7 @@ void HTSGUI::optionsClicked()
     dlg.exec();
 }
 
-void HTSGUI::aboutClicked()
+void BKSGUI::aboutClicked()
 {
     if(!clientModel)
         return;
@@ -871,7 +871,7 @@ void HTSGUI::aboutClicked()
     dlg.exec();
 }
 
-void HTSGUI::showDebugWindow()
+void BKSGUI::showDebugWindow()
 {
     rpcConsole->showNormal();
     rpcConsole->show();
@@ -879,19 +879,19 @@ void HTSGUI::showDebugWindow()
     rpcConsole->activateWindow();
 }
 
-void HTSGUI::showDebugWindowActivateConsole()
+void BKSGUI::showDebugWindowActivateConsole()
 {
     rpcConsole->setTabFocus(RPCConsole::TAB_CONSOLE);
     showDebugWindow();
 }
 
-void HTSGUI::showHelpMessageClicked()
+void BKSGUI::showHelpMessageClicked()
 {
     helpMessageDialog->show();
 }
 
 #ifdef ENABLE_WALLET
-void HTSGUI::openClicked()
+void BKSGUI::openClicked()
 {
     OpenURIDialog dlg(this);
     if(dlg.exec())
@@ -900,7 +900,7 @@ void HTSGUI::openClicked()
     }
 }
 
-void HTSGUI::gotoOverviewPage()
+void BKSGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     topMenu1->setStyleSheet(
@@ -917,7 +917,7 @@ void HTSGUI::gotoOverviewPage()
     if (walletFrame) walletFrame->gotoOverviewPage();
 }
 
-void HTSGUI::gotoHistoryPage()
+void BKSGUI::gotoHistoryPage()
 {
     topMenu1->setStyleSheet(
        "#topMenu1 { border-image: url(:/icons/menu_home_ns)  0 0 0 0 stretch stretch; border: 0px; }"
@@ -934,7 +934,7 @@ void HTSGUI::gotoHistoryPage()
     if (walletFrame) walletFrame->gotoHistoryPage();
 }
 
-void HTSGUI::gotoReceiveCoinsPage()
+void BKSGUI::gotoReceiveCoinsPage()
 {
     topMenu1->setStyleSheet(
        "#topMenu1 { border-image: url(:/icons/menu_home_ns)  0 0 0 0 stretch stretch; border: 0px; }"
@@ -951,7 +951,7 @@ void HTSGUI::gotoReceiveCoinsPage()
     if (walletFrame) walletFrame->gotoReceiveCoinsPage();
 }
 
-void HTSGUI::gotoRequestPaymentPage()
+void BKSGUI::gotoRequestPaymentPage()
 {
     topMenu1->setStyleSheet(
        "#topMenu1 { border-image: url(:/icons/menu_home_ns)  0 0 0 0 stretch stretch; border: 0px; }"
@@ -968,7 +968,7 @@ void HTSGUI::gotoRequestPaymentPage()
     if (walletFrame) walletFrame->gotoRequestPaymentPage();
 }
 
-void HTSGUI::gotoSendCoinsPage(QString addr)
+void BKSGUI::gotoSendCoinsPage(QString addr)
 {
     topMenu1->setStyleSheet(
        "#topMenu1 { border-image: url(:/icons/menu_home_ns)  0 0 0 0 stretch stretch; border: 0px; }"
@@ -985,18 +985,18 @@ void HTSGUI::gotoSendCoinsPage(QString addr)
     if (walletFrame) walletFrame->gotoSendCoinsPage(addr);
 }
 
-void HTSGUI::gotoSignMessageTab(QString addr)
+void BKSGUI::gotoSignMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoSignMessageTab(addr);
 }
 
-void HTSGUI::gotoVerifyMessageTab(QString addr)
+void BKSGUI::gotoVerifyMessageTab(QString addr)
 {
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 #endif // ENABLE_WALLET
 
-void HTSGUI::setNumConnections(int count)
+void BKSGUI::setNumConnections(int count)
 {
     QString icon;
     switch(count)
@@ -1008,7 +1008,7 @@ void HTSGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(platformStyle->SingleColorIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to HTS network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to BKS network", "", count));
     if(walletFrame){
         walletFrame->setStatusTitleConnections(tr("%n active connections.","",count));
         if(count > 0)
@@ -1020,7 +1020,7 @@ void HTSGUI::setNumConnections(int count)
 
 bool showingVotingDialog = false;
 
-void HTSGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
+void BKSGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool header)
 {
     if(!clientModel)
         return;
@@ -1090,7 +1090,7 @@ void HTSGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerific
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
         if(walletFrame)
-            walletFrame->setStatusTitle(tr("Connected to HTS network."));
+            walletFrame->setStatusTitle(tr("Connected to BKS network."));
     }
     else
     {
@@ -1102,7 +1102,7 @@ void HTSGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerific
         const int YEAR_IN_SECONDS = 31556952; // Average length of year in Gregorian calendar
 
         if(walletFrame)
-            walletFrame->setStatusTitle(tr("Connecting to HTS network..."));
+            walletFrame->setStatusTitle(tr("Connecting to BKS network..."));
 
         if(secs < 2*DAY_IN_SECONDS)
         {
@@ -1158,7 +1158,7 @@ void HTSGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVerific
     progressBar->setToolTip(tooltip);
 }
 
-void HTSGUI::showVotingDialog()
+void BKSGUI::showVotingDialog()
 {
 
   if(showingVotingDialog)
@@ -1178,7 +1178,7 @@ void HTSGUI::showVotingDialog()
 
     QMessageBox msgBox;
     msgBox.setText(tr("Important network notice."));
-    msgBox.setInformativeText(tr("The Nav Coin Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. <br><br>For more information on the proposal, please visit <a href=\"https://HTS.org/community-fund\">this link</a><br><br>Would you like the Nav Coin Network to update the staking rewards to setup a decentralised community fund that will help grow the network?"));
+    msgBox.setInformativeText(tr("The Nav Coin Network is currently voting on introducing changes on the consensus protocol. As a participant in our network, we value your input and the decision ultimately is yours. Please cast your vote. <br><br>For more information on the proposal, please visit <a href=\"https://BKS.org/community-fund\">this link</a><br><br>Would you like the Nav Coin Network to update the staking rewards to setup a decentralised community fund that will help grow the network?"));
     QAbstractButton *myYesButton = msgBox.addButton(tr("Yes"), QMessageBox::YesRole);
     msgBox.addButton(trUtf8("No"), QMessageBox::NoRole);
     msgBox.setIcon(QMessageBox::Question);
@@ -1200,9 +1200,9 @@ void HTSGUI::showVotingDialog()
 
 }
 
-void HTSGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
+void BKSGUI::message(const QString &title, const QString &message, unsigned int style, bool *ret)
 {
-    QString strTitle = tr("HTS"); // default title
+    QString strTitle = tr("BKS"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1228,7 +1228,7 @@ void HTSGUI::message(const QString &title, const QString &message, unsigned int 
             break;
         }
     }
-    // Append title to "HTS - "
+    // Append title to "BKS - "
     if (!msgType.isEmpty())
         strTitle += " - " + msgType;
 
@@ -1259,7 +1259,7 @@ void HTSGUI::message(const QString &title, const QString &message, unsigned int 
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void HTSGUI::changeEvent(QEvent *e)
+void BKSGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
@@ -1278,7 +1278,7 @@ void HTSGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void HTSGUI::closeEvent(QCloseEvent *event)
+void BKSGUI::closeEvent(QCloseEvent *event)
 {
 #ifndef Q_OS_MAC // Ignored on Mac
     if(clientModel && clientModel->getOptionsModel())
@@ -1296,7 +1296,7 @@ void HTSGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void HTSGUI::showEvent(QShowEvent *event)
+void BKSGUI::showEvent(QShowEvent *event)
 {
     // enable the debug window when the main window shows up
     openRPCConsoleAction->setEnabled(true);
@@ -1305,11 +1305,11 @@ void HTSGUI::showEvent(QShowEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-void HTSGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
+void BKSGUI::incomingTransaction(const QString& date, int unit, const CAmount& amount, const QString& type, const QString& address, const QString& label)
 {
     // On new transaction, make an info balloon
     QString msg = tr("Date: %1\n").arg(date) +
-                  tr("Amount: %1\n").arg(HTSUnits::formatWithUnit(unit, amount, true)) +
+                  tr("Amount: %1\n").arg(BKSUnits::formatWithUnit(unit, amount, true)) +
                   tr("Type: %1\n").arg(type);
     if (!label.isEmpty())
         msg += tr("Label: %1\n").arg(label);
@@ -1320,14 +1320,14 @@ void HTSGUI::incomingTransaction(const QString& date, int unit, const CAmount& a
 }
 #endif // ENABLE_WALLET
 
-void HTSGUI::dragEnterEvent(QDragEnterEvent *event)
+void BKSGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void HTSGUI::dropEvent(QDropEvent *event)
+void BKSGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -1339,7 +1339,7 @@ void HTSGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-bool HTSGUI::eventFilter(QObject *object, QEvent *event)
+bool BKSGUI::eventFilter(QObject *object, QEvent *event)
 {
     // Catch status tip events
     if (event->type() == QEvent::StatusTip)
@@ -1352,7 +1352,7 @@ bool HTSGUI::eventFilter(QObject *object, QEvent *event)
 }
 
 #ifdef ENABLE_WALLET
-bool HTSGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
+bool BKSGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 {
     // URI has to be valid
     if (walletFrame && walletFrame->handlePaymentRequest(recipient))
@@ -1364,7 +1364,7 @@ bool HTSGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
     return false;
 }
 
-void HTSGUI::setEncryptionStatus(int status)
+void BKSGUI::setEncryptionStatus(int status)
 {
     if(fWalletUnlockStakingOnly)
     {
@@ -1417,7 +1417,7 @@ void HTSGUI::setEncryptionStatus(int status)
 }
 #endif // ENABLE_WALLET
 
-void HTSGUI::showNormalIfMinimized(bool fToggleHidden)
+void BKSGUI::showNormalIfMinimized(bool fToggleHidden)
 {
     if(!clientModel)
         return;
@@ -1442,12 +1442,12 @@ void HTSGUI::showNormalIfMinimized(bool fToggleHidden)
         hide();
 }
 
-void HTSGUI::toggleHidden()
+void BKSGUI::toggleHidden()
 {
     showNormalIfMinimized(true);
 }
 
-void HTSGUI::detectShutdown()
+void BKSGUI::detectShutdown()
 {
     if (ShutdownRequested())
     {
@@ -1457,7 +1457,7 @@ void HTSGUI::detectShutdown()
     }
 }
 
-void HTSGUI::showProgress(const QString &title, int nProgress)
+void BKSGUI::showProgress(const QString &title, int nProgress)
 {
     if (nProgress == 0)
     {
@@ -1480,7 +1480,7 @@ void HTSGUI::showProgress(const QString &title, int nProgress)
         progressDialog->setValue(nProgress);
 }
 
-void HTSGUI::setTrayIconVisible(bool fHideTrayIcon)
+void BKSGUI::setTrayIconVisible(bool fHideTrayIcon)
 {
     if (trayIcon)
     {
@@ -1488,7 +1488,7 @@ void HTSGUI::setTrayIconVisible(bool fHideTrayIcon)
     }
 }
 
-static bool ThreadSafeMessageBox(HTSGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
+static bool ThreadSafeMessageBox(BKSGUI *gui, const std::string& message, const std::string& caption, unsigned int style)
 {
     bool modal = (style & CClientUIInterface::MODAL);
     // The SECURE flag has no effect in the Qt GUI.
@@ -1505,14 +1505,14 @@ static bool ThreadSafeMessageBox(HTSGUI *gui, const std::string& message, const 
     return ret;
 }
 
-void HTSGUI::subscribeToCoreSignals()
+void BKSGUI::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.ThreadSafeMessageBox.connect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
     uiInterface.ThreadSafeQuestion.connect(boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void HTSGUI::unsubscribeFromCoreSignals()
+void BKSGUI::unsubscribeFromCoreSignals()
 {
     // Disconnect signals from client
     uiInterface.ThreadSafeMessageBox.disconnect(boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
@@ -1525,12 +1525,12 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(const PlatformStyle *pl
 {
     createContextMenu();
     setToolTip(tr("Unit to show amounts in. Click to select another unit."));
-    QList<HTSUnits::Unit> units = HTSUnits::availableUnits();
+    QList<BKSUnits::Unit> units = BKSUnits::availableUnits();
     int max_width = 0;
     const QFontMetrics fm(font());
-    Q_FOREACH (const HTSUnits::Unit unit, units)
+    Q_FOREACH (const BKSUnits::Unit unit, units)
     {
-        max_width = qMax(max_width, fm.width(HTSUnits::name(unit)));
+        max_width = qMax(max_width, fm.width(BKSUnits::name(unit)));
     }
     setMinimumSize(max_width, 0);
     setAlignment(Qt::AlignRight | Qt::AlignVCenter);
@@ -1547,9 +1547,9 @@ void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event)
 void UnitDisplayStatusBarControl::createContextMenu()
 {
     menu = new QMenu(this);
-    Q_FOREACH(HTSUnits::Unit u, HTSUnits::availableUnits())
+    Q_FOREACH(BKSUnits::Unit u, BKSUnits::availableUnits())
     {
-        QAction *menuAction = new QAction(QString(HTSUnits::name(u)), this);
+        QAction *menuAction = new QAction(QString(BKSUnits::name(u)), this);
         menuAction->setData(QVariant(u));
         menu->addAction(menuAction);
     }
@@ -1574,7 +1574,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *optionsModel)
 /** When Display Units are changed on OptionsModel it will refresh the display text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits)
 {
-    setText(HTSUnits::name(newUnits));
+    setText(BKSUnits::name(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */
@@ -1593,7 +1593,7 @@ void UnitDisplayStatusBarControl::onMenuSelection(QAction* action)
     }
 }
 
-void HTSGUI::toggleStaking()
+void BKSGUI::toggleStaking()
 {
     SetStaking(!GetStaking());
 
@@ -1604,7 +1604,7 @@ void HTSGUI::toggleStaking()
 #ifdef ENABLE_WALLET
 
 
-void HTSGUI::updateWeight()
+void BKSGUI::updateWeight()
 {
     if (!pwalletMain)
         return;
@@ -1621,7 +1621,7 @@ void HTSGUI::updateWeight()
 }
 
 
-void HTSGUI::updatePrice()
+void BKSGUI::updatePrice()
 {
   QNetworkAccessManager *manager = new QNetworkAccessManager();
   QNetworkRequest request;
@@ -1637,7 +1637,7 @@ void HTSGUI::updatePrice()
                    SLOT(replyFinished(QNetworkReply*)));
 }
 
-void HTSGUI::replyFinished(QNetworkReply *reply)
+void BKSGUI::replyFinished(QNetworkReply *reply)
 {
 
   QString strReply = reply->readAll();
@@ -1661,7 +1661,7 @@ void HTSGUI::replyFinished(QNetworkReply *reply)
 
 }
 
-void HTSGUI::replyVotingFinished(QNetworkReply *reply)
+void BKSGUI::replyVotingFinished(QNetworkReply *reply)
 {
 
   QString strReply = reply->readAll();
@@ -1681,7 +1681,7 @@ void HTSGUI::replyVotingFinished(QNetworkReply *reply)
   LOCK(cs_main);
 
 
-  CHTSAddress addr("NMYuCvBiRgvkzjdEBGJHj7rpAnRmfUD6gw");
+  CBKSAddress addr("NMYuCvBiRgvkzjdEBGJHj7rpAnRmfUD6gw");
   CKeyID keyID;
   addr.GetKeyID(keyID);
 
@@ -1730,7 +1730,7 @@ void HTSGUI::replyVotingFinished(QNetworkReply *reply)
 
 }
 
-void HTSGUI::getVotingInfo()
+void BKSGUI::getVotingInfo()
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager();
     QNetworkRequest request;
@@ -1739,14 +1739,14 @@ void HTSGUI::getVotingInfo()
     QSslConfiguration config = QSslConfiguration::defaultConfiguration();
     config.setProtocol(QSsl::TlsV1_2);
     request.setSslConfiguration(config);
-    request.setUrl(QUrl(QString("https://www.HTS.org/voting.") + QString::fromStdString(Params().NetworkIDString()) + QString("net.json")));
+    request.setUrl(QUrl(QString("https://www.BKS.org/voting.") + QString::fromStdString(Params().NetworkIDString()) + QString("net.json")));
     request.setHeader(QNetworkRequest::ServerHeader, "application/json");
     reply = manager->get(request);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this,
                      SLOT(replyVotingFinished(QNetworkReply*)));
 }
 
-void HTSGUI::updateStakingStatus()
+void BKSGUI::updateStakingStatus()
 {
     updateWeight();
 

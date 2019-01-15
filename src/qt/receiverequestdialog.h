@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_QT_RECEIVEREQUESTDIALOG_H
-#define HTS_QT_RECEIVEREQUESTDIALOG_H
+#ifndef BKS_QT_RECEIVEREQUESTDIALOG_H
+#define BKS_QT_RECEIVEREQUESTDIALOG_H
 
 #include "walletmodel.h"
 
@@ -68,4 +68,4 @@ private:
     SendCoinsRecipient info;
 };
 
-#endif // HTS_QT_RECEIVEREQUESTDIALOG_H
+#endif // BKS_QT_RECEIVEREQUESTDIALOG_H

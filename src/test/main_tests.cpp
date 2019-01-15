@@ -5,7 +5,7 @@
 #include "chainparams.h"
 #include "main.h"
 
-#include "test/test_HTS.h"
+#include "test/test_BKS.h"
 
 #include <boost/signals2/signal.hpp>
 #include <boost/test/unit_test.hpp>

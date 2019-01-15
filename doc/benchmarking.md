@@ -1,11 +1,11 @@
 Benchmarking
 ============
 
-HTS Core has an internal benchmarking framework, with benchmarks
+BKS Core has an internal benchmarking framework, with benchmarks
 for cryptographic algorithms such as SHA1, SHA256, SHA512 and RIPEMD160. As well as the rolling bloom filter.
 
-After compiling HTS-core, the benchmarks can be run with:
-`src/bench/bench_HTS`
+After compiling BKS-core, the benchmarks can be run with:
+`src/bench/bench_BKS`
 
 The output will look similar to:
 ```

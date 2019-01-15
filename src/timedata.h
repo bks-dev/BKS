@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef HTS_TIMEDATA_H
-#define HTS_TIMEDATA_H
+#ifndef BKS_TIMEDATA_H
+#define BKS_TIMEDATA_H
 
 #include <algorithm>
 #include <assert.h>
@@ -79,4 +79,4 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime);
 
 int64_t abs64(int64_t n);
 
-#endif // HTS_TIMEDATA_H
+#endif // BKS_TIMEDATA_H

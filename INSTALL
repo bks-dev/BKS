@@ -1,5 +1,5 @@
-Building HTS
+Building BKS
 
-See doc/build-*.md for instructions on building HTSd,
+See doc/build-*.md for instructions on building BKSd,
 the intended-for-services, no-graphical-interface, reference
-implementation of HTS.
+implementation of BKS.

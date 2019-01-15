@@ -7,7 +7,7 @@
 #include "script/standard.h"
 #include "uint256.h"
 #include "utilstrencodings.h"
-#include "test/test_HTS.h"
+#include "test/test_BKS.h"
 #include "main.h"
 #include "consensus/validation.h"
 
