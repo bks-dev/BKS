@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Hotshot Coin is for hotshots like me and you";
+    const char* pszTimestamp = "Bitkontacts is your friend in the crypto dating world";
     const CScript genesisOutputScript = CScript() << ParseHex("04bf5608f13e9b2781b839ea78adbd1cb90d8fc17dcc67028e93e65223ea77f8bc8d8eed1191f37dd0ad20f371912d86e1c2e7369251cb06d2a3fdc5e26262d6df") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -86,7 +86,7 @@ public:
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
-        consensus.BIP34Height = 900000;
+        consensus.BIP34Height = 900000999;
         consensus.BIP34Hash = uint256S("0xecb7444214d068028ec1fa4561662433452c1cbbd6b0f8eeb6452bcfa1d0a7d6");
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 1);
         consensus.nPowTargetTimespan = 30;
@@ -181,11 +181,11 @@ public:
         pchMessageStart[1] = 0x50;
         pchMessageStart[2] = 0x34;
         pchMessageStart[3] = 0x20;
-        nDefaultPort = 37999;
+        nDefaultPort = 14444;
         nPruneAfterHeight = 100000;
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 1);
 
-        genesis = CreateGenesisBlock(1460561040, 6947, 0x1f00ffff, 1, 0);
+        genesis = CreateGenesisBlock(1460561060, 16927, 0x1f00ffff, 1, 0);
 /*
         printf("Generating genesis block...\n");
         uint32_t nounce = 1;
@@ -214,17 +214,17 @@ public:
            // printf("new testnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
 	      consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("0x282d283af72258299b261e8d848b289d478b5f609ff40ed42f5df4e2eaaa39ea"));
-        assert(genesis.hashMerkleRoot == uint256S("0x5d4638e673335459fc2fa140ca5bcc1ab4a21691a91bcd2c7858b0dfe12cb051"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00009bdb9b9149e81c6afee6fa0eb83a8833baa740cae9ea4b285ace63fa07f5"));
+        assert(genesis.hashMerkleRoot == uint256S("0xa7a054f2b2ada772f51804ef5ad0b297f2b305976125caaa3b4e645505b75900"));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,40);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,40+128);
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,25+128);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-        vSeeds.push_back(CDNSSeedData("nav.community", "45.76.32.226"));
-        vSeeds.push_back(CDNSSeedData("navcoin.org", "107.191.60.144"));
+        //vSeeds.push_back(CDNSSeedData("nav.community", "45.76.32.226"));
+        //vSeeds.push_back(CDNSSeedData("navcoin.org", "107.191.60.144"));
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
@@ -236,7 +236,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0x282d283af72258299b261e8d848b289d478b5f609ff40ed42f5df4e2eaaa39ea")),
+            ( 0, uint256S("0x00009bdb9b9149e81c6afee6fa0eb83a8833baa740cae9ea4b285ace63fa07f5")),
 /*            (10000, uint256S("0x844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a"))
             (10000, uint256S("0x844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a"))
             (20000, uint256S("0xfea6d227117db665c5cff2fca0b29d850c5e7f064463d001f5228e80a7e21624"))

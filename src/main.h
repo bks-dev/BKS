@@ -170,34 +170,48 @@ struct BlockHasher
 inline int64_t GetCoinYearReward(int nHeight) {
     int64_t YearPercent = 10;
 
-    if (nHeight <= 20000)
-        YearPercent = 250;
-    else if (nHeight <= 40000)
+    if (nHeight <= 3000)
+        YearPercent = 50;
+    else if (nHeight <= 6000)
         YearPercent = 200;
-    else if (nHeight <= 50000)
-        YearPercent = 175;
-    else if (nHeight <= 60000)
-        YearPercent = 150;
-    else if (nHeight <= 70000)
-        YearPercent = 125;
-    else if (nHeight <= 80000)
-        YearPercent = 120;
-    else if (nHeight <= 90000)
-        YearPercent = 110;
-    else if (nHeight <= 100000)
-        YearPercent = 250;
-    else if (nHeight <= 110000)
+    else if (nHeight <= 10000)
+        YearPercent = 300;
+    else if (nHeight <= 13000)
+        YearPercent = 700;
+    else if (nHeight <= 16000)
+        YearPercent = 300;
+    else if (nHeight <= 20000)
         YearPercent = 200;
-    else if (nHeight <= 120000)
-        YearPercent = 150;
-    else if (nHeight <= 130000)
+    else if (nHeight <= 30000)
         YearPercent = 100;
+    else if (nHeight <= 33000)
+        YearPercent = 1100;
+    else if (nHeight <= 35000)
+        YearPercent = 600;
+    else if (nHeight <= 40000)
+        YearPercent = 300;
+    else if (nHeight <= 50000)
+        YearPercent = 200;
+    else if (nHeight <= 55000)
+        YearPercent = 150;
+    else if (nHeight <= 58000)
+        YearPercent = 1550;
+    else if (nHeight <= 65000)
+        YearPercent = 400;
+    else if (nHeight <= 80000)
+        YearPercent = 200;
+    else if (nHeight <= 100000)
+        YearPercent = 100;
+    else if (nHeight <= 110000)
+        YearPercent = 500;
     else if (nHeight <= 140000)
-        YearPercent = 75;
+        YearPercent = 200;
+    else if (nHeight <= 150000)
+        YearPercent = 100;
  //   else if (nHeight <= 140000)
    //     YearPercent = 75;
     else
-        YearPercent = 50;
+        YearPercent = 25;
 
     return YearPercent * CENT; // per year
 }

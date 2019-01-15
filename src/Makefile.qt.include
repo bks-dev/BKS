@@ -300,6 +300,15 @@ RES_ICONS = \
   qt/res/icons/transaction_ns.png \
   qt/res/icons/transaction_s.png \
   qt/res/icons/transaction_hover.png \
+  qt/res/icons/Menu.png \
+  qt/res/icons/about.png \
+  qt/res/icons/about_testnet.png \
+  qt/res/icons/bkg.png \
+  qt/res/icons/splash.png \
+  qt/res/icons/splash_testnet.png \
+  qt/res/icons/wallet_bgcoin.png \
+  qt/res/icons/wallet_bgcoin_testnet.png \
+  qt/res/icons/wraith.png \
   qt/res/fonts/roboto.ttf \
   qt/res/fonts/robotoregular.ttf \
   qt/res/fonts/source.ttf \
