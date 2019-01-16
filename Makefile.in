@@ -92,7 +92,7 @@ DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/contrib/devtools/split-debug.sh.in \
 	$(top_srcdir)/qa/pull-tester/rpc-tests.py \
 	$(dist_noinst_SCRIPTS) COPYING INSTALL build-aux/compile \
-	build-aux/config.guess build-aux/config.sub \
+	build-aux/config.guess build-aux/config.sub build-aux/depcomp \
 	build-aux/install-sh build-aux/missing build-aux/ltmain.sh \
 	$(top_srcdir)/build-aux/compile \
 	$(top_srcdir)/build-aux/config.guess \
